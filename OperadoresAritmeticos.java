@@ -1,26 +1,39 @@
 public class OperadoresAritmeticos{
 	public static void main (String[]args){
-        
-        byte EdadJuan = 20;
 
-        // error: incompatible types: possible lossy conversion
-        // byte EdadPedro = EdadJuan + 1;
+        float Impuesto = 2.2f * 1.0f + 5.0f;
+        int Impuesto2 = -8 + 12 /2;
+        int Cociente = 16 / 3;
+        int Resto = 16 % 3;
+        int Nueve = 9;
+        // asigna y después incrementa
+        int PostIncremento = Nueve++;
+        Nueve = 9;
+        // incrementa y después asigna
+        int PreIncremento = ++Nueve;
+        Nueve = 9;
+        int PostDecremento = Nueve--;
+        Nueve = 9;
+        int PreDecremento = --Nueve;
 
-        byte EdadPedro = (byte) (EdadJuan + 1);
-
-        short SueldoBase = 1980;
-        short Complementos = 400;
-
-        short SueldoTotal;
-
-        // error: incompatible types: possible lossy conversion from int to short
-        // SueldoTotal= SueldoBase + Complementos;
-        
-        SueldoTotal= (short) (SueldoBase + Complementos);
-        
+        System.out.println("Impuesto: " + Impuesto);
         System.out.println('\n');
-        System.out.println(EdadPedro);
+        System.out.println("Impuesto2: "+ Impuesto2);
         System.out.println('\n');
-        System.out.println(SueldoTotal);
-	}
+        System.out.println("Cociente: "+ Cociente);
+        System.out.println('\n');
+        System.out.println("Resto: "+ Resto);
+        System.out.println('\n');
+        System.out.println("Nueve: "+ Nueve);
+        System.out.println('\n');
+        System.out.println("PostIncremento: "+ PostIncremento);
+        System.out.println('\n');
+        System.out.println("PreIncremento: "+ PreIncremento);
+        System.out.println('\n');
+        System.out.println("PostDecremento: "+ PostDecremento);
+        System.out.println('\n');
+        System.out.println("PreDecremento: "+ PreDecremento);
+
+
+    }
 }
