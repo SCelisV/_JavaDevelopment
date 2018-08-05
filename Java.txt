@@ -1,0 +1,25 @@
+jdk1.8.0_181
+
+Java Runtime Environment (JRE), está formado por Java Virtual Machine (JVM), clases del núcleo de la plataforma Java y bibliotecas de la plataforma Java de soporte. JRE es la parte de tiempo de ejecución del software de Java, que es todo lo que necesita para ejecutarlo en el explorador web.
+
+¿Qué es el software del plugin de Java?
+El software del plugin de Java es un componente de Java Runtime Environment. JRE permite applets escritos en el lenguaje de programación de Java para ejecutar en varios exploradores. El software del plugin de Java no es un programa autónomo y no se puede instalar de forma independiente.
+
+He leído las condiciones de Java Virtual Machine y de JVM. ¿Se trata de software de Java?
+Java Virtual Machine es sólo un aspecto del software de Java que interviene en interacción web. Java Virtual Machine está incorporado en la descarga del software de Java y ayuda a ejecutar las aplicaciones Java.
+
+https://docs.oracle.com/javase/7/docs/technotes/guides/jweb/index.html
+
+http://www.oracle.com/technetwork/java/javase/overview/index.html
+
+http://www.oracle.com/technetwork/java/javase/jdk-8-readme-2095712.html#introduction
+
+Instalation: https://docs.oracle.com/javase/8/docs/technotes/guides/install/install_overview.html#CJAGAACB
+
+For example, if you were downloading the JDK installer for 32-bit systems for update 1.8.0_01, the file name: jdk-8version-windows-i586.exe becomes jdk-8u1-windows-i586.exe.
+
+PATH
+D:\Java\jdk1.8.0_181\bin;
+D:\Mis Documentos\Development\Java\JBobadilla;
+C:\Users\ELLioT\Downloads\VSCode-win32-ia32-1.21.0-insider;
+C:\Program Files\Git;
