@@ -1,12 +1,12 @@
 jdk1.8.0_181
 
-Java Runtime Environment (JRE), est� formado por Java Virtual Machine (JVM), clases del n�cleo de la plataforma Java y bibliotecas de la plataforma Java de soporte. JRE es la parte de tiempo de ejecuci�n del software de Java, que es todo lo que necesita para ejecutarlo en el explorador web.
+Java Runtime Environment (JRE), est� formado por Java Virtual Machine (JVM), clases del n�cleo de la plataforma Java y bibliotecas de la plataforma Java de soporte. JRE es la parte de tiempo de ejecuci�n del software de Java, que es todo lo que necesita para ejecutarlo en el explorador web.
 
-�Qu� es el software del plugin de Java?
-El software del plugin de Java es un componente de Java Runtime Environment. JRE permite applets escritos en el lenguaje de programaci�n de Java para ejecutar en varios exploradores. El software del plugin de Java no es un programa aut�nomo y no se puede instalar de forma independiente.
+-Que es el software del plugin de Java?
+El software del plugin de Java es un componente de Java Runtime Environment. JRE permite applets escritos en el lenguaje de programaci�n de Java para ejecutar en varios exploradores. El software del plugin de Java no es un programa aut�nomo y no se puede instalar de forma independiente.
 
-He le�do las condiciones de Java Virtual Machine y de JVM. �Se trata de software de Java?
-Java Virtual Machine es s�lo un aspecto del software de Java que interviene en interacci�n web. Java Virtual Machine est� incorporado en la descarga del software de Java y ayuda a ejecutar las aplicaciones Java.
+He le�do las condiciones de Java Virtual Machine y de JVM. �Se trata de software de Java?
+Java Virtual Machine es s�lo un aspecto del software de Java que interviene en interacci�n web. Java Virtual Machine est� incorporado en la descarga del software de Java y ayuda a ejecutar las aplicaciones Java.
 
 https://docs.oracle.com/javase/7/docs/technotes/guides/jweb/index.html
 
@@ -23,3 +23,116 @@ D:\Java\jdk1.8.0_181\bin;
 D:\Mis Documentos\Development\Java\JBobadilla;
 C:\Users\ELLioT\Downloads\VSCode-win32-ia32-1.21.0-insider;
 C:\Program Files\Git;
+
+Documentos Git: C:\Program Files\Git\mingw32\share\doc\git-doc
+https://es.atlassian.com/git
+everyday.html
+
+Objetos Class (clases), soportan la programación orientada a objetos, son la estructura básica sobre la que se desarrollan las aplicaciones.
+
+Permite definir propiedades y métodos relacionados entre sí.
+
+Las propiedades almacenan el estado de la clase.
+Los métodos son los programas que se utilizan para consultar y modificar el contenido de las propiedades.
+
+Una Instancia es como crear una plantilla y definir un tipo, se pueden crear tantas entidades (instancias) como sean necesarias...y evolucionar el estado de estos "semaforos" de forma independiente.
+
+Tipo Variable; // Para declarar un objeto de una clase dada
+
+Semaforo MiSemaforo; // De esta manera, creamos un apuntador capaz de direccionar un objeto de la clase (new)
+
+MiSemaforo = new Semaforo(); // Instanciamos 
+
+Semaforo MiSemaforo = new Semaforo(); // Declaramos e Instanciamos - Tenemos una variable "MiSemaforo", que direcciona un objeto creado de la clase "Semaforo".
+
+Se pueden crear tantas instancias como sea necesario, en este caso cada una puede tener un valor diferente en un mismo instante.
+
+Semaforo MiSemaforo = new Semaforo();
+Semaforo OtroSemaforo = new Semaforo();
+Semaforo SemaforoDeMiCalle = new Semaforo();
+
+Para designar una propiedad o un método de una clase, utilizamos la notación punto:
+
+Objeto.Propiedad
+Objeto.Metodo()
+
+De esta forma, si queremos poner en verde el semaforo "SemaforoDeMiCalle" en verde, empleamos la instrucción:
+
+SemaforoDeMiCalle.PonColor("Verde");
+MiSemaforo.PonColor("Rojo");
+OtroSemaforo.PonColor("Verde");
+
+Para consulta el estado de un semaforo:
+
+System.out.println(OtroSemaforo.DimeColor());
+if(MiSemaforo.DimeColor().equals("Rojo");)
+String Luz = SemaforoDeMiCalle.DimeColor();
+
+En nuestro ejemplo no podemos acceder directamente a la propiedad EstadoSemaforo, por ser privada.
+
+En caso de que fuera pública se podría poner: String Luz = SemaforoDeMiCalle.EstadoSemaforo; 
+
+Sobrecarga de métodos es un mecanismo muy util que permite definir en una clase varios métodos con el mismo nombre.
+Para que el compilador pueda determinar a que método nos referimos en un momento dado, los parámetros de los métodos NO PUEDEN SER IDENTICOS.
+
+Constructores son métodos que nos sirven para iniciar los objetos al definirse las instancias de los mismos.
+Asignan valores iniciales a las propiedades de la clase, es decir, situar a la clase instanciada en un estado concreto.
+
+La sintaxis de los constructores en la misma que la de los métodos, salvo que no tienen la referencia del atributo de acceso y nunca devuelven ningún valor. (Tampoco se pone la palabra reservada void), además su nombre debe coincidir con el nombre de la clase.
+
+Los constructores suelen estar sobrecargados, para permitir más posibilidades de inicilización de las instancias de las clases.
+
+Los constructores nos permiten, a la vez, crear instancias y establecer el estado inicial de cada objeto instanciado,
+a diferencia de lo que hemos realizado en el ejercicio anterior, donde primero debiamos instanciar los objetos y posteriormente, 
+en otras instrucciones, establecer su estado inicial.
+
+CLASES UTILIZADAS COMO PARÁMETROS
+
+Con esto se hace posible que el método utilice toda la potencia de los objetos java, independizando las acciones realizadas de los objetos sobre las que las realiza.
+
+PROPIEDADES Y METODOS DE CLASE Y DE INSTANCIA
+
+En una clase, las propiedades y los métodos pueden definirse como:
+
+- De instancia
+- De clase
+
+Propiedades de instancia: cada vez que se define una instancia de la clase, se crean fisicamente unas nuevas variables que contendrán los valores de dichas propiedades en la instancia cerada. Es decir, cada objeto(cada instancia de una clase) contiene sus propios valores en las propiedades de instancia.
+Hasta que no se crea una primera instancia de una clase, no existirá ninguna propiedad visible de la clase.
+
+
+Propiedades de clase: 
+
+En una clase, las propiedades y los métodos pueden definirse como 
+De instancia y De clase
+La clase sencilla está definida, pero no instanciada, por lo que todavia no existe ninguna variable PropiedadDeInstancia
+Si ahora intentasemos hacer uso de la propiedad "PropiedadDeInstancia" a través de nombre de la clase (Sencilla), el compilador daría un error.
+Para poder hacer uso de la variable "PropiedadDeInstancia", obligatoriamente deberemos crear alguna instancia de la clase.
+
+Una propiedad de clase estática se declara con el atributo static
+A diferencia de las propiedades de instancia, las propiedades de clase existen incluso si no se ha creado ninguna instancia de la clase.
+Pueden ser referenciadas directamente a través del nombre de la clase, sin tener que utilizar el identificador de ninguna instancia.
+Existen aunque no se haya creado el objeto. "new()".
+
+Las propiedades de clase son compartidas por todas las instancias de la clase.
+Al crearse una instancia de la clase, no se crean las variables estáticas de esa clase.
+Las variables estáticas (de clase) existen antes de la creación de las instancias de la clase.
+
+Métodos de intancia
+Los métodos de instancia, al igual que las propiedades de instancia, sólo pueden ser utilizados a través de una instanciaa de la clase ("new()").
+Hasta ahora siempre hemos definido métodos de instancia(salvo el método main, que es estático).
+
+Cualquier intento de acceder a un método de instancia a través del nombre de la clase(y no de una instancia de la clase) nos dará error de compilación.
+
+Métodos de clase:
+
+Un método estático puede ser utilizado sin necesidad de definir previamente instancias de la clase que contiene el método. Los métodos estáticos pueden referenciarse a través del nombre de la clase(al igual que las propiedades estáticas). 
+Esta posibilidad es útil en diversas circunstancias:
+- Cuando el método proporciona una utilidad general.
+
+Math.sqrt(valor_double) --> esto es porque el método sqrt de la clase Math es estático.
+
+- Cuando el método hace uso de propiedades estáticas u otros métodos estáticos.
+
+No es posible hacer referencia a una propiedad de instancia o un método de instancia desde un método estático. Esto es así debido a que en el momento que se ejecuta un método estático puede que no exista ninguna instancia de la clase donde se encuentra la propiedad o el método de instancia al que referencia el método estático.
+
