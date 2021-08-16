@@ -5,7 +5,6 @@ Java Runtime Environment (JRE), está formado por Java Virtual Machine (JVM), cl
 ¿Qué es el software del plugin de Java?
 El software del plugin de Java es un componente de Java Runtime Environment. JRE permite applets escritos en el lenguaje de programación de Java para ejecutar en varios exploradores. El software del plugin de Java no es un programa autónomo y no se puede instalar de forma independiente.
 
-He leído las condiciones de Java Virtual Machine y de JVM. ¿Se trata de software de Java?
 Java Virtual Machine es sólo un aspecto del software de Java que interviene en interacción web. Java Virtual Machine está incorporado en la descarga del software de Java y ayuda a ejecutar las aplicaciones Java.
 
 https://docs.oracle.com/javase/7/docs/technotes/guides/jweb/index.html
@@ -18,62 +17,355 @@ Instalation: https://docs.oracle.com/javase/8/docs/technotes/guides/install/inst
 
 For example, if you were downloading the JDK installer for 32-bit systems for update 1.8.0_01, the file name: jdk-8version-windows-i586.exe becomes jdk-8u1-windows-i586.exe.
 
+------ Esto es viejo... npi 
+------ --O-J-O--
 PATH
-D:\Java\jdk1.8.0_181\bin;
 D:\Mis Documentos\Development\Java\JBobadilla;
-C:\Users\ELLioT\Downloads\VSCode-win32-ia32-1.21.0-insider;
-C:\Program Files\Git;
 
-Documentos Git: C:\Program Files\Git\mingw32\share\doc\git-doc
 https://es.atlassian.com/git
 everyday.html
+
+Java a través de ejemplos - Jesus Bobadilla - 9788478975495
+
+_JavaDevelopment/testjdk_1.8.0.292/src/HolaMundo.java
+
+Operadores - Casting 
+Tipos de datos primitivos byte, short, int, long, char, float, double y boolean
+
+Operadores - Casting 
+_JavaDevelopment/testjdk_1.8.0.292/src/Casting.java
+
+Tipos de datos primitivos byte, short
+_JavaDevelopment/testjdk_1.8.0.292/src/TiposEnteros1.java
+
+Tipos de datos primitivos int, long
+_JavaDevelopment/testjdk_1.8.0.292/src/TiposEnteros2.java
+
+Tipos de datos primitivos float, double
+_JavaDevelopment/testjdk_1.8.0.292/src/TiposDecimales.java
+
+Tipos de datos primitivos boolean
+_JavaDevelopment/testjdk_1.8.0.292/src/TipoBooleano.java
+
+Tipos de datos primitivos char
+_JavaDevelopment/testjdk_1.8.0.292/src/TipoCaracter.java
+
+Operadores Aritmeticos *, +, -, /, (% int resto ó modulo), ++Variable, Variable++, --Variable, Variable--
+_JavaDevelopment/testjdk_1.8.0.292/src/OperadoresAritmeticos.java
+Operadores Logicos !, &&, ||
+_JavaDevelopment/testjdk_1.8.0.292/src/OperadoresLogicos.java
+
+Operadores de Comparacion <, <=, >, >=, ==, !=
+_JavaDevelopment/testjdk_1.8.0.292/src/OperadoresComparacion.java
+
+Estructuras de control: Bucles - For 
+_JavaDevelopment/testjdk_1.8.0.292/src/BucleFor1.java
+_JavaDevelopment/testjdk_1.8.0.292/src/BucleFor2.java
+_JavaDevelopment/testjdk_1.8.0.292/src/BucleFor3.java
+_JavaDevelopment/testjdk_1.8.0.292/src/BucleFor4.java
+_JavaDevelopment/testjdk_1.8.0.292/src/Logistica.java
+_JavaDevelopment/testjdk_1.8.0.292/src/Factorial.java
+
+_JavaDevelopment/testjdk_1.8.0.292/src/BucleFor5.java
+_JavaDevelopment/testjdk_1.8.0.292/src/BucleFor6a.java
+_JavaDevelopment/testjdk_1.8.0.292/src/BucleFor6.java
+_JavaDevelopment/testjdk_1.8.0.292/src/BucleFor7.java
+_JavaDevelopment/testjdk_1.8.0.292/src/BucleFor8.java
+_JavaDevelopment/testjdk_1.8.0.292/src/BucleFor9.java
+
+Estructuras de control: Bucles - While - do While
+_JavaDevelopment/testjdk_1.8.0.292/src/BucleWhile3.java
+_JavaDevelopment/testjdk_1.8.0.292/src/BucleWhile2.java
+_JavaDevelopment/testjdk_1.8.0.292/src/BucleWhile1.java
+
+Constantes - For anidado
+_JavaDevelopment/testjdk_1.8.0.292/src/Primo.java
+
+IF - IF ELSE - ANIDADOS
+_JavaDevelopment/testjdk_1.8.0.292/src/IF8.java
+_JavaDevelopment/testjdk_1.8.0.292/src/IF7.java
+_JavaDevelopment/testjdk_1.8.0.292/src/IF6.java
+_JavaDevelopment/testjdk_1.8.0.292/src/IF5.java
+_JavaDevelopment/testjdk_1.8.0.292/src/IF4.java
+_JavaDevelopment/testjdk_1.8.0.292/src/IF3.java
+_JavaDevelopment/testjdk_1.8.0.292/src/IF2.java
+_JavaDevelopment/testjdk_1.8.0.292/src/IF1.java
+_JavaDevelopment/testjdk_1.8.0.292/src/EcuacionGrado2.java
+_JavaDevelopment/testjdk_1.8.0.292/src/PuntodeCorte.java
+
+SWITCH - SWITCH - ANIDADOS
+Switch - byte - final - sin break
+_JavaDevelopment/testjdk_1.8.0.292/src/Switch9.java
+Switch - byte - sin break
+_JavaDevelopment/testjdk_1.8.0.292/src/Switch8.java
+Switch - byte
+_JavaDevelopment/testjdk_1.8.0.292/src/Switch7a.java
+_JavaDevelopment/testjdk_1.8.0.292/src/Switch7.java
+Switch - int
+_JavaDevelopment/testjdk_1.8.0.292/src/Switch1.java
+_JavaDevelopment/testjdk_1.8.0.292/src/Switch4.java
+Switch - char
+_JavaDevelopment/testjdk_1.8.0.292/src/Switch2.java
+_JavaDevelopment/testjdk_1.8.0.292/src/Switch3.java
+Switch - Anidado - char
+_JavaDevelopment/testjdk_1.8.0.292/src/Switch5.java
+IF - Anidado - char
+_JavaDevelopment/testjdk_1.8.0.292/src/Switch6.java
+
+FOR - MATH - SQRT
+Math.sqrt(valor_double) --> esto es porque el método sqrt de la clase Math es estático.
+_JavaDevelopment/testjdk_1.8.0.292/src/Hipotenusa.java
+
+Creado el proyecto: testjdk_1.8.0_292
+
+MÉTODOS (Procedimientos, funciones, subrutinas), nos permiten encapsular un conjunto de instrucciones de manera que puedan ser ejecutadas desde diferente puntos de la aplicación. 
+Cuando se utiliza un método, se realiza una llamada provocando la ejecución de sus instrucciones y devolviendo, posteriormente, el flujo de control al programa que llama al método.
+N todos loa métodos devuelven valores al programa principal, sólo lo hacen si es necesario.
+
+void --> indica que el método no devuelve ningún valor.
+
+Llamadas a un método desde el programa llamante
+método()
+método(argumentos)
+
+Parámetros: son variables que utiliza el método como valores de partida para sus cálculos. 
+su visibilidad y ámbito(existencia), se limitan a los del propio método.
+Argumentos: son valores que se establecen en el programa llamante y que se traspasan (por valor o referencia) al método llamado.
+
+Return: debe ser la última del método.
+cuando el método no devuelve un valor (void), no es necesario utilizar return, o utilizarla sin un valor asociado.
+
+// Return el valor de la hipotenusa de tipo double - no tiene clausula Return - Es static
+_JavaDevelopment/testjdk_1.8.0.292/src/Metodo1.java
+
+// tipo de retorno void, no es necesario utilizar return, o 
+// se puede utilizarla sin un valor asociado.
+// programa llamante
+_JavaDevelopment/testjdk_1.8.0.292/src/Metodo2.java
+
+Paso de argumentos por VALOR y por REFERENCIA
+por VALOR
+Los argumentos de tipos básicos (primitivos) del lenguaje se pasan a los parámetros POR VALOR, 
+esto quiere decir que NO SE TRASPASAN los propios datos, sino una COPIA de los mismos.
+tipo byte, short, int, long, char, float, double y boolean
+NUNCA se modifican en el programa llamante (aunque sus copias varian en el método llamado)
+_JavaDevelopment/testjdk_1.8.0.292/src/Metodo2valor.java
+
+por REFERENCIA - No esta muy claro en el ejemplo - --O-J-O--
+Lo que se copia no es el valor del argumento, sino su APUNTADOR(dirección), a la estructura de datos
+Es decir, se modifica el valor de la estructura de datos donde apunta el parámetro, 
+que es el mismo lugar donde apunta el argumento.
+Cuando se realiza un paso de argumentos por referencia, los argumentos varían en la misma medida que varian los parámetros.
+Para evitar que los parámetros no puedan modificarse podemos declararlos con final
+_JavaDevelopment/testjdk_1.8.0.292/src/Metodo2referencia.java
+
+STRINGS
+Los Strings no forman parte de los tipops nativos de Java, sino que existe una clase String(java.lang.String)
+Ex: Se declara una estructura de datos basada en el String como parámetros del método main.
+Una Instancia de un String es una posición de memoria que apunta hacia una estructura de datos que contiene el conjunto de caracteres que define el String.
+un String declarado pero sin definir, NO apunta hacia ninguna estructura de datos, su valor es null.
+es diferente a una instancia del objeto String que apunta hacia un conjunto de caracteres vacio.
+
+Dos instancias de un String apuntando hacia contenidos idénticos, no significa que sean iguales.
+
+Para poder comparar dos Strings por su contenido ( y no por su referencia), podemos utilizar el método equals de la clase. 
+(compara caracter a caracter.)
+
+No esta muy claro en el ejemplo - --O-J-O--
+_JavaDevelopment/testjdk_1.8.0.292/src/String1.java
+_JavaDevelopment/testjdk_1.8.0.292/src/String1equals.java
+
+métodos: length(), toUppeCase(), toLowerCase(), substring(), IndexOf
+_JavaDevelopment/testjdk_1.8.0.292/src/String2.java
+
+Matrices - Arrays - Vectores
+posibilidad para recorrer sus elementos con una instrucción repetitiva
+
+matriz unidimensional de String donde se colocan los posibles parámetros que deseamos pasar al invocar el programa: public static void main (String [] args) 
+
+matriz lineal - int - 2 posiciones - Posicion[0], Posicion[1]
+private int[] Posicion = new int[2];
+
+Definición, inicialización, start en 0, Temperaturas
+_JavaDevelopment/testjdk_1.8.0.292/src/Matriz.java
+
+Notas, Nombres y Aprobados, se definen listas de diferentes tipos y se recorren con for e imprimen.
+_JavaDevelopment/testjdk_1.8.0.292/src/Matriz1.java
+
+Creación de métodos para mejorar la clase Matriz1.java
+_JavaDevelopment/testjdk_1.8.0.292/src/Matriz2.java
+
+Creación de una matriz bidimensional de tipo String para almacenar los Alumnos = Nombres + Notas
+Se hace uso de los método de la clase Float
+parseFloat para convertir de String a float y 
+toString para convertir de float a String
+_JavaDevelopment/testjdk_1.8.0.292/src/Matriz3.java
+
+--O-J-O-- Revisarlo para que funcione la escritura desde el teclado..  e incluir las mejoras de Matriz3.java
+_JavaDevelopment/testjdk_1.8.0.292/src/Matriz3Scanner.java
+
+Do - While - final - Matriz
+_JavaDevelopment/testjdk_1.8.0.292/src/GeneraPrimos.java
+
+Do - While Anidados - Clave prefijada -
+_JavaDevelopment/testjdk_1.8.0.292/src/RevientaClaves.java
+Saber los caracteres del "abcedario"
+_JavaDevelopment/testjdk_1.8.0.292/src/RevientaClaves2.java
+
+Utilización de matrices lineales de elementos. - media, variación con respecto de la media, extremos 
+_JavaDevelopment/testjdk_1.8.0.292/src/Estadisticas.java
 
 Objetos Class (clases), soportan la programación orientada a objetos, son la estructura básica sobre la que se desarrollan las aplicaciones.
 
 Permite definir propiedades y métodos relacionados entre sí.
 
-Las propiedades almacenan el estado de la clase.
+Las propiedades variables que almacenan el estado de la clase.
 Los métodos son los programas que se utilizan para consultar y modificar el contenido de las propiedades.
 
-Una Instancia es como crear una plantilla y definir un tipo, se pueden crear tantas entidades (instancias) como sean necesarias...y evolucionar el estado de estos "semaforos" de forma independiente.
+Sintaxis de una clase:
 
-Tipo Variable; // Para declarar un objeto de una clase dada
+AtributoAcceso class NombreClase {
+    // propiedades y métodos
+}
 
-Semaforo MiSemaforo; // De esta manera, creamos un apuntador capaz de direccionar un objeto de la clase (new)
+Un ejemplo de clase podría ser un semáforo de circulación, cuyo estado se guarde en una propiedad 
+EstadoSemaforo de tipo String que pueda tomar los valores "Verde", "Amarillo, y "Rojo"
+Como métodos de acceso a la propiedad podríamos  definir: PonColor(String Color) y String DimeColor().
 
-MiSemaforo = new Semaforo(); // Instanciamos 
+------Semaforo.java------------------
+|  private                           |
+|  -------------------------         |
+|  | String EstadoSemaforo |         |
+|  -------------------------         |
+|                              --------------------------
+|                              | PonColor(String Color) | public - me permite acceder al private EstadoSemaforo
+|                              --------------------------
+|                                    |
+|                              -----------------------
+|                              | String DimeColor () | public
+|                              -----------------------
+|                                    |
+--------------------------------------
 
-Semaforo MiSemaforo = new Semaforo(); // Declaramos e Instanciamos - Tenemos una variable "MiSemaforo", que direcciona un objeto creado de la clase "Semaforo".
+AtributoAcceso:
+
+    // private no es accesible directamente desde el exterior de la clase
+
+    // public son accesibles directamente desde el exterior de la clase
+
+Una Instancia es como crear una plantilla y definir un tipo, se pueden crear tantas entidades (instancias) como sean necesarias...y evolucionar el estado de estas de forma independiente.
+
+Ex: Crear diferentes semáforos independientes entre sí es decir, que cada uno se encuentre en un estado diferente a los demás obligatoriamente SE DEBE instanciar.
+
+    // Para declarar un objeto de una clase dada
+    Tipo Variable;
+
+    ex:
+    Semaforo MiSemaforo; // De esta manera, creamos un apuntador capaz de direccionar 
+                         // un objeto (instancia) de la clase Semaforo.java
+
+    MiSemaforo = new Semaforo(); // Instanciamos 
+          |
+          V
+    Semaforo MiSemaforo = new Semaforo(); // Declaramos e Instanciamos - 
+                                          // Tenemos una variable "MiSemaforo", 
+                                          // que direcciona un objeto creado de la clase "Semaforo".
+
+    new Semaforo() // Son los constructores de la clase
 
 Se pueden crear tantas instancias como sea necesario, en este caso cada una puede tener un valor diferente en un mismo instante.
 
+// MiSemaforo direcciona un objeto creado (instanciado), de la clase Semaforo:
 Semaforo MiSemaforo = new Semaforo();
+
+MiSemaforo
+    |
+    V
+------Semaforo.java------------------
+|  private                           |
+|  -------------------------         |
+|  | String EstadoSemaforo |         |
+|  -------------------------         |
+|                              --------------------------
+|                              | PonColor(String Color) | public - me permite acceder al private EstadoSemaforo
+|                              --------------------------
+|                                    |
+|                              -----------------------
+|                              | String DimeColor () | public
+|                              -----------------------
+|                                    |
+--------------------------------------
+
+Otras instancias:
 Semaforo OtroSemaforo = new Semaforo();
 Semaforo SemaforoDeMiCalle = new Semaforo();
+
+Cada instancia es diferente ya que pueden tener un valor diferente en un mismo instante.
 
 Para designar una propiedad o un método de una clase, utilizamos la notación punto:
 
 Objeto.Propiedad
 Objeto.Metodo()
 
-De esta forma, si queremos poner en verde el semaforo "SemaforoDeMiCalle" en verde, empleamos la instrucción:
+Cada variable esta implementando la propiedad EstadoSemaforo.
+Cada una de ellas puede contener un valor diferente.
 
+De esta forma, si queremos poner en verde el semaforo "SemaforoDeMiCalle" , empleamos la instrucción:
+// Objeto.Metodo()
 SemaforoDeMiCalle.PonColor("Verde");
 MiSemaforo.PonColor("Rojo");
 OtroSemaforo.PonColor("Verde");
 
 Para consulta el estado de un semaforo:
 
+// Objeto.Metodo()
 System.out.println(OtroSemaforo.DimeColor());
 if(MiSemaforo.DimeColor().equals("Rojo");)
 String Luz = SemaforoDeMiCalle.DimeColor();
 
-En nuestro ejemplo no podemos acceder directamente a la propiedad EstadoSemaforo, por ser privada.
+En nuestro ejemplo NO podemos acceder directamente a la propiedad EstadoSemaforo, por ser privada.
+En caso de que fuera pública se podría poner: 
+// Objeto.Propiedad
+String Luz = SemaforoDeMiCalle.EstadoSemaforo; 
 
-En caso de que fuera pública se podría poner: String Luz = SemaforoDeMiCalle.EstadoSemaforo; 
+_JavaDevelopment/testjdk_1.8.0.292/src/Semaforo.java
+_JavaDevelopment/testjdk_1.8.0.292/src/PruebaSemaforo.java
 
-Sobrecarga de métodos es un mecanismo muy util que permite definir en una clase varios métodos con el mismo nombre.
+Sobrecarga de métodos es un mecanismo muy util que permite definir en una clase varios métodos con el mismo nombre y distino número de parámetros.
+
 Para que el compilador pueda determinar a que método nos referimos en un momento dado, los parámetros de los métodos NO PUEDEN SER IDENTICOS.
+
+Ex: Clase para definir un objeto 3D
+    Para establecer la dimensión de un objeto (anchura, profundidad, altura) en una medida dada (centimetros,pulgadas, etc), 
+    Podemos definir los métodos:
+
+    1. - Dimensiones(double Ancho, double Alto, double Profundo, String Medida)
+    2. - Dimensiones(String Medida, double Ancho, double Alto, double Profundo)
+    3. - Dimensiones(double Ancho, String Medida, double Alto, double Profundo)
+    4. - Dimensiones(double Ancho, double Alto, String Medida, double Profundo)
+
+    Igual número de parámetros, en diferente orden, 
+    El compilador podrá determinar a cual de los métodos nos referimos por el la posición de parámetro de tipo String.
+
+    Si definimos el método: El compilador generará un error al compilar la clase
+
+    5. - Dimensiones(double Alto, double Ancho, double Profundo, String Medida)
+
+    El compilador NO podrá determinar a cual de los métodos nos referimos ya que existe un método (1.-) con las mismas condiciones (firma.)
+    La firma, se compone del nombre del método, número de parámetros y tipo de parámetros (por orden de colocación). 
+    
+    métodos sobrecargados con distinto número de parámetros.
+
+    6. - Dimensiones(String Medida)
+    7. - Dimensiones(double Ancho, double Alto, double Profundo)
+
+    Los métodos 6 y 7 son compatibles con todos pero tendrían sentido si suponemos dos métodos adicionales que los complementen:
+
+    Dimensiones3D(double Ancho, double Alto, double Profundo)
+    TipoMedida(String Medida)
+
+_JavaDevelopment/testjdk_1.8.0.292/src/Objeto3D.java
+_JavaDevelopment/testjdk_1.8.0.292/src/PruebaObjeto3D.java
 
 Constructores son métodos que nos sirven para iniciar los objetos al definirse las instancias de los mismos.
 Asignan valores iniciales a las propiedades de la clase, es decir, situar a la clase instanciada en un estado concreto.
@@ -83,8 +375,36 @@ La sintaxis de los constructores en la misma que la de los métodos, salvo que n
 Los constructores suelen estar sobrecargados, para permitir más posibilidades de inicilización de las instancias de las clases.
 
 Los constructores nos permiten, a la vez, crear instancias y establecer el estado inicial de cada objeto instanciado,
-a diferencia de lo que hemos realizado en el ejercicio anterior, donde primero debiamos instanciar los objetos y posteriormente, 
-en otras instrucciones, establecer su estado inicial.
+a diferencia de lo que hemos realizado en el ejercicio anterior(Objeto3D.java), donde primero debiamos instanciar los objetos y posteriormente, en otras instrucciones, establecer su estado inicial.
+(los métodos los convertimos en constructores cambiandoles de nombre y quitandoles los Atributos de Acceso y la palabra "void")
+
+    1. - Objeto3DConConstructor(double Ancho, double Alto, double Profundo, String Medida)
+    2. - Objeto3DConConstructor(String Medida, double Ancho, double Alto, double Profundo)
+    3. - Objeto3DConConstructor(double Ancho, String Medida, double Alto, double Profundo)
+    4. - Objeto3DConConstructor(double Ancho, double Alto, String Medida, double Profundo)
+    6. - Objeto3DConConstructor(String Medida)
+    7. - Objeto3DConConstructor(double Ancho, double Alto, double Profundo)
+
+    // this invoca a los constructores de esta clase cuya firma coincida con la firma de las instrucciones llamantes
+
+Estos dos métodos complementan a TODOS los DEMÁS métodos sobrecargados "Dimensiones"
+    
+    Dimensiones3D(double Ancho, double Alto, double Profundo) - permite asignar valores a las tres dimensiones espaciales de un objeto.
+    TipoMedida(String Medida) - permite asignar un valor a la propiedad Tipo Medida.
+
+_JavaDevelopment/testjdk_1.8.0.292/src/Objeto3DConConstructor.java
+_JavaDevelopment/testjdk_1.8.0.292/src/PruebaObjeto3DConConstructor.java
+
+_JavaDevelopment/testjdk_1.8.0.292/src/Figura.java
+_JavaDevelopment/testjdk_1.8.0.292/src/PruebaFigura.java
+
+_JavaDevelopment/testjdk_1.8.0.292/src/Telefono.java
+_JavaDevelopment/testjdk_1.8.0.292/src/PruebaTelefono.java
+
+--O-J-O--
+El método setHacerLLamada debe arreglarse para que almacene el String pasado
+_JavaDevelopment/testjdk_1.8.0.292/src/TelefonoSC.java
+_JavaDevelopment/testjdk_1.8.0.292/src/PruebaTelefonoSC.java
 
 CLASES UTILIZADAS COMO PARÁMETROS
 
@@ -136,3 +456,16 @@ Math.sqrt(valor_double) --> esto es porque el método sqrt de la clase Math es e
 
 No es posible hacer referencia a una propiedad de instancia o un método de instancia desde un método estático. Esto es así debido a que en el momento que se ejecuta un método estático puede que no exista ninguna instancia de la clase donde se encuentra la propiedad o el método de instancia al que referencia el método estático.
 
+
+        if( Impuesto instanceof float) {
+            System.out.println("Impuesto is a float");
+        }
+        else if( Impuesto instanceof Integer) {
+            System.out.println("Impuesto is an Integer");
+        }
+
+        if( Impuesto instanceof Comparable) {
+            //subclasses of Number like Double etc. implement Comparable
+            //other subclasses might not -> you could pass Number instances that don't implement that interface
+            System.out.println("Impuesto is comparable"); 
+        }
