@@ -12,29 +12,29 @@ public class LogisticaControl1Contenedor{
         // Bucle infinito que se ejecutará mientras que no se pulse la tecla "Salir";
         do{
             Accion = "m";
-            // Meter contenedores - "m"
+            // meter contenedores - "m"
             if ( Accion.equals("m") ){
 
-                if ( Almacen1.HayHueco() )
-                    Almacen1.MeteContenedor(); // Si hay hueco, se indica al camionero que se dirija al primer almacén y se actualiza el estado del almacen
+                if ( Almacen1.hayHueco() )
+                    Almacen1.meteContenedor(); // Si hay hueco, se indica al camionero que se dirija al primer almacén y se actualiza el estado del almacen
                 else // Si no hay hueco, se prueba con el Almacen2 y asi sucesivamente
-                    if ( Almacen2.HayHueco() )
-                        Almacen2.MeteContenedor();
+                    if ( Almacen2.hayHueco() )
+                        Almacen2.meteContenedor();
                     else
-                        if ( Almacen3.HayHueco() )
-                            Almacen3.MeteContenedor();
+                        if ( Almacen3.hayHueco() )
+                            Almacen3.meteContenedor();
                         else
                             System.out.println( "Hay que esperar a que vengan a quitar un contenedor" );
-            } else { // Sacar contenedores - "s"
+            } else { // sacar contenedores - "s"
 
-                if ( Almacen1.HayContenedor() )
-                    Almacen1.SacaContenedor(); // Se hace el mismo tratamiendo para sacar un contenedor del almacén y se actualiza el estado del almanén
+                if ( Almacen1.hayCapacidad() )
+                    Almacen1.sacaContenedor(); // Se hace el mismo tratamiendo para sacar un contenedor del almacén y se actualiza el estado del almanén
                 else
-                    if ( Almacen2.HayContenedor() )
-                        Almacen2.SacaContenedor();
+                    if ( Almacen2.hayCapacidad() )
+                        Almacen2.sacaContenedor();
                     else
-                        if ( Almacen3.HayContenedor() )
-                            Almacen3.SacaContenedor();
+                        if ( Almacen3.hayCapacidad() )
+                            Almacen3.sacaContenedor();
                         else 
                             System.out.println( "Hay que esperar a que vengan a poner un contenedor" );
             }

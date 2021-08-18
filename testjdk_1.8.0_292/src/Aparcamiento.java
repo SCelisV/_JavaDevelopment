@@ -5,7 +5,7 @@ public class Aparcamiento{
         char CPuerta, COperacion;
         Puerta PuertaRequerida = null;
 
-        // Aparcamiento de Tipo Almacén
+        // Aparcamiento sobre el que se realiza la prueba de funcionamiento
         Almacen Aparcamiento = new Almacen( ( short ) 5); 
         
         // Este Aparcamiento tiene dos puertas de acceso, a las cuales se les pasa como argumento el mismo Aparcamiento, 
@@ -13,10 +13,11 @@ public class Aparcamiento{
         Puerta Puerta1 = new Puerta ( Aparcamiento );
         Puerta Puerta2 = new Puerta ( Aparcamiento );
 
-
+        // bucle sin fin, para que seleccione el número de la puerta del aparcamiento por donde entran o salen los vehiculos.
         do {
 
-            CPuerta = IntroduceCaracter ( "Puerta de acceso: (1, 2): ");
+            // CPuerta = IntroduceCaracter ( "Puerta de acceso: (1, 2): "); - para usar con Teclado.Lee_String();
+            CPuerta = '1';
 
             switch( CPuerta ){
                 case '1':
@@ -30,17 +31,18 @@ public class Aparcamiento{
                     break;
             }
 
-            COperacion = IntroduceCaracter( "Entrar / Salir vehiculo (e, s): ");
+            // COperacion = IntroduceCaracter( "Entrar / Salir vehiculo (e, s): "); - para usar con Teclado.Lee_String();
+            COperacion = 'e';
 
             switch( COperacion ){
                 case 'e':
-                    PuertaRequerida.EntraVehiculo();
+                    PuertaRequerida.entraVehiculo();
                     break;
                 case 's':
-                    PuertaRequerida.SaleVehiculo();
+                    PuertaRequerida.saleVehiculo();
                     break;
                 default:
-                    System.out.println ("Operación seleccionada no vaalida");
+                    System.out.println ("Operación seleccionada no valida");
                     break;
             }
 
@@ -48,7 +50,9 @@ public class Aparcamiento{
     } // main
 
     // Introducir el número de puerta por donde desea entrar o salir un usuario
+    /*
     static public char IntroduceCaracter ( String Mensaje ){
+
         String Entrada;
         System.out.println( Mensaje );
         Entrada = Teclado.Lee_String();
@@ -56,4 +60,5 @@ public class Aparcamiento{
         Entrada = Entrada.toLowerCase();
         return Entrada.charAt (0);
     }
+    */
 }

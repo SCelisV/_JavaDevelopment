@@ -27,6 +27,9 @@ everyday.html
 
 Java a través de ejemplos - Jesus Bobadilla - 9788478975495
 
+compile: javac HolaMundo.java
+execute: java HolaMundo
+
 _JavaDevelopment/testjdk_1.8.0.292/src/HolaMundo.java
 
 Operadores - Casting 
@@ -171,7 +174,11 @@ Dos instancias de un String apuntando hacia contenidos idénticos, no significa 
 Para poder comparar dos Strings por su contenido ( y no por su referencia), podemos utilizar el método equals de la clase. 
 (compara caracter a caracter.)
 
-No esta muy claro en el ejemplo - --O-J-O--
+Ejemplos del libro
+_JavaDevelopment/testjdk_1.8.0.292/src/String1.0.java
+_JavaDevelopment/testjdk_1.8.0.292/src/String2.0.java
+
+Otros ejemplos
 _JavaDevelopment/testjdk_1.8.0.292/src/String1.java
 _JavaDevelopment/testjdk_1.8.0.292/src/String1equals.java
 
@@ -233,13 +240,13 @@ EstadoSemaforo de tipo String que pueda tomar los valores "Verde", "Amarillo, y 
 Como métodos de acceso a la propiedad podríamos  definir: PonColor(String Color) y String DimeColor().
 
 ------Semaforo.java------------------
-|  private                           |
+|  Propiedad private                 |
 |  -------------------------         |
 |  | String EstadoSemaforo |         |
-|  -------------------------         |
+|  -------------------------         |                     Métodos public
 |                              --------------------------
-|                              | PonColor(String Color) | public - me permite acceder al private EstadoSemaforo
-|                              --------------------------
+|                              | PonColor(String Color) | public - me permite acceder al private 
+|                              --------------------------          EstadoSemaforo 
 |                                    |
 |                              -----------------------
 |                              | String DimeColor () | public
@@ -282,13 +289,13 @@ MiSemaforo
     |
     V
 ------Semaforo.java------------------
-|  private                           |
+|  Propiedad private                 |
 |  -------------------------         |
 |  | String EstadoSemaforo |         |
-|  -------------------------         |
+|  -------------------------         |                     Métodos public
 |                              --------------------------
-|                              | PonColor(String Color) | public - me permite acceder al private EstadoSemaforo
-|                              --------------------------
+|                              | PonColor(String Color) | public - me permite acceder al private 
+|                              --------------------------          EstadoSemaforo
 |                                    |
 |                              -----------------------
 |                              | String DimeColor () | public
@@ -401,14 +408,38 @@ _JavaDevelopment/testjdk_1.8.0.292/src/PruebaFigura.java
 _JavaDevelopment/testjdk_1.8.0.292/src/Telefono.java
 _JavaDevelopment/testjdk_1.8.0.292/src/PruebaTelefono.java
 
+_JavaDevelopment/testjdk_1.8.0.292/src/LogisticaAlmacen.java
+_JavaDevelopment/testjdk_1.8.0.292/src/LogisticaControl1Contenedor.java
+
 --O-J-O--
 El método setHacerLLamada debe arreglarse para que almacene el String pasado
+debería dejarlo con String.. (intentarlo con int..  :/)
 _JavaDevelopment/testjdk_1.8.0.292/src/TelefonoSC.java
 _JavaDevelopment/testjdk_1.8.0.292/src/PruebaTelefonoSC.java
 
 CLASES UTILIZADAS COMO PARÁMETROS
 
-Con esto se hace posible que el método utilice toda la potencia de los objetos java, independizando las acciones realizadas de los objetos sobre las que las realiza.
+Utilizando una clase como parámetros en un método hace posible que el método utilice toda la potencia de los objetos java, independizando las acciones realizadas de los objetos sobre las que las realiza.
+
+Ex: escribir un método llamado ControlIgnicion
+ControlIgnicion(Cohete MiVehiculoEspacial){
+    realizar operaciones sobre la clase MiVehiculoEspacial de la clase Cohete
+}
+...
+...
+El mismo método podria simular el control de ignición de distintos cohetes, siempre que estos estén definidos como instancias de la clase Cohete..
+------
+| ...
+| Cohete Pegasus, Ariane, etc;
+| ...
+| ...
+| ControlIgnicion(Pegasus);
+| ControlIgnicion(Ariane);
+------
+Control Entrada / Salida vehiculos aparcamientos
+_JavaDevelopment/testjdk_1.8.0.292/src/Almacen.java
+_JavaDevelopment/testjdk_1.8.0.292/src/Puerta.java
+_JavaDevelopment/testjdk_1.8.0.292/src/Aparcamiento.java
 
 PROPIEDADES Y METODOS DE CLASE Y DE INSTANCIA
 
@@ -417,45 +448,493 @@ En una clase, las propiedades y los métodos pueden definirse como:
 - De instancia
 - De clase
 
-Propiedades de instancia: cada vez que se define una instancia de la clase, se crean fisicamente unas nuevas variables que contendrán los valores de dichas propiedades en la instancia cerada. Es decir, cada objeto(cada instancia de una clase) contiene sus propios valores en las propiedades de instancia.
+Propiedades de instancia: cada vez que se define una instancia de la clase, se crean fisicamente unas nuevas variables que contendrán los valores de dichas propiedades en la instancia creada. Es decir, cada objeto(cada instancia de una clase) contiene sus propios valores en las propiedades de instancia.
 Hasta que no se crea una primera instancia de una clase, no existirá ninguna propiedad visible de la clase.
 
+Estructura de la clase (cuando se define).
+    |
+    V
+------Sencilla.java-------------
+|                              |
+|                        --------------
+| PropiedadDeInstancia   |            |
+|                        --------------
+|                              |
+--------------------------------
 
-Propiedades de clase: 
+clase Sencilla{
 
-En una clase, las propiedades y los métodos pueden definirse como 
-De instancia y De clase
-La clase sencilla está definida, pero no instanciada, por lo que todavia no existe ninguna variable PropiedadDeInstancia
-Si ahora intentasemos hacer uso de la propiedad "PropiedadDeInstancia" a través de nombre de la clase (Sencilla), el compilador daría un error.
-Para poder hacer uso de la variable "PropiedadDeInstancia", obligatoriamente deberemos crear alguna instancia de la clase.
+    public int PropiedadDeInstancia;
 
-Una propiedad de clase estática se declara con el atributo static
-A diferencia de las propiedades de instancia, las propiedades de clase existen incluso si no se ha creado ninguna instancia de la clase.
-Pueden ser referenciadas directamente a través del nombre de la clase, sin tener que utilizar el identificador de ninguna instancia.
-Existen aunque no se haya creado el objeto. "new()".
+}
+
+si ahora intentamos hacer uso de la propiedad PropiedadDeInstancia a través del nombre de la clase:
+class PruebaSencilla{
+    public static void main(String[] args){
+        Sencilla.PropiedadDeInstancia = 8;    // El objeto "Sencilla" no se ha instanciado
+    }
+}
+
+al compilar javac PruebaSencilla.java
+se genera el siguiente error:
+
+PruebaSencilla.java: : error: non-static variable PropiedadDeInstancia cannot be referenced from a static context
+        Sencilla.PropiedadDeInstancia = 8;
+                ^
+1 error
+
+La PropiedadDeInstancia es "NO estática".
+Para poder hacer uso de la propiedad se debe crear alguna instanncia de la clase.
+
+class PruebaSencilla2{
+    public static void main(String[] args){
+        // En este momento existe el objeto y la propiedad
+        Sencilla Instancia1 = new Sencilla();
+
+        // Ahora si puedo utilizar la PropiedadDeInstancia de la clase Sencilla.
+        Instancia1.PropiedadDeInstancia = 8;
+    }
+}
+
+Estructura de la clase (instanciada 2 veces por lo que podemos acceder a la PropiedadDeInstancia).
+    |
+    V
+------Sencilla.java-------------
+|                              |
+|                        --------------
+| PropiedadDeInstancia   |            |   <----->
+|                        --------------
+|                              |
+-------------------------------
+
+
+                            ------Sencilla.java-------------
+                            |                              |
+           ------------     |                        -------------- 
+Instancia1 |          | --> | PropiedadDeInstancia   |            |   <----->
+           ------------     |                        --------------
+                            |                              |
+                            -------------------------------
+
+
+                            ------Sencilla.java-------------
+                            |                              |
+           ------------     |                        -------------- 
+Instancia2 |          | --> | PropiedadDeInstancia   |            |   <----->
+           ------------     |                        --------------
+                            |                              |
+                            -------------------------------
+
+
+_JavaDevelopment/testjdk_1.8.0.292/src/Sencilla.java
+_JavaDevelopment/testjdk_1.8.0.292/src/PruebaSencilla.java
+_JavaDevelopment/testjdk_1.8.0.292/src/PruebaSencilla2.java
+
+Propiedades de clase: (static)
+Una propiedad de clase (propiedad estática), se declara con el atributo static
+Existe incluso si no se ha creado ninguna instacia de la clase.
+Pueden ser referenciadas directamente a través del nombre de la clase sin tener que utilizar el identificador de ninguna instancia
+
+Estructura de la clase con una propiedad de clase static.
+    |
+    V
+--SencillaEstatica.java---------
+|                              |
+|                              |
+|                              |
+|------------------------------|
+|                        --------------
+| PropiedadDeClase       |            | <-->
+|                        --------------
+|                              |
+--------------------------------
+
+class SencillaEstatica{
+    public static int PropiedadDeClase;
+}
+
+class PruebaSencillaEstatica{
+    public static void main (String[] args){
+        SencillaEstatica.PropiedadDeClase = 8;
+        
+    }
+}
 
 Las propiedades de clase son compartidas por todas las instancias de la clase.
-Al crearse una instancia de la clase, no se crean las variables estáticas de esa clase.
+Al crearse una instancia de la clase, no se crean las variables estáticas de essa clase.
 Las variables estáticas (de clase) existen antes de la creación de las instancias de la clase.
+Existen aunque no se haya creado el objeto. "new()".
 
-Métodos de intancia
-Los métodos de instancia, al igual que las propiedades de instancia, sólo pueden ser utilizados a través de una instanciaa de la clase ("new()").
-Hasta ahora siempre hemos definido métodos de instancia(salvo el método main, que es estático).
+class PruebaSencillaEstatica2{
+    public static void main (String[] args){
+        SencillaEstatica Instancia1 = new SencillaEstatica();
+        SencillaEstatica Instancia2 = new SencillaEstatica();
+
+        // Las siguientes, hacen referencia a la misma variable 
+        // (la propiedad estática "PropiedadDeClase" de la clase "SencillaEstatica".).
+        SencillaEstatica.PropiedadDeClase = 4;
+        Instancia1.PropiedadDeClase = 8;
+        Instancia2.PropiedadDeClase = 5;
+    }
+}
+
+El compilador muestra un Warning:
+The static field SencillaEstatica.PropiedadDeClase should be accessed in a static wayJava(570425420)
+int PropiedadDeClase
+Instancia1.PropiedadDeClase = 8;
+Instancia2.PropiedadDeClase = 5;
+
+--SencillaEstatica.java---------
+|                              |
+|                              |
+|                              |
+|------------------------------|
+|                        --------------                -------------------------------------
+| PropiedadDeClase       |            | <------------> | SencillaEstatica.PropiedadDeClase |
+|                        --------------                | Instancia1.PropiedadDeClase       |
+|                              |                       | Instancia2.PropiedadDeClase       |
+|                              |                       -------------------------------------
+--------------------------------
+
+
+                            --SencillaEstatica.java---------
+           ------------     |                              |
+Instancia1 |          | --> |                              |
+           ------------     |                              |
+                            --------------------------------
+
+                            --SencillaEstatica.java---------
+           ------------     |                              |
+Instancia2 |          | --> |                              |
+           ------------     |                              |
+                            --------------------------------
+
+_JavaDevelopment/testjdk_1.8.0.292/src/SencillaEstatica.java
+_JavaDevelopment/testjdk_1.8.0.292/src/PruebaSencillaEstatica.java
+_JavaDevelopment/testjdk_1.8.0_292/src/PruebaSencillaEstatica2.java
+
+
+En una clase, las propiedades y los métodos pueden definirse como 
+
+De instancia y 
+De clase
+
+Los métodos de instancia al igual que las propiedades de instancia, 
+sólo pueden ser utilizados a través de una instancia de la clase.
+(método main - estático)
+
+-----------
+| funcionamiento de los métodos de instancia:
+| 
+|         LogisticaAlmacen Almacen1 = new LogisticaAlmacen( (byte) 2);
+|         LogisticaAlmacen Almacen2 = new LogisticaAlmacen( (byte) 4);
+|         LogisticaAlmacen Almacen3 = new LogisticaAlmacen( (byte) 8);
+| 
+| utilización de los métodos a través del nombre de la instancia
+|         if ( Almacen1.hayHueco() )
+-----------
 
 Cualquier intento de acceder a un método de instancia a través del nombre de la clase(y no de una instancia de la clase) nos dará error de compilación.
 
-Métodos de clase:
+Métodos de clase: (static)
 
 Un método estático puede ser utilizado sin necesidad de definir previamente instancias de la clase que contiene el método. Los métodos estáticos pueden referenciarse a través del nombre de la clase(al igual que las propiedades estáticas). 
 Esta posibilidad es útil en diversas circunstancias:
-- Cuando el método proporciona una utilidad general.
 
-Math.sqrt(valor_double) --> esto es porque el método sqrt de la clase Math es estático.
+- Cuando el método proporciona una utilidad general.
+    No es necesario crear ninguna instancia del método Math.
+    Math.sqrt(valor_double) --> esto es porque el método sqrt de la clase Math es estático.
 
 - Cuando el método hace uso de propiedades estáticas u otros métodos estáticos.
+    Los métodos estáticos referencian propiedades y métodos estáticos.
 
-No es posible hacer referencia a una propiedad de instancia o un método de instancia desde un método estático. Esto es así debido a que en el momento que se ejecuta un método estático puede que no exista ninguna instancia de la clase donde se encuentra la propiedad o el método de instancia al que referencia el método estático.
+No es posible hacer referencia a una propiedad de instancia o un método de instancia desde un método estático. 
+Esto es así debido a que en el momento que se ejecuta un método estático puede que no exista ninguna instancia de la clase donde se encuentra la propiedad o el método de instancia al que referencia el método estático.
+    |
+    |
+    V
+      ----------                                              ----------
+------| Clase1 |----------------                        ------| Clase2 |------------
+|     ----------               |                        |     ----------           |
+|                              |                        |                          |
+|                        --------------                 |--------------------------|
+| PropiedadDeInstancia   |            |                 |                    --------------
+|                        --------------                 | MetodoEstatico     |            |------------ |                              |                        |                    --------------   |       |
+--------------------------------                        |                          |          |       |
+                                                        ----------------------------          |       |
+                                                                                              |       |
+                                              ------------------------------------------------------  |
+                                              | Referencias a objetos "potencialmente" inexistente |  |
+                                              ------------------------------------------------------  |
+                                                                                              |       |
+-----------------------------------------------------------------                             |       |
+|                                                               |                             |       |
+|                        --------->      ----------             |                             |       |
+|                        |           ----| Clase1 |-----------  |                             |       |
+|                        |           |   ----------          |  |                             |       |
+|                   ------------     |                       |  | <----------------------------       |
+| Instancia1Clase1  |          |     |  PropiedadDeInstancia |  |                                     |
+|                   ------------     |                       |  |                                     |
+|                                    -------------------------  |                                     |
+|                                                               |                                     |
+|                        --------->      ----------             |                                     |
+|                        |           ----| Clase1 |-----------  |                                     |
+|                        |           |   ----------          |  |                                     |
+|                   ------------     |                       |  |                                     |
+| Instancia2Clase1  |          | --> |  PropiedadDeInstancia |  | <-----------------------------------
+|                   ------------     |                       |  |
+|                                    -------------------------  |
+|                                                               |
+-----------------------------------------------------------------
 
+Los compiladores de Java comprueban estas situaciones y generan errores cuando detectan una referencia a un objeto no estático dentro de un método estático.
+
+// para solucionar el error se deberá definir como:
+// static int valor = 8;
+
+class Error{
+
+    int valor = 8;
+
+    public static void main(String[] args) {
+        valor = 6;    
+    }
+
+}
+
+_JavaDevelopment/testjdk_1.8.0_292/src/Error.java
+
+
+class NoError{
+
+    static int valor = 8;
+
+    public static void main(String[] args) {
+        valor = 6;
+    }
+
+}
+
+_JavaDevelopment/testjdk_1.8.0_292/src/NoError.java
+
+Ejemplo con propiedades de clase:
+
+El control de una votación en la que se puede presentar un número cualquiera de candidatos.
+En cada momento se puede votar a cualquier candidato y se pueden pedir los siguientes datos:
+
+- Nombre de un candidato concreto y el número de votos que lleva hasta el momento
+- Nombre del candidato más votado hasta el momento y número de votos que lleva conseguidos.
+
+La clase Votacion, 
+Permite almacenar el nombre de un candidato y el numero de votos que lleva, 
+además de los métodos necesarios para actualizar el estado del objeto.
+Si instanciamos la clase 14veces por ejemplo... 
+se podrá llevar el control de votos de 14 candidatos.
+
+¿Cómo contabilizar el número de votos y almacenar el nombre del candidato más votado hasta el momento?
+- Crear una clase "MasVotado", que se instancie una sola vez y 
+  contenga propiedades para almacenar estos valores,
+  junto a métodos para consultarlos y actualizarlos.
+
+Esta solución NO REQUIERE del uso de una nueva clase "MasVotado" o similar, ni necesita un número fijo de instanciaciones para funcionar. Contiene las propiedades y métodos de acceso a la persona más votada dentro de la propia clase Votacion, en la que se vota a cada persona.
+
+Como el nombre y el número de votos de la persona más votada 
+hasta el momento es una información GENERAL.- Sólo existe un espacio de almacenamiento de estas variables.
+que NO depende únicamente de los votos de un candidato, 
+sino de los votos recibidos por todos los candidatos, 
+estas propiedades deben ser accesibles, comunes y compartidas por todos.
+Estas variables deben ser estáticas (de clase).
+
+_JavaDevelopment/testjdk_1.8.0_292/src/Votacion.java
+
+
+             -----------------
+-------------| Votacion.java |-----------
+|            -----------------          |
+|                     --------------    |
+| VotosMasVotado      |            |    |                            
+|                     --------------    |
+|                                       |
+|                     --------------    |
+| PersonaMasVotada    |            |    |
+|                     --------------    |
+| Existen desde que se ejecuta la app   |
+|                            ----------------------- 
+| static                     | VotosDelMasVotado() |
+| PROPIEDADES / METODOS      -----------------------
+|            DE                         |
+|           CLASE            ------------------------ 
+|        (Generales)         | NombreDelMasVotado() |
+|                            ------------------------ 
+|_______________________________________|
+|                                       |
+|                     --------------    |
+|        Votos        |            |    |
+|                     --------------    |
+|                                       |
+|                     --------------    |
+|        Persona      |            |    |
+|                     --------------    |
+|                                       |
+|                              ----------------------- 
+|                              | NombrePersona()     |
+|                              ----------------------- 
+| Se replican con cada Instanciación    |
+|                                  -----------
+|    PROPIEDADES / METODOS         | Voto () |
+|               DE                 -----------
+|            INSTANCIA                  |
+|                                  -----------
+|               new()              | Votos() |
+|                                  -----------
+|_______________________________________|
+
+
+PAQUETES Y ATRIBUTOS DE ACCESO
+
+Los paquetes sirven para agrupar clases relacionada, de esta manera, cada paquete contiene un conjunto de clases.
+Las clases que hay dentro de un paquete deben tener nombres diferentes para que se puedan diferenciar entre sí, peor no hay ningún problema en que dos clases que pertenecen a paquetes diferentes tengan el mismo nombre; los paquetes facilitan tanto el agrupamiento de clases como la asignación de nombres.
+Cuando no se especifica el nombre del paquete al que pertenece una clase, esta clase pasa a pertenecer al "paquete por defecto".
+
+Primera sentencia de la clase:  package Nombre_Paquete;  package Terminal;
+
+/home/hadoop/SCProjects/0_SCProjects_github.com_SCelisV/_JavaDevelopment/testjdk_1.8.0_292/src/Terminal
+total 28K
+Ordenador.java
+Telefono.java
+WebTV.java
+
+Estas clases son accesibles desde fuera de paquete, por ser (public) publicas.
+
+package Terminal;
+public class Telefono{
+    ...
+    ...
+}
+
+package Terminal;
+public class Ordenador{
+    ...
+    ...
+}
+
+package Terminal;
+public class WebTV{
+    ...
+    ...
+}
+
+Cuando necesitamos hacer uso de todas o algunas de las clases de un paquete:
+- Especificando la clase que se va a utilizar(junto con la referencia de su paquete);
+    import Terminal.Ordenador;
+- Se indica que se quiere hacer uso (potencialmente) de todas las clases del paquete.
+    import Terminal.*;
+
+SÓLO se pueden usar desde fuera de una paqueta las clases definidas como públicas dentro de ese paquete.
+
+import Terminal.Ordenador;
+class TerminalOficinaBancaria{
+    // podemos utilizar las referencias deseadas a la clase Ordenador
+    // podemos referenciar sus propiedades y métodos de manera directa
+}
+
+Estos paquetes de utilidades son tan comunes que no es necesario importarlos para usarlos
+java.lang.Math
+java.lang.String
+
+Otra alternativa es no utilizar la sentencia import y referenciar los objetos con caminos absolutos:
+Esto no es muy legible
+Terminal.Telefono MiTelefono = new Terminal.Telefono(...); 
+--O-J-O--
+Actualizar el CLASSPATH con la ruta en donde almacenamos los paquetes: ejemplo en windows 
+C:\Paquetes\Terminal
+set CLASSPATH = C:\Paquetes\Terminal en autoexec.bat
+ó 
+CLASSPATH = C:\Paquetes\Terminal
+
+javac --classpath C:\Paquetes\Terminal\TerminalOficinaBancaria.java
+
+_JavaDevelopment/testjdk_1.8.0_292/src/TerminalOficinaBancaria.java
+
+--O-J-O--
+atributos de acceso (public) y (private) indican acceso a las propiedades y métodos de una clase desde el exterior a la misma.
+Los atributos son de acceso (private) y sólo se puede acceder a ellos (en consulta o modificación) a través de métodos públicos.
+
+----------------------------------------------------------------------------------------
+|                |                   |                         | Acceso    | Acceso    |
+|                |                   |                         |   desde   |  desde    |
+| Tipo de acceso | Palabra reservada | Ejemplo                 | una clase | una clase |
+|                |                   |                         | del MISMO | de OTRO   |
+|                |                   |                         | PAQUETE   | PAQUETE   |
+----------------------------------------------------------------------------------------
+|  Privado       |    private        | private int Propiedad   |    NO     |     NO    |
+----------------------------------------------------------------------------------------
+|Sin Especificar |                   |         int Propiedad   |    SI     |     NO    | ----------------------------------------------------------------------------------------
+|  Protegido     |    protected      | protected int Propiedad |    SI     |     NO    | ----------------------------------------------------------------------------------------
+|  Público       |    public         | public int Propiedad    |    SI     |     SI    |
+----------------------------------------------------------------------------------------
+
+El acceso desde una clase perteneciente al MISMO PAQUETE sólo esta prohibido si el miembro es privado.
+El acceso desde una clase perteneciente a OTRO PAQUETE sólo está permitido si el miembro es público:
+
+Ex
+package ConversionDeMedidas;
+public class ConversionDeDistancias{
+    // puede ser referenciada desde un paquete/clase (VentaDeProductos/VentaDeNaranjas)
+    // por ser definida como public
+    final public double LibrasAKilos = ... ;
+}
+
+package VentaDeProductos;
+import ConversionDeMedidas.ConversionDeDistancias;
+class VentaDeNaranjas{
+    ...
+    double Kilos = Libras * LibrasAKilos;
+}
+
+Los otros atributos tienen sentido en herencia.
+
+MAQUINA EXPENDEDORA
+Controlar el funcionamiento de una máquina expendedora sencilla.
+Suministra botellas de agua, naranja y coca-cola
+Establecer los precios de cada producto
+Admite monedas de 1€, y de 10centimos(0.1€).
+Definir una máquina con cualquier numero de productos
+- Cuantas botellas de agua nos quedan (en el deposito de botellas de agua)
+- Cuantas botellas de naranja nos quedan (en el deposito de botellas de naranja)
+- Cuantas botellas de coca-cola nos quedan (en el deposito de botellas de coca-cola)
+- Cuantas monedas de Euro nos quedan (en el deposito de monedas de Euro)
+- Cuantas monedas de 10centimos de Euro nos quedan (en el deposito de monedas de 10centimos de Euro)
+Esta clase gestionará un Almacén de elementos reutilizar Almacen.java en MaquinaAlmacen.java
+
+    /*---------------------
+    // Propiedades de Instancia
+    // Esta forma es más adaptada a la programación orientada a objetos
+    // Definidas como private e incorporar los métodos para 
+    // obtener sus referencias
+    // Algo como: --- pendiente de probar
+    private MaquinaAlmacen DepositoAgua = new MaquinaAlmacen((short) 8);
+
+    public MaquinaModeloSencillo getAlmacenAgua(){
+    ó 
+    public MaquinaModeloSencillo getAlmacen(String TipoAlmacen)
+    */
+
+
+Se podría crear nuevas clases que definieran más productos ó mejor aún
+Ampliar esta clase con nuevos productos. --> ver Herencia
+
+Las máquinas definidas o las que podamos crear siguiendo el patron de MaquinaModeloSencillo necesitan un elemento adicional, el control de las monedas.
+
+_JavaDevelopment/testjdk_1.8.0_292/src/MaquinaAlmacen.java
+_JavaDevelopment/testjdk_1.8.0_292/src/MaquinaModeloSencillo.java
+_JavaDevelopment/testjdk_1.8.0_292/src/MaquinaAutomataEuros.java
+
+
+
+// ????
+// Las que no, sólo son accesibles desde dentro del paquete(sirven para dar soporte a las clases públicas)
+// ????
 
         if( Impuesto instanceof float) {
             System.out.println("Impuesto is a float");

@@ -2,13 +2,16 @@
 // De instancia y De clase
 // La clase sencilla está definida, pero no instanciada, por lo que todavia no existe ninguna variable PropiedadDeInstancia
 // Si ahora intentasemos hacer uso de la propiedad "PropiedadDeInstancia" a través de nombre de la clase (Sencilla), el compilador daría un error.
-// Para poder hacer uso de la variable "PropiedadDeInstancia", obligatoriamente deberemos crear alguna instancia de la clase.
-class PruebaSencilla2{
+/*
+PruebaSencilla.java:13: error: non-static variable PropiedadDeInstancia cannot be referenced from a static context
+        Sencilla.PropiedadDeInstancia = 8;
+                ^
+1 error
+*/
+
+
+class PruebaSencilla{
     public static void main(String[] args){
-        // En este momento existe el objeto y la propiedad
-        Sencilla Instancia1 = new Sencilla();
-        Sencilla Instancia2 = new Sencilla();
-        Instancia1.PropiedadDeInstancia = 8;
-        Instancia2.PropiedadDeInstancia = 5;
+        Sencilla.PropiedadDeInstancia = 8;
     }
 }

@@ -7,7 +7,8 @@ class PruebaSencillaEstatica2{
     public static void main (String[] args){
         SencillaEstatica Instancia1 = new SencillaEstatica();
         SencillaEstatica Instancia2 = new SencillaEstatica();
-        // Las siguientes, hacen referencia a la misma variable (la propiedad estática "PropiedadDeClase" de la clase "SencillaEstatica".).
+        // Las siguientes, hacen referencia a la misma variable 
+        // (la propiedad estática "PropiedadDeClase" de la clase "SencillaEstatica".).
         SencillaEstatica.PropiedadDeClase = 4;
         Instancia1.PropiedadDeClase = 8;
         Instancia2.PropiedadDeClase = 5;
