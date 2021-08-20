@@ -25,7 +25,7 @@ D:\Mis Documentos\Development\Java\JBobadilla;
 https://es.atlassian.com/git
 everyday.html
 
-Java a través de ejemplos - Jesus Bobadilla - 9788478975495
+Java a través de ejemplos - Jesus Bobadilla - ISBN: 9788478975495
 
 compile: javac HolaMundo.java
 execute: java HolaMundo
@@ -352,7 +352,7 @@ Ex: Clase para definir un objeto 3D
     4. - Dimensiones(double Ancho, double Alto, String Medida, double Profundo)
 
     Igual número de parámetros, en diferente orden, 
-    El compilador podrá determinar a cual de los métodos nos referimos por el la posición de parámetro de tipo String.
+    El compilador podrá determinar a cual de los métodos nos referimos por la posición de parámetro de tipo String.
 
     Si definimos el método: El compilador generará un error al compilar la clase
 
@@ -659,7 +659,8 @@ Esto es así debido a que en el momento que se ejecuta un método estático pued
 |                              |                        |                          |
 |                        --------------                 |--------------------------|
 | PropiedadDeInstancia   |            |                 |                    --------------
-|                        --------------                 | MetodoEstatico     |            |------------ |                              |                        |                    --------------   |       |
+|                        --------------                 | MetodoEstatico     |            |------------
+|                               |                       |                    --------------
 --------------------------------                        |                          |          |       |
                                                         ----------------------------          |       |
                                                                                               |       |
@@ -928,13 +929,396 @@ Las máquinas definidas o las que podamos crear siguiendo el patron de MaquinaMo
 
 _JavaDevelopment/testjdk_1.8.0_292/src/MaquinaAlmacen.java
 _JavaDevelopment/testjdk_1.8.0_292/src/MaquinaModeloSencillo.java
-_JavaDevelopment/testjdk_1.8.0_292/src/MaquinaAutomataEuros.java
+
+_JavaDevelopment/testjdk_1.8.0_292/src/MaquinaAutomataEuros.java --> pendiente de picar y de probar el código
+
+HERENCIA
+
+Nos permite crear clases que especializan a otras previamente definidas.
+
+// Publicación es la SuperClase de Libro
+// Una SuperClase puede tener cualquier número de SubClases
+public class Publicacion {
+    private int NumeroDePaginas;
+    private float Precio;
+}
+
+// Creamos un Libro especifico a partir de la clase Publicacion
+// Esta clase extiende de la clase Publicación
+// Contiene TODAS las propiedades de la clase Publicación
+// Libro es una clase derivada o SubClase de Publicacion.
+
+public class Libro extends Publicacion{
+    public String Titulo;
+    public String TipoPortada;
+    public String ISBN;
+    public String NombreAutor;
+    public String Editorial;
+}
+public class Periodico extends Publicacion{
+    public String Nombre;
+    public String Fecha;
+
+Un libro se define por NumeroDePaginas, Precio, Titulo, TipoPortada, etc...
+
+// Comprobar que un libro contiene las propiedades de la SuperClase como de la SubClase:
+public class PruebaLibro {
+
+    public static void main(String[] args){
+        Libro MiLibro = new Libro();
+        MiLibro.Titulo = "Este libro es mi libro";
+        MiLibro.TipoPortada = "Dura";
+        MiLibro.ISBN = "9788478975495";
+        MiLibro.NombreAutor = "Jesus Bobadilla";
+        MiLibro.Editorial = "RA-MA";
+        MiLibro.NumeroDePaginas = 589;
+        MiLibro.Precio = 190.00f;
+    }
+    
+}
+                                     ---------------
+                            -------> | Publicacion | <------
+                            |        ---------------       |
+                            |                              |
+                        ---------                    -------------
+                        | Libro |                    | Periodico |
+                        ---------                    -------------
+
+El mecanismo de herencia NO SÓLO actuá sobre las propiedades, lo hace sobre todos los miembros
+(métodos y propiedades) de las clases, de esta manera las clases se pueden completar con métodos
+
+_JavaDevelopment/testjdk_1.8.0_292/src/Publicación.java
+_JavaDevelopment/testjdk_1.8.0_292/src/Libro.java
+_JavaDevelopment/testjdk_1.8.0_292/src/Periodico.java
+_JavaDevelopment/testjdk_1.8.0_292/src/PruebaLibroPeriodico.java
+
+Las SubClases heredan todos los miembros de su SuperClase, aunque NO todos los miembros tienen porque ser accesibles.
+En particular los miembros privados de una SuperClase NO SON directamente accesibles en sus SubClases.
+Los miembros protegidos de la SuperClase si son accesibles a SubClases situadas en paquetes diferentes a la SuperClase
+Las propiedades de la SuperClase NO son directamente accesibles desde las SubClases Periodico y Libro
+// Es mejor no usar la ocultación en el diseño de las clases.
+Existe la posibilidad de "ocultar" propiedades de la SuperClase, definiendo propiedades con el mismo nombre en la SubClase.
+En este caso en la SubClase, al referenciar directamente el nombre nos referimos a la propiedad de la SubClase.
+Existe la posibilidad de "ocultar" métodos similar al de las propiedades y se denomina redefinición, nos permite volver a definir el comportamiento de los métodos de la SuperClase, además su atributo de acceso debe ser el mismo o menos restrictivo que el original.
+para referirnos a las propiedades y a los métodos de la SuperClase tenemos que hacerlo con super.Nombre
+
+----------------------------------------------------------------------------------------
+|                |                   |                         | Acceso    | Acceso    |
+|                |                   |                         |   desde   |  desde    |
+| Tipo de acceso | Palabra reservada | Ejemplo                 | una clase | una clase |
+|                |                   |                         | SubClase  | SubClase  |
+|                |                   |                         | del MISMO | de OTRO   |
+|                |                   |                         | PAQUETE   | PAQUETE   |
+----------------------------------------------------------------------------------------
+|  Privado       |    private        | private int Propiedad   |    NO     |     NO    |
+----------------------------------------------------------------------------------------
+|Sin Especificar |                   |         int Propiedad   |    SI     |     NO    | ----------------------------------------------------------------------------------------
+|  Protegido     |    protected      | protected int Propiedad |    SI     |     SI    | ----------------------------------------------------------------------------------------
+|  Público       |    public         | public int Propiedad    |    SI     |     SI    |
+----------------------------------------------------------------------------------------
+
+CONSTRUCTORES DE LAS SubClaseS
+
+En las clases derivadas de una SuperClase, los constructores, además de establecer el estado inicial
+de su propia SubClase deben establecer el estado inicial de la SuperClase.
+
+Si se usa super, debe ser (obligatoriamente) la primera sentencia del constructor.
+        super(parámetros) // donde puede haber cero o más parámetros
+
+Cuando en un constructor de una SubClase no se utiliza la sentencia "super", el compilador inserta 
+automáticamente super() como primera instrucción.
+Esto puede dar lugar a errores de compilación, puesto que si en la SuperClase hemos definido algún constructor y no hemos definido super(), el compilador no encontrará este constructor.
+Si en la SuperClase no hemos definido ningún constructor, no existirán problemas, 
+puesto que super() es el constructor por defecto que crea el compilador cuando nosotros no definimos otro.
+
+En cualquier caso, cuando se necesite, se recomienda poner explicitamente la llamada super().
 
 
+ // Constructores
+    // vacio o sin parámetros, se llamá automaticamente si no ponemos "super" en algun constructor
+    // de una SubClase
+    Publicacion2(){
+        NumeroDePaginas = 2;
+        Precio = 0f;
+    }
+    // firma int
+    Publicacion2(int NumeroDePaginas){
+        setNumeroDePaginas(NumeroDePaginas);
+    }
+    // firma float 
+    Publicacion2(float Precio){
+        setPrecio(Precio);
+    }
+    // firma int, float 
+    Publicacion2(int NumeroDePaginas, float Precio){
+        // Invoca al constructor de la misma clase que coincide en firma con la llamada
+        // Este invoca al constructor Publicacion2(int NumeroDePaginas)
+        this(NumeroDePaginas);
+        setPrecio(Precio);
+    }
+    // firma float, int
+    Publicacion2(float Precio, int NumeroDePaginas){
+        // Invoca al constructor de la misma clase que coincide en firma con la llamada
+        // Este invoca al constructor Publicacion2(int NumeroDePaginas, float Precio)
+        this(NumeroDePaginas, Precio);
+    }
 
-// ????
+No es muy habitual usar el indicador final ya que restringe la posibilidad de reutilizar las clases
+usando el mecanismo de herencia.
+
+Si utilizamos el modificador final al definir una clase evitamos que se puedan construir clases derivadas de la misma:
+
+public final class NombreClase{
+    // Contenido de la clase
+}
+
+    Constructores - 
+    int NumeroDePaginas; float Precio;
+    String Titulo; String TipoPortada; String ISBN; String NombreAutor; String Editorial;
+    String Nombre; String Fecha;
+
+_JavaDevelopment/testjdk_1.8.0_292/src/Publicación2.java
+_JavaDevelopment/testjdk_1.8.0_292/src/Libro2.java
+_JavaDevelopment/testjdk_1.8.0_292/src/Periodico2.java
+_JavaDevelopment/testjdk_1.8.0_292/src/PruebaLibroPeriodico2.java
+
+    Constructores - 
+    Color Color; int[] Posicion;
+    double Radio;
+    double[] Lados
+
+_JavaDevelopment/testjdk_1.8.0_292/src/FiguraGeometrica.java
+_JavaDevelopment/testjdk_1.8.0_292/src/Circulo.java
+_JavaDevelopment/testjdk_1.8.0_292/src/Rectangulo.java
+_JavaDevelopment/testjdk_1.8.0_292/src/PruebaFiguraGeometrica.java
+
+    Constructores - aquí me quedo una firma mal revisar
+    Color Color; byte Ruedas; short Cilindrada; short Potencia;
+    byte Ejes;
+    byte Ocupantes;
+
+// Estas clases las he escrito creando mis constructores - 
+// aunque algunos estan comentados, puede que las firmas no esten correctas, 
+// es mejor revisarlas con calma en otro momento
+
+_JavaDevelopment/testjdk_1.8.0_292/src/Vehiculos.java
+_JavaDevelopment/testjdk_1.8.0_292/src/Camion.java
+_JavaDevelopment/testjdk_1.8.0_292/src/Motocicleta.java
+_JavaDevelopment/testjdk_1.8.0_292/src/PruebaVehiculos.java
+
+POLIMORFISMO
+Permite que clases de diferentes tipos puedan ser referenciadas por una misma variable.
+La instancia "MiFigura" de la clase FiguraGeometrica, podrá referenciar a propiedades y métodos implementados
+en las clases Circulo y Rectangulo.
+
+------------                  --------------------      
+| MiFigura |-------->>> ------| FiguraGeometrica |----------
+------------            |     --------------------         |
+      |                 |                            --------------
+      |                 |                   Miembros |            | Propiedades y Métodos
+      |                 |                            --------------
+      |                 |                                  |
+      |                 ------------------------------------
+      |
+      |                       -----------
+      |------------->>> ------| Circulo |-------------------
+      |                 |     -----------                  |
+      |                 |                            --------------
+      |                 |                   Miembros |            | Propiedades y Métodos
+      |                 |                            --------------
+      |                 |                                  |
+      |                 ------------------------------------
+      |
+      |                       --------------
+      -------------->>> ------| Rectangulo |----------------
+                        |     --------------               |
+                        |                            --------------
+                        |                   Miembros |            | Propiedades y Métodos
+                        |                            --------------
+                        |                                  |
+                        ------------------------------------
+
+Las clases Circulo y Rectangulo implementan un método llamado Perimetro que calcula el perimetro 
+de la figura geométrica: Circulo => A = π*r^2, Rectangulo => Lado*Lado
+
+------------                  --------------------      
+| MiFigura |-------->>> ------| FiguraGeometrica |----------
+------------            |     --------------------         |
+      |                 |                            --------------
+      |                 |                   Miembros |            | Propiedades y Métodos
+      |                 |                            --------------
+      |                 |                                  |
+      |                 |                            --------------
+      |                 |                  Perimetro |            | 
+      |                 |                            --------------
+      |                 |                                  |
+      |                 ------------------------------------
+      |
+      |                       -----------
+      |------------->>> ------| Circulo |-------------------
+      |                 |     -----------                  |
+      |                 |                            --------------
+      |                 |                   Miembros |            | Propiedades y Métodos
+      |                 |                            --------------
+      |                 |                                  |
+      |                 |                            --------------
+      |                 |                  Perimetro |            | 
+      |                 |                            --------------
+      |                 |                                  |
+      |                 ------------------------------------
+      |
+      |                       --------------
+      -------------->>> ------| Rectangulo |----------------
+                        |     --------------               |
+                        |                            --------------
+                        |                   Miembros |            | Propiedades y Métodos
+                        |                            --------------
+                        |                                  |
+                        |                            --------------
+                        |                  Perimetro |            | 
+                        |                            --------------
+                        |                                  |
+                        ------------------------------------
+La referencia MiFigura de tipo FiguraGeometrica podrá invocar al método Perimetro de la clase Circulo o 
+                                                              al método Perimetro de la clase Rectangulo,
+dependiendo de, si en tiempo de ejecución, está referenciando a una instancia de la clase Circulo o está referenciando a una instancia de la clase Rectangulo.
+
+La determinación del método Perimetro que se va a invocar (el de la clae Circulo ó Rectangulo) no se realiza en la compilación sino en TIEMPO DE EJECUCIÓN, lo que hace el polimorfismo un mecanismo de programación muy potente.
+
+Ex: 
+Un editor gráfico en el que el usuario puede dibujar figuras geométricas bidimensionales tales como circulos, rectangulos, pentagonos, triangulos, etc.
+Además, dentro de las opciones de la herramienta, existe un botón que que al ser pulsado nos muestra en una ventana el valor del perimetro de la figura seleccionada.
+
+No conocemos a priori las figuras que el usuario dibujará, eso es algo que ocurre en tiempo de ejecución,
+al igual que no podemos saber por adelantado de qué figura o figuras solicitará conocer el perimetro.
+En un momento dado, mientras un usuario utiliza el editor gráfico, existirá una estructura de datos que
+contendrá las figuras dibujadas:
+
+----------------------      -------
+| MiFigura |    |    |......|     |
+----------------------      ------- 
+     |        |    |            |
+     |        |    |            |       -----------
+     |        |    |            ----->>>| Circulo |--------------
+     |        |    |                |   -----------             |
+     |        |    |                ----|       -----------     |
+     |        |    -------------------------->>>| Circulo |--------------
+     |        |                             |   -----------             |
+     |        |                             |       --------------      |
+     |        ----------------------------------->>>| Rectangulo |------------
+     |                                          |   --------------           |
+     |                                          |                      --------------
+     |                                          |            Miembros  |            |
+     |                                          |                      --------------
+     |                                          |                             |
+     |                                          |                       --------------
+     |                                          |        -------------- |            |
+     ------------------------------------------>>> ------| Rectangulo |---------
+                                            |            --------------        |
+                                            |                            --------------
+                                            |                   Miembros |            | Propiedades y Métodos
+                                            |                            --------------
+                                            |                                  |
+                                            |                            --------------
+                                            |                  Perimetro |            | 
+                                            |                            --------------
+                                            |                                  |
+                                            ------------------------------------
+El vector MiFigura contendrá referencias a objetos de tipo FiguraGeometrica
+(FiguraGeometrica[]MiFigura = new Figura[100]).
+Según el usuario, en tiempo de ejecución, seleccione una figura geométrica u otra se invocará a un método Perimetro u otro.
+
+Reglas de polimorfismo: 
+
+La invocación a un método de una SubClase debe realizarse a través de una referencia a la SuperClase; 
+es decir, 
+p = LaFigura.Perimetro(), esto es adecuado 
+p = ElCirculo.Perimetro(). esto No es adecuado
+
+El método llamado debe ser también un miembro de la SuperClase; en nuestro ejemplo, el método Perimetro debe existir también en la clase FiguraGeometrica.
+
+La firma del método debe ser igual en la SuperClase que en las clases SubClases; es decir, el nombre del método y el número y tipos de sus parámetros debe ser igual en las clases FiguraGeometrica, Circulo, Rectangulo, etc.
+
+El tipo de retorno del método (que se utilizará de forma polimórfica) debe ser igual en la SuperClase que en las SubClases.
+
+El atributo de acceso del método no debe ser más restrictivo en las SubClases que en la SuperClase.
+
+se crea el método Perimetro() este método calcula el perimetro de una figura - 
+El método de la SuperClase Nunca se va a ejecutar, se ejecutará el código de los métodos de las SubClases.
+
+
+_JavaDevelopment/testjdk_1.8.0_292/src/PolimorfismoFiguraGeometrica.java
+_JavaDevelopment/testjdk_1.8.0_292/src/PolimorfismoCirculo.java
+_JavaDevelopment/testjdk_1.8.0_292/src/PolimorfismoRectangulo.java
+
+// --O-J-O-- esta clase nos muestra la forma de crear los objetos revisar con cuidadao
+
+Dede una SuperClase NO SE TIENEN visibilidad de los miembros de las SubClases (aunque al controrio no haya problema)
+Esto genera errores de compilación: MiCirculo.getRadio() y MiRectangulo.getLados()
+Los métodos getRadio() y getLados() pertenece a la clase PolimorfismoCirculo y PolimorfismoRectangulo respectivamente, y 
+MiCirculo y MiRectangulo son propiedades de tipo PolimorfismoFiguraGeometrica.
+
+Para solucionar esto tenemos dos posibilidades:
+
+// 1. Crear una instancia de la clase PolimorfismoCirculo y asignarle la referencia de MiCirculo usando Casting
+// 2. Utilizar Casting sin crear explicitamente una instancia de la clase PolimorfismoCirculo.
+
+_JavaDevelopment/testjdk_1.8.0_292/src/PruebaPolimorfismoFiguraGeometrica.java
+
+CLASES ABSTRACTAS E INTERFACES
+Métodos abstractos.
+
+Un método abstracto se declara pero no se define, no usa{}, usa la palabra abstract y termina con (;).
+No se deben definir como final ya que no se prodría redefinir en las SubClases, estas tendrán este método como abstracto y nunca podrían ser instanciadas.
+
+    Ex: declaración de un método
+    public double Perimetro(){
+        System.out.println("Perimetro de SuperClase NUNCA ME DEBO EJECUTAR");
+        return 0d;
+    }
+    Ex: declaración de un método abstracto
+    public abstract double Perimetro();
+
+Un Clase es abstracta cuando al menos tiene un método es abstracto:
+    public abstract class ClaseAbstracta{}
+
+Se pueden definir variables de clase abstract:
+    ClaseAbstracta MiVariable;
+
+Se pueden definir variables de clase abstract, pero NO instanciarlas;
+    ClaseAbstracta MiVariable = New ClaseAbstracta();
+
+Se puede utilizar clases abstractas como SuperClase
+    public abstract class SubClaseAbstracta extend ClaseAbstracta(){
+        // definir parte de los métodos abstractos
+    }
+
+    public class ClaseNoAbstracta extends SubClaseAbstracta{
+        // definir TODOS los métodos abstractos que tenga la SuperClase
+    }
+
+    ClaseNoAbstracta MiInstancia = new ClaseNoAbstracta();
+
+Se puede diseñar aplicaciones que contengan una serie de clases abstractas y codificar las mismas sin entrar en la definición de los detalles del código de los métodos. 
+La App/app queda bien estructurada, definida y consistente (podemos compilarla), a partir de este punto de partida resulta mucho más sencilla la fase de implementación.
+
+// Estas clases las he escrito usando los constructores como estan en el libro - efectos de comprensión
+
+_JavaDevelopment/testjdk_1.8.0_292/src/AbstractaVehiculos.java
+_JavaDevelopment/testjdk_1.8.0_292/src/AbstractaMotocicleta.java
+_JavaDevelopment/testjdk_1.8.0_292/src/AbstractaCamion.java
+_JavaDevelopment/testjdk_1.8.0_292/src/PruebaAbstractaVehiculos.java
+
+--O-J-O--
+// pendiente 
 // Las que no, sólo son accesibles desde dentro del paquete(sirven para dar soporte a las clases públicas)
 // ????
+
+// pendiente de picar y de probar el código
+
+	InstanceOf.java
+    public class InstanceOf{
+    public static void main (String[]args){
 
         if( Impuesto instanceof float) {
             System.out.println("Impuesto is a float");
@@ -942,9 +1326,101 @@ _JavaDevelopment/testjdk_1.8.0_292/src/MaquinaAutomataEuros.java
         else if( Impuesto instanceof Integer) {
             System.out.println("Impuesto is an Integer");
         }
-
+        
         if( Impuesto instanceof Comparable) {
             //subclasses of Number like Double etc. implement Comparable
             //other subclasses might not -> you could pass Number instances that don't implement that interface
             System.out.println("Impuesto is comparable"); 
         }
+    }
+}
+
+// pendiente de picar y de probar el código
+
+	Matriz3Scanner.java
+    import java.util.Scanner; //Importación del código de la clase Scanner desde la biblioteca Java
+
+
+public class Matriz3Scanner{
+
+    //Nombres[], Notas[]
+    public static void Imprimir(String [][] Alumnos){
+        
+        for (int i=0; i < Alumnos[0].length; i++){
+            int j=i+1;
+            System.out.println(j + ". " + Alumnos[0][i] + ": " + Alumnos[1][i]);
+        }
+
+    }
+
+    public static byte EntreNotas(float Nota1, float Nota2, String [][] Alumnos){
+
+        byte Contador = 0;
+
+        for(int i=0; i<Alumnos[0].length; i++){
+        
+            if( (Float.parseFloat(Alumnos[1][i]) >= Nota1) && 
+                (Float.parseFloat(Alumnos[1][i]) <= Nota2) ){
+                 Contador++;
+                 System.out.println(Alumnos[0][i] + ": " + Alumnos[1][i]); //Nombres[], Notas[]
+            }
+                
+        }
+        //Después de la ejecución del método se esta imprimiendo la variable Contador, pero no sé porque???
+        return (Contador);
+    }
+        
+    
+    public static String Lee_String(Scanner Cadena){
+        
+        String entradaString = Cadena.nextLine();
+        
+        return (entradaString);
+    }
+    
+    public static float Lee_Float(Scanner Fnumber){
+        
+        float entradaFloat = Fnumber.nextFloat();
+        
+        return(entradaFloat);
+    }
+    
+    
+    
+    public static void main(String [] args){
+        
+        final byte NUM_ALUMNOS = 5;
+        
+        //Solo es obligatorio indicar el número de filas.
+        //Matriz de Calificaciones = 2filas X 5columnas cada una;
+        String [][] Calificaciones = new String[2][NUM_ALUMNOS];
+        
+        // Inicializa la Matriz de Calificaciones
+        
+        for (int i=0; i < NUM_ALUMNOS; i++){
+            
+            Scanner entradaNombres = new Scanner(System.in);
+            System.out.println("Digite el Nombre del Alumno: ");
+            Calificaciones[0][i] = Lee_String(entradaNombres);
+            
+            Scanner entradaNota = new Scanner(System.in);
+            System.out.println("Digite la Nota del Alumno (Use , para los decimales): ");
+            Calificaciones[1][i] = Float.toString(Lee_Float(entradaNota));
+            
+        }
+        
+        Imprimir (Calificaciones);
+        System.out.println("\n");
+        
+        System.out.println("Aprobados: ");
+        System.out.println(EntreNotas(5.0f,10.0f,Calificaciones));
+        
+        System.out.println("Suspensos: ");
+        System.out.println(EntreNotas(0.0f,4.9f,Calificaciones));
+        
+        System.out.println("Matriculas: ");
+        System.out.println(EntreNotas(10.0f,10.0f,Calificaciones));
+    }
+}
+
+//
