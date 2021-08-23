@@ -1822,137 +1822,115 @@ _JavaDevelopment/testjdk_1.8.0_292/src/PruebaClassPanelFlowLayout.java
         FlowLayout PosicionamientoTRAILING = new FlowLayout(FlowLayout.TRAILING);
         PnlPal.setLayout(PosicionamientoTRAILING);
 
+_JavaDevelopment/testjdk_1.8.0_292/src/PruebaClassPanelBorderLayout.java
+_JavaDevelopment/testjdk_1.8.0_292/src/PruebaClassPanelBorderLayout2.java
 
+ El BorderLayout situa y dimensiona los componentes en 5 regiones cardinales:
+ - NORTE (BorderLayout.NORTH)
+ - SUR (BorderLayout.SOUTH)
+ - Occidente - OESTE (BorderLayout.WEST)
+ - Oriente - ESTE (BorderLayout.EAST)
+ - CENTER derecho (BorderLayout.CENTER)
 
+_JavaDevelopment/testjdk_1.8.0_292/src/PruebaClassPanelGridLayout.java
 
-
-
-
-
-
-
-
-
-
---O-J-O-- --O-J-O-- --O-J-O-- --O-J-O-- --O-J-O--
-
-// pendientes npi
-
-/*
-Se puede reemplazar por la llamada a un método que sea capas de leer de la consola
-System.out.println ("Introduce la matricula: ");
-String matricula = Teclado.Lee_String();
-*/
-
-// Las que no, sólo son accesibles desde dentro del paquete(sirven para dar soporte a las clases públicas)
-// ????
-
-// pendiente de picar y de probar el código
-	InstanceOf.java
-    public class InstanceOf{
-    public static void main (String[]args){
-
-        if( Impuesto instanceof float) {
-            System.out.println("Impuesto is a float");
-        }
-        else if( Impuesto instanceof Integer) {
-            System.out.println("Impuesto is an Integer");
-        }
-        
-        if( Impuesto instanceof Comparable) {
-            //subclasses of Number like Double etc. implement Comparable
-            //other subclasses might not -> you could pass Number instances that don't implement that interface
-            System.out.println("Impuesto is comparable"); 
-        }
-    }
-}
-
-// pendiente de picar y de probar el código
-
-	Matriz3Scanner.java
-    import java.util.Scanner; //Importación del código de la clase Scanner desde la biblioteca Java
-
-
-public class Matriz3Scanner{
-
-    //Nombres[], Notas[]
-    public static void Imprimir(String [][] Alumnos){
-        
-        for (int i=0; i < Alumnos[0].length; i++){
-            int j=i+1;
-            System.out.println(j + ". " + Alumnos[0][i] + ": " + Alumnos[1][i]);
+       // Crear n Botones; n=6
+        Button[] Botones = new Button[6];
+        for(int i=0;i<Botones.length; i++){
+            Botones[i] = new Button("Botón: " + i);
         }
 
-    }
+_JavaDevelopment/testjdk_1.8.0_292/src/PruebaClassPanelGridLayout2.java
 
-    public static byte EntreNotas(float Nota1, float Nota2, String [][] Alumnos){
-
-        byte Contador = 0;
-
-        for(int i=0; i<Alumnos[0].length; i++){
-        
-            if( (Float.parseFloat(Alumnos[1][i]) >= Nota1) && 
-                (Float.parseFloat(Alumnos[1][i]) <= Nota2) ){
-                 Contador++;
-                 System.out.println(Alumnos[0][i] + ": " + Alumnos[1][i]); //Nombres[], Notas[]
-            }
-                
+        // Crear n Botones; n=6 y Asigna los Botones al Frame
+        Button[] Botones = new Button[6];
+        for(int i=0;i<Botones.length; i++){
+            MyFrame.add(new Button("Botón" + i));
         }
-        //Después de la ejecución del método se esta imprimiendo la variable Contador, pero no sé porque???
-        return (Contador);
-    }
-        
-    
-    public static String Lee_String(Scanner Cadena){
-        
-        String entradaString = Cadena.nextLine();
-        
-        return (entradaString);
-    }
-    
-    public static float Lee_Float(Scanner Fnumber){
-        
-        float entradaFloat = Fnumber.nextFloat();
-        
-        return(entradaFloat);
-    }
-    
-    
-    
-    public static void main(String [] args){
-        
-        final byte NUM_ALUMNOS = 5;
-        
-        //Solo es obligatorio indicar el número de filas.
-        //Matriz de Calificaciones = 2filas X 5columnas cada una;
-        String [][] Calificaciones = new String[2][NUM_ALUMNOS];
-        
-        // Inicializa la Matriz de Calificaciones
-        
-        for (int i=0; i < NUM_ALUMNOS; i++){
-            
-            Scanner entradaNombres = new Scanner(System.in);
-            System.out.println("Digite el Nombre del Alumno: ");
-            Calificaciones[0][i] = Lee_String(entradaNombres);
-            
-            Scanner entradaNota = new Scanner(System.in);
-            System.out.println("Digite la Nota del Alumno (Use , para los decimales): ");
-            Calificaciones[1][i] = Float.toString(Lee_Float(entradaNota));
-            
-        }
-        
-        Imprimir (Calificaciones);
-        System.out.println("\n");
-        
-        System.out.println("Aprobados: ");
-        System.out.println(EntreNotas(5.0f,10.0f,Calificaciones));
-        
-        System.out.println("Suspensos: ");
-        System.out.println(EntreNotas(0.0f,4.9f,Calificaciones));
-        
-        System.out.println("Matriculas: ");
-        System.out.println(EntreNotas(10.0f,10.0f,Calificaciones));
-    }
-}
 
-//
+_JavaDevelopment/testjdk_1.8.0_292/src/PruebaClassPanelGridLayout3.java
+
+       ETIQUETAS, CAMPOS Y ÁREAS DE TEXTO
+
+    AWT: Abstract Window Toolkit proporciona los componentes básicos de I/O. 
+    Proporciona entre otras:
+    la clase Window.
+    la clase Frame derivada de Window.
+
+    Jerarquía:
+                                   ----------
+                                   | Object |                                   java.lang
+                                   ----------
+                                       |            --------------------
+                                 -------------                          |
+                    -------------| Component |                          |
+                    |            -------------                          |
+                    |         _________|__________                      |
+                    |        |                    |                     |
+                    |   ----------          -------------               |
+                    |---| Button |          | Container |               |
+                    |   ----------          -------------               |
+                    |  ---------             ______|_____               |
+                    |--| Label |            |            |              |--------java.awt
+                    |  ---------        ---------    ----------         |
+              -----------------         | Panel |    | Window |         |
+              | TextComponent |         ---------    ----------         |
+              -----------------                          |              |
+                ______|_____                             |              |
+               |            |                            |              |
+         ------------- ------------                  ---------          |
+         | TextField | | TextArea |                  | Frame |          |
+         ------------- ------------                  ---------          |
+                                                         |---------------
+                                                     ---------
+                                                     | JFrame |               javax.swing
+                                                     ---------
+
+
+_JavaDevelopment/testjdk_1.8.0_292/src/PruebaClassLabel.java
+_JavaDevelopment/testjdk_1.8.0_292/src/PruebaClassLabel2.java
+
+_JavaDevelopment/testjdk_1.8.0_292/src/PruebaClassTextField.java
+_JavaDevelopment/testjdk_1.8.0_292/src/PruebaClassTextField2.java
+
+_JavaDevelopment/testjdk_1.8.0_292/src/PruebaClassTextArea.java
+
+Font son clases que heredan de forma direta de Object.
+
+_JavaDevelopment/testjdk_1.8.0_292/src/PruebaClassFont.java
+_JavaDevelopment/testjdk_1.8.0_292/src/PruebaClassFontColor.java
+
+
+CAJAS DE VERIFICACION, BOTONOES DE RADIO Y LISTAS
+
+Checkbox, CheckboxGroup, List, Choice
+
+    Jerarquía:
+                                   ----------
+                                   | Object |                                                   java.lang             
+                                   ----------
+                                       |                                      ------------- 
+            --------             -------------             -----------------              |
+            | Font |-------------| Component |-------------| CheckboxGroup |              |     
+            --------             -------------             -----------------              |
+                                       |                                                  |-----java.awt
+         ---------- --------- ----------------- ------------ -------- ----------          |
+         | Button | | Label | | TextComponent | | Checkbox | | List | | Choice |          |
+         ---------- --------- ----------------- ------------ -------- ----------          |
+                                ______|_____                                              |
+                               |            |                                             |
+                         ------------- ------------                                       |
+                         | TextField | | TextArea |                           -------------
+                         ------------- ------------                                       
+
+_JavaDevelopment/testjdk_1.8.0_292/src/PruebaClassCheckbox.java
+_JavaDevelopment/testjdk_1.8.0_292/src/PruebaClassCheckboxGroup.java
+_JavaDevelopment/testjdk_1.8.0_292/src/PruebaClassCheckboxGroupFontColor.java
+
+_JavaDevelopment/testjdk_1.8.0_292/src/PruebaClassList.java
+_JavaDevelopment/testjdk_1.8.0_292/src/PruebaClassListMultiple.java
+_JavaDevelopment/testjdk_1.8.0_292/src/PruebaClassListChoiceDesplegable.java
+_JavaDevelopment/testjdk_1.8.0_292/src/PruebaClassListChoiceDesplegable2.java
+
+
+
