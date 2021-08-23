@@ -35,5 +35,10 @@ public class PruebaAbstractaVehiculos {
         // 2. Utilizar Casting sin crear explicitamente una instancia de la clase AbstractaCamion
         System.out.println("((AbstractaCamion) CamionEnorme " + ((AbstractaCamion) CamionEnorme).getEjes());
         
+        System.out.println("MotoBarata.Impuesto(): " + MotoBarata.Impuesto());
+        System.out.println("MotoCara.Impuesto(): " + MotoCara.Impuesto());
+        System.out.println("CamionNormal.Impuesto(): " + CamionNormal.Impuesto());
+        System.out.println("CamionEnorme.Impuesto()" + CamionEnorme.Impuesto());
+        System.out.println("InstanciaCamionNormal.Impuesto(): " + InstanciaCamionNormal.Impuesto());
     }
 }

@@ -1,4 +1,4 @@
-public class String2.0 {
+public class String2_0 {
     
     // existe una clase String(java.lang.String);
 

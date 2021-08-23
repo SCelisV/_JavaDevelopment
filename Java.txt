@@ -175,8 +175,8 @@ Para poder comparar dos Strings por su contenido ( y no por su referencia), pode
 (compara caracter a caracter.)
 
 Ejemplos del libro
-_JavaDevelopment/testjdk_1.8.0.292/src/String1.0.java
-_JavaDevelopment/testjdk_1.8.0.292/src/String2.0.java
+_JavaDevelopment/testjdk_1.8.0.292/src/String1_0.java
+_JavaDevelopment/testjdk_1.8.0.292/src/String2_0.java
 
 Otros ejemplos
 _JavaDevelopment/testjdk_1.8.0.292/src/String1.java
@@ -1307,15 +1307,547 @@ La App/app queda bien estructurada, definida y consistente (podemos compilarla),
 _JavaDevelopment/testjdk_1.8.0_292/src/AbstractaVehiculos.java
 _JavaDevelopment/testjdk_1.8.0_292/src/AbstractaMotocicleta.java
 _JavaDevelopment/testjdk_1.8.0_292/src/AbstractaCamion.java
+
+Esta clase tiene un método abstracto y utiliza polimorfismo
 _JavaDevelopment/testjdk_1.8.0_292/src/PruebaAbstractaVehiculos.java
 
---O-J-O--
-// pendiente 
+INTERFACES
+
+Son colecciones de constantes y métodos abstractos.
+Los métodos son siempre públicos y abstractos(no es necesario definirlos como tal), y 
+las constantes son siempre públicas, estáticas y 
+por supuesto, final (tampoco es necesario especificar sus atributos de acceso y modificadores).
+Proporcionan un mecanismo de herencia múltiple que no puede ser utilizado empleando únicamente clases.
+
+Ex: // contiene sólo constantes
+public interface DatosCentroDeEstudios {
+    byte NumeroDePisos = 5;
+    byte NumeroDeAulas = 25;
+    byte NumeroDeDespachos = 10;
+    ...
+    resto de constantes
+}
+
+Ex: // contiene sólo métodos
+public interface CalculosCentroDeEstudios {
+    short NumeroDeAprobados(float[] Notas);
+    short NumeroDeSuspensos(float[] Notas);
+    float NotaMedia(float[] Notas);
+    float Varianza(float[] Notas);
+    ...
+    resto de métodos
+}
+
+Ex: // contiene constantes y métodos
+public interface CentroDeEstudios {
+    byte NumeroDePisos = 5;
+    byte NumeroDeAulas = 25;
+    byte NumeroDeDespachos = 10;
+    // resto de constantes
+    short NumeroDeAprobados(float[] Notas);
+    short NumeroDeSuspensos(float[] Notas);
+    float NotaMedia(float[] Notas);
+    float Varianza(float[] Notas);
+    // resto de métodos
+
+}
+
+Ex: // Definir una interface basada en otra. - extends.
+public interface CentroDeEstudios extends DatosCentroDeEstudios{
+    short NumeroDeAprobados(float[] Notas);
+    short NumeroDeSuspensos(float[] Notas);
+    float NotaMedia(float[] Notas);
+    float Varianza(float[] Notas);
+    // resto de métodos
+}
+
+Definir SuperInterfaces y SubInterfaces.
+Una Interfaz puede extender simultáneamente a varios SuperInterfaces, 
+lo que supone una aproximación a la posibilidad de realizar herencia múltiple.
+
+public interface CentroDeEstudios extends DatosCentroDeEstudios, CalculosCentroDeEstudios{
+    // otros posibles métodos y constantes
+}
+
+Para poder utilizar los miembros de un interfaz es necesario implementarlo en una clase,
+se emplea la palabra reservada implements para indicarlo:
+
+public class CCentroDeEstudios implements CentroDeEstudios {}
+
+_JavaDevelopment/testjdk_1.8.0_292/src/CCentroDeEstudios.java
+_JavaDevelopment/testjdk_1.8.0_292/src/CalculosCentroDeEstudios.java
+_JavaDevelopment/testjdk_1.8.0_292/src/CentroDeEstudios.java
+_JavaDevelopment/testjdk_1.8.0_292/src/DatosCentroDeEstudios.java
+
+
+      ------------ ItfImpresion                            ------------ ItfImpresion2
+------| Interfaz |------------------                 ------| Interfaz |------------------
+|     ------------                 |                 |     ------------                 |
+|       Imprimir             --------------          |      ImprimirBonito        -------------- 
+|                            |            |          |                            |            |
+|                            --------------          |                            --------------
+|                                  |                 |                                  |
+------------------------------------                 ------------------------------------
+        ^^                   ^^                                 ^^
+        ||                   ||________________                 ||
+        ||                                     |                ||
+   --------------- ItfPositivoImpresion        |                ||
+---|             |-----------------            |                ||
+|  ---------------                |            |                ||
+|                            --------------    |                ||
+|      Imprimir              |            |    |                ||
+|                            --------------    |                ||
+|                                 |            |________________||
+-----------------------------------                           ------------ ItfNeutro
+        ^^                                              ------|          |-----------------
+        ||                                              |     ------------                |
+        ||                                              |                           ------------
+   --------------- ItfNegativoImpresion                 |                           | Imprimir |
+---|             |-----------------                     |                           ------------
+|  ---------------                |                     |                                 |
+|                            --------------             |                          ------------------
+|      Imprimir              |            |             |                          | ImprimirBonito |
+|                            --------------             |                          ------------------ |                                 |                     |                                 | -----------------------------------                     -----------------------------------
+
+El interfaz ItfImpresion así como el interfaz ItfImpresion2, se utiliza como superinterfaz de diversas clases, al igual que una clase puede ser superclase de varias clases derivadas.
+
+_JavaDevelopment/testjdk_1.8.0_292/src/ItfImpresion.java
+_JavaDevelopment/testjdk_1.8.0_292/src/ItfImpresion2.java
+
+Clases que implementan las interfaces: ItfPositivoImpresion, ItfNegativoImpresion e ItfNeutro.
+ItfNeutro utiliza el mecanismo de herencia múltiple (implementando simultáneamente dos interfaces).
+
+_JavaDevelopment/testjdk_1.8.0_292/src/ItfNegativoImpresion.java
+_JavaDevelopment/testjdk_1.8.0_292/src/ItfPositivoImpresion.java
+
+Clase para probae el funcionamiento de las clases
+_JavaDevelopment/testjdk_1.8.0_292/src/ItfPrueba.java
+
+// La clase ItfNeutro implementa los dos interfaces, 
+// consiguiendo herencia multiple (de métodos abstractos):
+_JavaDevelopment/testjdk_1.8.0_292/src/ItfNeutro.java
+
+// se hace uso del polimorfismo
+_JavaDevelopment/testjdk_1.8.0_292/src/ItfPrueba2.java
+
+EXEPCIONES PREDEFINIDAS
+
+// ex: división por cero, acceso a un String declarado pero no instanciado
+
+Denominador = 
+if ( Denominador != 0 ){
+    Numerador = ..............
+    Resultado = Numerador / Denominador;
+} else
+system.out.println("No se puede realizar la división por cero");
+
+
+Se escribe el código que habría que ejecutar si la situación "excepcional", se produce:
+    ....
+    Numerador = ..............
+    Denominador = ....
+    Resultado = Numerador / Denominador;
+    ....
+Si existe excepcion,  System.out.println("No se puede realizar la división");
+
+Este tipo de codificación es muco más fácil de entender, ya que no es necesario incluir las instrucciones condicionales que verifican si puede darse la situación de excepción. Se puede separar de esta forma la lógica del programa de las instrucciones de control de errores.
+
+Las exepcion son objetos (clases), que se crean cuando se produce una situación extraordinaria en la ejecución del programa.
+La SuperClase de todas las excepciones es la clase Throwable.  (2 constructores y 7 métodos).
+La clase Throwable tiene dos clases derivadas: Error y Excepcion.
+
+La clase Excepcion sirve como superclase para crear excepciones de propósito especifico (adaptadas a nuestras necesidades).
+Ex: Si estamos diseñando una clase que lee secuencialmente bytes en una cinta digital de datos, podemos crear la excepcion FinDeCinta que se produce cuando el dispositivo físico ha alcanzado el final de la cinta.
+Ex: Implementación de una clase de envio de datos a un satélite no geoestacionario, donde convendía incluir una excepcion FueraDeCobertura que se produzca cuando el satélite se encuentre fuera del alcance de nuestra antena parabólica. 
+Ex: Al escribir un driver de impresora, se puede crear una Excepcion para el FinDePapel.
+Ex: Fin DeDatos en una lectura secuencial.
+Existen exepciones predefinidas para el uso de ficheros de SQL, etc. 
+De la subclase RuntimeException no es necesario realizar un tratamiento explicito ya que existen pocas posibilidades de recuperar situaciones anomalas de este tipo.
+
+La clase Error sirve como superclase para crear una serie de clases derivadas ya definidas que nos informan de situaciones anormales relacionadas con errores de muy díficl recuperación producidos en el sistema. No es obligatorio tratar estas excepciones, ya que en la ejecución de una aplicación probablemente nunca se produzcan estas situaciones anormales, sin embargo, si que es obligatorio hacer un tratamiento explicito de las excepciones derivadas de la clase Exception.
+
+Entre las clases derivadas de RuntimeException se encuentran:
+
+ArithmeticException: Cuando ocurre una operación aritmética errónea, Ex división entre cero; con los valores reales no se produce esta excepcion.
+ArrayStoreException: Intento de almacenar un valor de tipo erróneo en una matriz de objetos.
+Illegal ArgumentException: Se le ha pasado un argumento ilegal o inapropiado a un método.
+IndexOutOfBoundsException: Cuando algún indice(por ejemplo de array o String) esta fuera de rango.
+NegativeArraySizeException: Cuando se intanta crear un array con un índicce negativo.
+NullPointerException: Cuando se utiliza como apuntador una variable con valor null.
+
+  -------------
+  | Throwable |
+  -------------
+  | Exception |
+  -------------
+    IOException - Obligatorio realizar tratamiento explicito de las excepciones.
+    SQLException - Obligatorio realizar tratamiento explicito de las excepciones.                             
+    AWTException - Obligatorio realizar tratamiento explicito de las excepciones.
+    RuntimeException - NO Obligatorio
+
+  -------------
+  | Throwable |
+  -------------
+    | Error |
+    ---------
+    AWTError - NO Obligatorio
+    LinkageError - NO Obligatorio
+    ThreadDeat - NO Obligatorio
+    VirtualMachineError - NO Obligatorio
+
+    Bloque de "intento" - try - Código del programa susceptible de causar cierto tipo de excepciones.
+    Bloque inferior - catch(TipoDeExcepcion Identificador) - Instrucciones de control de situaciones excepcionales.
+
+    try{
+       // Instrucciones susceptibles de causar cierto ditpo de excepciones 
+    } catch (TipoDeExcepcion Identificador) {
+       // Instrucciones de control de situaciones excepcionales
+    }
+
+       _JavaDevelopment/testjdk_1.8.0_292/src/Excepcion1.java
+
+    Se ejecutan las instrucciones del bloque try hasta que se produzca la situación de excepción de TipoDeExcepcion; 
+    Habitualmente, no se producirá la excepción y se ejecutarán todas las instrucciones del bloque try.
+    Si se produce la excepcion, se pasa a ejecutar las instrucciones del bloque catch y posteriormente, las instrucciones siguientes al bloque catch.
+    Si NO se produce la excepcion, No se ejecutan las instrucciones del bloque catch.
+
+    Si se produce más de una excepción, se puede asociar varios bloques catch a un mismo bloque try.
+
+    try {
+        // Instrucciones susceptibles de causar cierto tipo de excepciones
+    } 
+    catch (TipoDeExcepcion1 Identificador) {
+       // Instrucciones que se deben ejecutar si ocurre la exepcion de tipo TipoDeExcepcion1
+    }
+    catch (TipoDeExcepcion2 Identificador) {
+       // Instrucciones que se deben ejecutar si ocurre la exepcion de tipo TipoDeExcepcion2
+    }
+    catch (TipoDeExcepcionN Identificador) {
+       // Instrucciones que se deben ejecutar si ocurre la exepcion de tipo TipoDeExcepcionN
+    }
+    
+    No se pueden poner instrucciones entre los bloques catch.
+    Si ocurre una excepcion en las instruccione del bloque try, 
+    se recorren en orden los bloques catch hasta que se encuentra uno con el mismo tipo 
+    o un tipo que es SuperClase de la excepcion que ha llegado.
+    Se ejecutan únicamente las instrucciones del bloque catch que cumple los requisitos(si alguno lo cumple).
+
+
+    try {
+        // Instrucciones susceptibles de causar cierto tipo de excepciones
+    } 
+    catch (NullPointerException e) {
+       // Instrucciones que se deben ejecutar si ocurre la exepcion de tipo NullPointerException
+    }
+    catch (RuntimeException e) {
+       // Instrucciones que se deben ejecutar si ocurre la exepcion de tipo RuntimeException
+       // ó de una clase derivada del mismo (distinta a NullPointerException)
+    }
+    catch (Exception e) {
+       // Instrucciones que se deben ejecutar si ocurre la exepcion de tipo Exception
+       // ó de una clase derivada del mismo (distinta a RuntimeException)
+    }
+
+    Si cambiamos el orden (en cualquiera de sus posibles combinaciones) de los bloques catch del ejemplo nos encontramos con un error de compilación, puesto que al menos un bloque catch no podra ejecutarse nunca.
+
+    Resulta habitual utilizar varios bloques catch correspondientes a excepciones con un mismo nivel de herencia, por ejemplo con SubClases de RuntimeException:
+
+    _JavaDevelopment/testjdk_1.8.0_292/src/Excepcion2.java
+
+    El Bloque finally
+
+    try {
+        // Instrucciones susceptibles de causar cierto tipo de excepciones
+    } 
+    catch (TipoDeExcepcion1 Identificador) {
+       // Instrucciones que se deben ejecutar si ocurre la exepcion de tipo TipoDeExcepcion1
+    }
+    catch (TipoDeExcepcionN Identificador) {
+       // Instrucciones que se deben ejecutar si ocurre la exepcion de tipo TipoDeExcepcionN
+    }
+    finally{
+       // Se utiliza para evitar dejar ficheros abiertos, comunicaicones sin terminar, recursoso bloqueados..etc
+       // Instrucciones siempre se ejecutan después de las del catch seleccionado.
+    }
+    
+    Propagación de exepciones: Normalmente dentro de un try contienen llamadas a métodos, que a su vez pueden realizar llamadas a 
+    otros métodos y así sucesivamente. Cualquiera de los métodos llamados puede provocar una excepción y cualquiera de los métodos
+    puede o no tratarse con bloques catch.
+    Una excepcion no tratada en un bloque se propaga hacia el bloque llamante.
+    Este mecanismo de propagación continúa mientras no se trate la excepción o se llegue al método de nivel superior.
+    Si la excepción no se trata en el método de nivel superior, se imprime un error por consola.
+
+    Es conveniente que si se trata una excepcion a un nivel, esta sea tratada a niveles superiores.
+    Para propagar de forma explicita una excepcionse emplea la palabra throw seguida del objeto excepcion:
+    Ex: al leer un fichero y escribir en otro fichero, y tenemos un error de lectura, además de tratarla en ese nivel, debemos tratarla a nivel superior de tal forma que se informe al usuario y le permita hacer un nuevo intento si lo desea.
+
+    // el método llamante hace tratamiento de la excepcion
+    try {
+        // Origen. copiaFichero(destino)
+    } 
+    catch (IOException e) {
+       // System.out.println("Error de lectura, intentelo de nuevo");
+    }
+    
+    // después de tratar la excepcion, se propaga con throw
+    public void copiaFichero(tipofichero destino){
+        try {
+            // código
+        } 
+        catch (IOException e) {
+            // cerrar ficheros, etc
+            throw e;
+        }
+    }    
+
+El estado de las instancias de la clase Throwable se compone de:
+String que sirve de mensaje indicando las caracteristicas de la excepcion y 
+pila de ejecución que contiene la relación de métodos que se encuentran en ejecución en el momento en el que se produce la excepcion.
+
+Throwable - métodos:
+
+getMessage(): Devuelve como String el mensaje del error almacenado en este objeto (nombre y referencia de la excepcion).
+printStackTrace(): Imprime por el dispositivo de salida de errores (consola), el mensaje y la pila de ejecución. Este método está sobrecargado para poder sacar el resultado por diferentes salidas: printStackTrace(PrintStream s) printStackTrace(PrintWriter s)
+toString(): Devuelve como String una descripción corta del objeto.
+
+            catch (IndexOutOfBoundsException e) { 
+                System.out.println("IndexOutOfBoundsException - Indice fuera del array");
+                // Imprime un mensaje acerca de la excepcion, seguido de la pila de ejecución
+                // de los métodos del programa indicando la línea donde se produce la excepcion
+                e.printStackTrace();
+            }
+
+_JavaDevelopment/testjdk_1.8.0_292/src/Excepcion1.java
+_JavaDevelopment/testjdk_1.8.0_292/src/Excepcion2.java
+_JavaDevelopment/testjdk_1.8.0_292/src/Excepcion3.java
+
+El mecanismo de excepciones es muy lento en ejecución comparado con el uso de instrucciones condicionales.
+Aunque el mecanismo de excepciones es elegante, debemos utilizarlo con prudencia: únicamente en situaciones que realmente son excepcionales.
+
+Ex: Se debe hacer un análisis de si una exepción que definimos, se puede tratar por una excepcion ó con una instruccion condicional 
+Código de barras ilegible - dependiendo de la frecuencia - con una instrucción condicional
+Código de barras NO valido(corresponde a un pase caducado) - dependiendo de la frecuencia - 
+Código de barras utilizado en un periodo de tiempo demasiado breve - dependiendo de la frecuencia con una excepcion
+etc... 
+
+Una excepción definida por el programador hereda de la clase Exception.
+Se incluye como mínimo el constructor vacio y 
+otro que contenga un String como argumento, inicializado automáticamente con el nombre de la clase (en Throwable), el texto en este constructor se añadirá al nombre de lal clase insertado por la SuperClase.
+
+_JavaDevelopment/testjdk_1.8.0_292/src/ExcepcionPropia.java
+_JavaDevelopment/testjdk_1.8.0_292/src/ExcepcionPropiaClase.java
+_JavaDevelopment/testjdk_1.8.0_292/src/PruebaExcepcionPropia.java
+
+Otro ejemplo de excepciones:
+Objeto Excepcion: Define la situación de error: _JavaDevelopment/testjdk_1.8.0_292/src/ExcepcionMatricula.Java
+
+Objeto Clase que levanta la excepcion: Reconocimiento y comunicación de la situación de error, junto con la creación del objeto excepcion: _JavaDevelopment/testjdk_1.8.0_292/src/ExcepcionMatriculaValidar.java
+        // tiene un método que compara una posición de un substring dado con una expresión regular [A-Za-Z], pasada por parametro al método matches
+        matricula.substring(0, 1).matches("[A-Za-z]")
+        expresiones regulares a partir de v1.4JDK
+
+Objeto Clase que recoge la excepcion: Recibe la situación de error y trata de recuperar la situación: _JavaDevelopment/testjdk_1.8.0_292/src/PruebaExcepcionMatricula.java
+
+-----------------------------                                                --------------------------------
+| ExcepcionMatriculaValidar |                                                | PruebaExcepcionMatricula     |
+-----------------------------------------------------------------            --------------------------------
+| ...                                                           |            |                              |
+| throw new ExcepcionMatricula(ExcepcionMatricula.MAL_TAMANIO); |            | try{                         |
+| ...                                                           |            | ...        |                 |
+| throw new ExcepcionMatricula(ExcepcionMatricula.MAL_LETRA);   |            | ...        |                 |
+| ...                                                           |            | ...        |                 |
+| ...                                                      <-------------------------------                 |
+| ...                                                           |            | ...        |                 |
+| ...                                                           |            | }          v                 |
+-----------------------------------------------------------------            --------------------------------
+                                                                             |                              |
+                                ----------------------                       |                              |
+                                | ExcepcionMatricula |                       | catch (ExcepcionMatricula e){|
+                                ----------------------                       |                              |
+                                |                    |                       |                              |
+                                | --------------     |                       |                              |
+                                | | MalFormada |     |               ----------->...........                |
+                                | --------------     |               |       | ............                 |
+                                |       |            |               |       | ............                 |
+                                |       |      ---------------       |       | ............                 |
+                                |       ------>| getProblema | ------        |                              |
+                                |              ---------------               | }                            |
+                                |                    |                       --------------------------------
+                                ----------------------                       
+
+INTERFAZ GRÁFICO DE USUARIO
+
+GUI que se encuentran englobados dentro de K¡Java Goundation Classes (JFC), que proporciona:
+    AWT: Abstract Window Toolkit proporciona los componentes básicos de I/O. 
+    Swing: Recoge la mayor parte de la funcionalidad de AWT.
+    Imgenes 2D
+    Servicio de Impresión
+    Soporte para funciones Drag-and-Drop 
+    Funciones de accesibilidad
+    etc.
+
+
+    AWT: Abstract Window Toolkit proporciona los componentes básicos de I/O. 
+    Proporciona entre otras:
+    la clase Window.
+    la clase Frame derivada de Window.
+
+    Jerarquía:
+
+    ----------
+    | Object |              java.lang
+    ----------
+        |            ---
+    -------------      |
+    | Component |      |
+    -------------      |
+        |              |
+    -------------      |
+    | Container |      |
+    -------------      |
+        |              |--------java.awt
+    ----------         |
+    | Window |         |
+    ----------         |
+        |              |
+    ---------          |
+    | Frame |          |
+    ---------          |
+        |---------------
+    ---------
+    | JFrame |               javax.swing
+    ---------
+
+Todos los objetos tienen a Object como la SuperClase
+La clase abstracta Component proporciona una representación gráfica susceptible a ser representada en un dispositivo de salida, se usa a través de las subclases.
+Container deriva de Component y añade la funcionalidad de poder contener otros componentes AWT (por ejemplo varios botones, cajas de texto, etc.)
+Window proporciona una ventana gráfica sin bordes ni posibilidad de incluir barras de menú.
+Frame es derivada de window pero no presenta las restricciones de Window (puedo incluir barras de menu)
+JFrame es la version de Frame Proporcionada por swing. (es más compleja para usar), proporciona mayor funcionalidad que sus superclases de AWT.
+
+https://docs.oracle.com/javase/8/docs/api/index.html?java/awt/Frame.html
+_JavaDevelopment/testjdk_1.8.0_292/src/PruebaClassFrame.java
+_JavaDevelopment/testjdk_1.8.0_292/src/MyFrame.java
+_JavaDevelopment/testjdk_1.8.0_292/src/MyFrame1.java
+_JavaDevelopment/testjdk_1.8.0_292/src/PruebaMyFrame.java
+_JavaDevelopment/testjdk_1.8.0_292/src/PruebaMyFrame1.java
+
+Posicionamiento de múltiples Ventanas, setLocation, heredado de Component.
+Sobrecargado y admite dos tipos de parámetros de entrada: es necesario suministrar las coordenadas bidimensionales.
+    estas situan la esquina superior izquierda de la ventana respecto a su componente padre
+    public void setLocation(int x, int y)
+    public void setLocation(Point p)
+
+        UnFrame.setLocation(new Point(100, 200));
+
+_JavaDevelopment/testjdk_1.8.0_292/src/PruebaClassPoint.java
+_JavaDevelopment/testjdk_1.8.0_292/src/MyFramePoint.java
+_JavaDevelopment/testjdk_1.8.0_292/src/PruebaMyFramePoint.java
+
+        PANELES Y OBJETOS DE DISPOSICION
+        LAYOUTS
+
+
+    AWT: Abstract Window Toolkit proporciona los componentes básicos de I/O. 
+    Proporciona entre otras:
+    la clase Window.
+    la clase Frame derivada de Window.
+
+    Jerarquía:
+               ----------
+               | Object |                                   java.lang
+               ----------
+                   |            --------------------
+             -------------                          |
+             | Component |                          |
+             -------------                          |
+          _________|__________                      |
+         |                    |                     |
+    ----------          -------------               |
+    | Button |          | Container |               |
+    ----------          -------------               |
+                         ______|_____               |
+                        |            |              |--------java.awt
+                    ---------    ----------         |
+                    | Panel |    | Window |         |
+                    ---------    ----------         |
+                                     |              |
+                                 ---------          |
+                                 | Frame |          |
+                                 ---------          |
+                                     |---------------
+                                 ---------
+                                 | JFrame |               javax.swing
+                                 ---------
+
+_JavaDevelopment/testjdk_1.8.0_292/src/PruebaClassButton.java
+_JavaDevelopment/testjdk_1.8.0_292/src/PruebaClassButtonPanel.java
+
+Utilización básica de PANELES
+
+ - Flexibilidad Diseño GUI's -
+
+_JavaDevelopment/testjdk_1.8.0_292/src/PruebaClassPanel.java
+
+Cada Panel que creamos tiene asociado, implicita o explicitamente un tipo de disposicion ("layout")
+Layouts (default FlowLayout, BorderLayout, GridLayout)
+
+default FlowLayout, con los elementos centrados en el panel.
+BorderLayout, 
+GridLayout, 
+
+Para establecer una disposición de manera explicita, podemos recurrir al método setLayout(heredado de Container).
+Instanciar nuestro panel indicando directamente el layout deseado.
+
+    Panel MiPanel = new Panel (new FlowLayout());
+    OtroPanel.setLayout(new FlowLayout());
+
+_JavaDevelopment/testjdk_1.8.0_292/src/PruebaClassPanelFlowLayout.java
+
+        FlowLayout PosicionamientoSecuencial = new FlowLayout();
+        PnlPal.setLayout(PosicionamientoSecuencial);
+
+        FlowLayout PosicionamientoLEFT = new FlowLayout(FlowLayout.LEFT);
+        PnlPal.setLayout(PosicionamientoLEFT);
+
+        FlowLayout PosicionamientoRIGHT = new FlowLayout(FlowLayout.RIGHT);
+        PnlPal.setLayout(PosicionamientoRIGHT);
+
+        FlowLayout PosicionamientoCENTER = new FlowLayout(FlowLayout.CENTER);
+        PnlPal.setLayout(PosicionamientoCENTER);
+
+        FlowLayout PosicionamientoLEADING = new FlowLayout(FlowLayout.LEADING);
+        PnlPal.setLayout(PosicionamientoLEADING);
+
+        FlowLayout PosicionamientoTRAILING = new FlowLayout(FlowLayout.TRAILING);
+        PnlPal.setLayout(PosicionamientoTRAILING);
+
+
+
+
+
+
+
+
+
+
+
+
+
+--O-J-O-- --O-J-O-- --O-J-O-- --O-J-O-- --O-J-O--
+
+// pendientes npi
+
+/*
+Se puede reemplazar por la llamada a un método que sea capas de leer de la consola
+System.out.println ("Introduce la matricula: ");
+String matricula = Teclado.Lee_String();
+*/
+
 // Las que no, sólo son accesibles desde dentro del paquete(sirven para dar soporte a las clases públicas)
 // ????
 
 // pendiente de picar y de probar el código
-
 	InstanceOf.java
     public class InstanceOf{
     public static void main (String[]args){
