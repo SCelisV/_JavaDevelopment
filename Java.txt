@@ -1,5 +1,7 @@
 jdk1.8.0_181
 
+https://docs.oracle.com/javase/8/docs/
+
 Java Runtime Environment (JRE), está formado por Java Virtual Machine (JVM), clases del núcleo de la plataforma Java y bibliotecas de la plataforma Java de soporte. JRE es la parte de tiempo de ejecución del software de Java, que es todo lo que necesita para ejecutarlo en el explorador web.
 
 ¿Qué es el software del plugin de Java?
@@ -21,6 +23,8 @@ For example, if you were downloading the JDK installer for 32-bit systems for up
 ------ --O-J-O--
 PATH
 D:\Mis Documentos\Development\Java\JBobadilla;
+
+grep -n -- 'something' *.java
 
 https://es.atlassian.com/git
 everyday.html
@@ -1834,6 +1838,8 @@ _JavaDevelopment/testjdk_1.8.0_292/src/PruebaClassPanelBorderLayout2.java
 
 _JavaDevelopment/testjdk_1.8.0_292/src/PruebaClassPanelGridLayout.java
 
+ crea un componente matricial de n filas y n columnas
+
        // Crear n Botones; n=6
         Button[] Botones = new Button[6];
         for(int i=0;i<Botones.length; i++){
@@ -1932,5 +1938,286 @@ _JavaDevelopment/testjdk_1.8.0_292/src/PruebaClassListMultiple.java
 _JavaDevelopment/testjdk_1.8.0_292/src/PruebaClassListChoiceDesplegable.java
 _JavaDevelopment/testjdk_1.8.0_292/src/PruebaClassListChoiceDesplegable2.java
 
+                            --------------
+                            | Formulario |
+                        --------------------------------
+                        |    PnlFormulario             |           
+                        |    PnlDatosPersonales        |          
+                        |    PnlEstadoCivil            |          
+                        |    PnlCiudades               |          
+                        --------------------------------
+                        | DatosPersonales(Panel)       |          
+                        | EstadoCivil(Panel)           |          
+                        | Ciudades(Panel)              |          
+                        --------------------------------
+                        | Main                         |     
+                        --------------------------------     
+
+_JavaDevelopment/testjdk_1.8.0_292/src/Formulario.java
+
+Implementación en varias clases
+
+ -----------------------------     -------------------------      -----------------------
+ | FormularioDatosPersonales |     | FormularioEstadoCivil |      | FormularioProvincia |
+ -----------------------------     -------------------------      -----------------------
+        |      |                        ______|_____                    |     |
+        |      |                       |            |                   |     |
+        |      |            ------------------ ------------------       |     |
+        |      -------------| FormularioMain | | FormularioMain |--------     |
+        |                   ------------------ ------------------             |
+        |                           |                   |                     |
+        |                           |                   |                     |
+        |                           --------------------|----------------------
+        |                                               |
+        -------------------------------------------------
+
+    Con mis constructores... (un poco regular definidos.. review)
+    _JavaDevelopment/testjdk_1.8.0_292/src/FormularioMain.java
+    _JavaDevelopment/testjdk_1.8.0_292/src/FormularioCiudades.java
+    _JavaDevelopment/testjdk_1.8.0_292/src/FormularioDatosPersonales.java
+    _JavaDevelopment/testjdk_1.8.0_292/src/FormularioEstadoCivil.java
+    _JavaDevelopment/testjdk_1.8.0_292/src/FormularioMain2.java
+
+             -------------------
+-------------| Formulario2Main |---------------------------------------------------------------------------
+|            -------------------                                                                          |
+|                                       ---------------                                                   |
+|                          -------------|             |                                                   |
+|                          |     I      ---------------                                                   |
+|                      --------                                                                           |
+|   MiFrame            |      |                                                                           |
+|                      --------                                                                           |
+|                                       ---------------                                                   |
+|                          -------------|             |                                                   |
+|                          |     I      ---------------                                                   |
+|                      --------                                                                           |
+|   Formulario         |      |                                                                           |
+|                      --------                                                                           |
+|                                                                                                         |
+|                                                ------------------------------                           |
+|                                   -------------| Formulario2DatosPersonales |----------                 |
+|                                   |             ------------------------------        |                 |
+|                                   |     I           |      ----------------           |                 |
+|                      --------     |                 |      |              |           |                 |
+|   DatosPersonales    |      | -----------------------      ----------------           |                 |
+|                      --------     | PnlDatosPersonales          |     ---------------------------       |       
+|                                   |                             ---->>| getPnlDatosPersonales() |--->>  |
+|                                   |                                   ---------------------------       |       
+|                                   |                                                   |                 |
+|                                   -----------------------------------------------------                 |
+|                                                ------------------------------                           |
+|                                   -------------| Formulario2EstadoCivil     |----------                 |
+|                                   |             ------------------------------        |                 |
+|                                   |     I           |      ----------------           |                 |
+|                      --------     | PnlEstadoCivil  |      |              |           |                 |
+|   EstadoCivil        |      | -----------------------      ----------------           |                 |
+|                      --------     |                             |     ---------------------------       |       
+|                                   |                             ---->>| getPnlEstadoCivil()     |--->>  |
+|                                   |                                   ---------------------------       |       
+|                                   |                                                   |                 |
+|                                   -----------------------------------------------------                 |
+|                                                ------------------------------                           |
+|                                   -------------| Formulario2Ciudades        |----------                 |
+|                                   |             ------------------------------        |                 |
+|                                   |     I           |      ----------------           |                 |
+|                      --------     | PnlCiudades     |      |              |           |                 |
+|   Ciudades           |      | -----------------------      ----------------           |                 |
+|                      --------     |                             |     ---------------------------       |       
+|                                   |                             ---->>| getPnlCiudades()        |--->>  |
+|                                   |                                   ---------------------------       |       
+|                                   |                                                   |                 |
+|                                   -----------------------------------------------------                 |
+|                                                                                                         |
+-----------------------------------------------------------------------------------------------------------
+
+_JavaDevelopment/testjdk_1.8.0_292/src/Formulario2Main.java
+_JavaDevelopment/testjdk_1.8.0_292/src/Formulario2Ciudades.java
+_JavaDevelopment/testjdk_1.8.0_292/src/Formulario2DatosPersonales.java
+_JavaDevelopment/testjdk_1.8.0_292/src/Formulario2EstadoCivil.java
+
+Otra forma de organizar (modificando los paneles.. ) y utilizando las mismas clases predefinidas
+_JavaDevelopment/testjdk_1.8.0_292/src/Formulario2Main2.java
+
+DIALOGOS Y MENUS
+
+Clases
+Dialog y FileDialog
+MenuBar y Menu
+
+  Jerarquía:
+                                   ----------
+                                   | Object |                                   java.lang
+                                   ----------
+                                       |            --------------------
+                              _________|__________                      |
+                             |                    |                     |
+                   -----------------        -------------               |
+                   | MenuComponent |--------| Component |               |
+                   -----------------        -------------               |
+                  _________|__________            |                     |
+                 |                    |           |                     |
+           ------------          ------------     |                     |
+           | MenuItem |          | MenuBar  |     |                     |
+           ------------          ------------     |                     |
+                 |                                |                     |
+            -----------                     -------------               |
+            |  Menu   |                     | Container |               |
+            -----------                     -------------               |
+                                             ______|_____               |
+                                            |            |              |--------java.awt
+                                        ---------    ----------         |
+                                        | Panel |    | Window |         |
+                                        ---------    ----------         |
+                                                         |              |
+                                                     ----------         |
+                                                     | Dialog |         |
+                                                     ----------         |
+                                                         |              |
+                                                  --------------        |
+                                                  | FileDialog |        |
+                                                  --------------        |
+
+Dialog, ventana para recoger información del usuario; su disposición por defecto es BorderLayout. 
+Propietario de dialogo frame ó diálogo
+Modales ó
+No Modales (default) - Bloquean las demás ventanas de la aplicación (salvo las que se hayan cerrado por el propio dialogo)
+
+_JavaDevelopment/testjdk_1.8.0_292/src/PruebaClassDialog.java
+_JavaDevelopment/testjdk_1.8.0_292/src/PruebaClassDialog2.java
+
+Dialogo de carga / almacenamiento de ficheros (FileDialog), clase especializada de Dialog, gestiona la selecciín de un fichero entre los sistemas de ficheros accesibles.
+Los dialogos de ficheros son modales y sus propietarios deben ser Frames.
+
+Cargar Load
+_JavaDevelopment/testjdk_1.8.0_292/src/PruebaClassFileDialog2.java
+Guardar Save
+_JavaDevelopment/testjdk_1.8.0_292/src/PruebaClassFileDialog.java
+
+MenuBar se usa para dotar de una barra principal de menú a un frame.
+sólo tiene el constructor sin argumentos.
+setMenuBar es un método de Frame para adicionar un menú a un frame.
+Una vez que disponemos de un objeto barra de menú, añadimos menús (add), 
+
+_JavaDevelopment/testjdk_1.8.0_292/src/MenuBarMenu.java
+_JavaDevelopment/testjdk_1.8.0_292/src/PruebaClassMenuBarMenu.java
+
+EVENTOS
 
 
+
+
+
+
+
+--O-J-O-- --O-J-O-- --O-J-O-- --O-J-O-- --O-J-O--
+
+// pendientes npi
+
+/*
+Se puede reemplazar por la llamada a un método que sea capas de leer de la consola
+System.out.println ("Introduce la matricula: ");
+String matricula = Teclado.Lee_String();
+*/
+
+// Las que no, sólo son accesibles desde dentro del paquete(sirven para dar soporte a las clases públicas)
+// ????
+
+// pendiente de picar y de probar el código
+
+	InstanceOf.java
+    public class InstanceOf{
+    public static void main (String[]args){
+        if( Impuesto instanceof float) {
+            System.out.println("Impuesto is a float");
+        }
+        else if( Impuesto instanceof Integer) {
+            System.out.println("Impuesto is an Integer");
+        }
+        
+        if( Impuesto instanceof Comparable) {
+            //subclasses of Number like Double etc. implement Comparable
+            //other subclasses might not -> you could pass Number instances that don't implement that interface
+            System.out.println("Impuesto is comparable"); 
+        }
+    }
+}
+// pendiente de picar y de probar el código
+	Matriz3Scanner.java
+    import java.util.Scanner; //Importación del código de la clase Scanner desde la biblioteca Java
+public class Matriz3Scanner{
+    //Nombres[], Notas[]
+    public static void Imprimir(String [][] Alumnos){
+        
+        for (int i=0; i < Alumnos[0].length; i++){
+            int j=i+1;
+            System.out.println(j + ". " + Alumnos[0][i] + ": " + Alumnos[1][i]);
+        }
+    }
+    public static byte EntreNotas(float Nota1, float Nota2, String [][] Alumnos){
+        byte Contador = 0;
+        for(int i=0; i<Alumnos[0].length; i++){
+        
+            if( (Float.parseFloat(Alumnos[1][i]) >= Nota1) && 
+                (Float.parseFloat(Alumnos[1][i]) <= Nota2) ){
+                 Contador++;
+                 System.out.println(Alumnos[0][i] + ": " + Alumnos[1][i]); //Nombres[], Notas[]
+            }
+                
+        }
+        //Después de la ejecución del método se esta imprimiendo la variable Contador, pero no sé porque???
+        return (Contador);
+    }
+        
+    
+    public static String Lee_String(Scanner Cadena){
+        
+        String entradaString = Cadena.nextLine();
+        
+        return (entradaString);
+    }
+    
+    public static float Lee_Float(Scanner Fnumber){
+        
+        float entradaFloat = Fnumber.nextFloat();
+        
+        return(entradaFloat);
+    }
+    
+    
+    
+    public static void main(String [] args){
+        
+        final byte NUM_ALUMNOS = 5;
+        
+        //Solo es obligatorio indicar el número de filas.
+        //Matriz de Calificaciones = 2filas X 5columnas cada una;
+        String [][] Calificaciones = new String[2][NUM_ALUMNOS];
+        
+        // Inicializa la Matriz de Calificaciones
+        
+        for (int i=0; i < NUM_ALUMNOS; i++){
+            
+            Scanner entradaNombres = new Scanner(System.in);
+            System.out.println("Digite el Nombre del Alumno: ");
+            Calificaciones[0][i] = Lee_String(entradaNombres);
+            
+            Scanner entradaNota = new Scanner(System.in);
+            System.out.println("Digite la Nota del Alumno (Use , para los decimales): ");
+            Calificaciones[1][i] = Float.toString(Lee_Float(entradaNota));
+            
+        }
+        
+        Imprimir (Calificaciones);
+        System.out.println("\n");
+        
+        System.out.println("Aprobados: ");
+        System.out.println(EntreNotas(5.0f,10.0f,Calificaciones));
+        
+        System.out.println("Suspensos: ");
+        System.out.println(EntreNotas(0.0f,4.9f,Calificaciones));
+        
+        System.out.println("Matriculas: ");
+        System.out.println(EntreNotas(10.0f,10.0f,Calificaciones));
+    }
+}
+//
