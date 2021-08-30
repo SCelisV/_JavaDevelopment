@@ -1374,6 +1374,9 @@ public interface CentroDeEstudios extends DatosCentroDeEstudios, CalculosCentroD
 }
 
 Para poder utilizar los miembros de un interfaz es necesario implementarlo en una clase,
+Cuando se implementa un interfaz con una clase no abstracta debemos implementar todos y cada uno de sus métodos
+Un método abstracto se declara pero no se define, no usa{}, usa la palabra abstract y termina con (;).
+Es obligatorio definir todos su métodos aunque no se desarrollen
 se emplea la palabra reservada implements para indicarlo:
 
 public class CCentroDeEstudios implements CentroDeEstudios {}
@@ -1681,7 +1684,7 @@ Objeto Clase que recoge la excepcion: Recibe la situación de error y trata de r
 
 INTERFAZ GRÁFICO DE USUARIO
 
-GUI que se encuentran englobados dentro de K¡Java Goundation Classes (JFC), que proporciona:
+GUI que se encuentran englobados dentro de Java Foundation Classes (JFC), que proporciona:
     AWT: Abstract Window Toolkit proporciona los componentes básicos de I/O. 
     Swing: Recoge la mayor parte de la funcionalidad de AWT.
     Imgenes 2D
@@ -2103,10 +2106,236 @@ _JavaDevelopment/testjdk_1.8.0_292/src/PruebaClassMenuBarMenu.java
 
 EVENTOS
 
+Java proporciona mecanismos adecuados para tratar situaciones que habitualmente se producen de manera asíncrona a la ejecución del programa, producidas desde el exterior de la aplicación.
+Más comunes en la ejecución de una app que proporciona una GUI son:
+- Pulsación de ratón, se situa en un componente gráfico, , sale de un componente gráfico
+- Pulsación de una tecla
+- Se cierra una ventana... etc
+
+- usuario interactua con la app por medio de dispositivos de I/O. teclado, ratón, etc.
+- los dispositivos de I/O generan señales eléctrica que son recogidas por los controladores (placas, puertos, etc).
+- los drivers(manejadores), de cada dispositivo recogen las señales eléctricas, las codifican y traspasan ea la CP. activan pines de interrupción excepción de la CPU.
+- La CPU habitualmente deja de ejecutar la acción en curso(salvo que esta acción tenga mayor prioridad que la asociada a la interuupción que le llega) y ejecuta la rutina de tratamiento que le asigna el SO.
+- El SO determina si tiene que tratar la o si tiene que pasarla a alguna aplicación que se ejecuta sobre él. En este caso a la JVM.
+- La JVM determina el componente sobre el que se produce la interrupción y consulta si se ha definido alguna acción. si no hay nada definido, la CPU continua con la accion que estaba antes de la interrupción.
+- Si se ha definido: 
+- la JVM crea un objeto evento con la información de la acción, 
+- se pasa el evento a la clase que tratara la interrupción
+- se pasa el flujo de control(de ejecución) a la clase Java que hemos creado para tratar la interrupción
+- se pasa el flujo de control a la CPU para que continúe con la acción que estaba antes de la interrupción
+
+La JVM recoge la información de la interrupción del SO , determina la ventana y el componente, donde se ha producido el evento y ejecuta la acción asociada al tipo de evento que llega.
+
+Por lo tanto: 
+
+1. necesitamos clases que definan las posibles acciones a realizar cuando llegan los diferentes tipos de eventos.
+2. No es necesario definir acciones para todos los eventos ni para todos los objetos.
+3. necesitamos un mecanismo para asociar acciones a los distintos eventos que se puedan producir sonbre cada componente de nuestra GUI.
+
+Java proporciona una serie de Interfaces que agrupan métodos relacionados para el tratamiento de eventos.
+Los interfaces más comunes, normalmente relacionados con GUI's basados en AWT se encuentran en el paquete java.awt.event
+
+El mecanismo básico de eventos de Java se basa en lla existencia de las clases de eventos y los interfases "listeners", son interfaces que debemos implementar, colocando las acciones deseadas en sus métodos, también podemos basarnos en las implementaciones con métodos vacios que proporciona el SDK (adaptadores).
+AWT proporciona una ámplia gama de eventos que pueden ser recogidos por los métodos existentes en las implementaciones que hagamos de los listeners.
+
+Ex: Eventos, Interfaces y adaptadores más utilizados en app de catácter general.
+
+            Eventos                    Interfaces                 Adaptadores
+            ----------              ---------------             
+ --------- | AWTEvent | ---------- | EventListener |            java.awt.event
+|           ----------              ---------------             
+|                                   ---------------              --------------
+|           ----------       ______| MouseListener | ---------- | MouseAdapter |
+|          | Mouse    |_____|       ---------------              --------------
+|          |   Event  |     |______ ---------------------        -------------------
+|           ----------             | MouseMotionListener | ---- | MouseMotinAdapter |
+|                                   ---------------------        -------------------
+|           ----------              ---------------              --------------
+|--------- | KeyEvent | ---------- | Key  Listener | ---------- | Key  Adapter |
+|           ----------              ---------------              --------------
+|           -------------           ----------------             ---------------
+|--------- | WindowEvent |-------- | WindowListener | ----------| WindowAdapter |
+|           -------------           ----------------             ---------------
+|           -------------           ----------------
+|--------- | ActionEvent | --------| ActionListener |
+|           -------------           ----------------
+|           -----------             --------------
+ --------- | ItemEvent | ----------| ItemListener |
+            -----------             --------------
+
+Ex: MouseListener
+https://docs.oracle.com/javase/8/docs/api/java/awt/event/MouseListener.html
+y KeyListener
+https://docs.oracle.com/javase/7/docs/api/java/awt/event/KeyListener.html
+
+tiene los siguientes métodos:
 
 
+void 	mousePressed(MouseEvent e)  -> Se invoca cuando el botón del ratón ha sido pulsado en un componente.
+void 	mouseReleased(MouseEvent e) -> Se invoca en la acción contraria
+
+void 	mouseClicked(MouseEvent e)  -> Se invoca cuando se han producido las dos acciones consecutivas (pulsar y soltar).
+
+void 	mouseEntered(MouseEvent e)  -> Se invoca al entrar de un componente con el puntero del ratón - focus
+void 	mouseExited(MouseEvent e)   -> Se invoca al salir  de un componente con el puntero del ratón - blur
+
+Si queremos que un texto se ponga de color rojo al situarnos sobre él componente y de color azul al salir del mismo.
+Crearemos una clase que implemente los métodos mouseEntered y mouseExited respectivamente; con el interface MouseListener el compilador puede detectar errores de tipo sintactico mientras que extendiendo el MouseAdapter aunque es más comodo, es menos seguro, y el compilador no detectara errores sintactacticos al definir un método.
+
+Los objetos de tipo evento, ex: MouseEvent, nos permiten consultar información relativa a la interrupción que genera el evento.
+nos permite conocer información que proviene del SO y de la JVM.
+MouseEvent
+https://docs.oracle.com/javase/8/docs/api/java/awt/event/MouseEvent.html
+y KeyEvent
+https://docs.oracle.com/javase/7/docs/api/java/awt/event/KeyEvent.html
 
 
+Nos proporciona entre otra info: el botón que se ha pulsado, las coordenadas X e Y en pix en las que se encontraba el puntero del ratón respecto al componente que ha generado la interrupción(el evento), el componente que ha generado la interrupción, etc.
+
+_JavaDevelopment/testjdk_1.8.0_292/src/ListenerMouse.java
+
+Podemos implementar tantas clases "listeners" como comportamientos diferentes deseemos y asignar diferentes componentes a distintos listeners.
+
+Un componente no tiene por que estar limitado a la funcionalidad de un sólo listener, por ejemplo pordemos hacer que un componentes se pueda seleccionar con ratón(MouseListener) o con teclado(KeyListener)
+
+_JavaDevelopment/testjdk_1.8.0_292/src/ListenerKey.java
+
+Esta clase prueba las dos clases ListenerMouse.java y ListenerKey.java
+
+_JavaDevelopment/testjdk_1.8.0_292/src/PruebaListenerMouseKey.java
+
+Eventos "más usados" del raton:
+----------------------------------------------------------------------------
+| INTERFACE              | Adaptadores               | Evento              |
+----------------------------------------------------------------------------
+| MouseListener          | MouseAdapter              | MouseEvent          |
+----------------------------------------------------------------------------
+| métodos                |                           | métodos             |
+| mouseClicked           |                           | int getClickCount() |
+| mouseEntered           |                           | Point getPoint()    |
+| mouseExited            |                           | int getX()          |
+| mousePressed           |                           | int getY()          |
+| mouseReleased          |                           | Object getSource()  |
+|                        |                           | int getButton()     |
+----------------------------------------------------------------------------
+| MouseMotionListener    | MouseMotionAdapter        | MouseEvent          |
+----------------------------------------------------------------------------
+| métodos                |                           | métodos             |
+| mouseDragged           |                           | int getClickCount() |
+| mouseMoved             |                           | Point getPoint()    |
+|                        |                           | int getX()          |
+|                        |                           | int getY()          |
+|                        |                           | Object getSource()  |
+|                        |                           | int getButton()     |
+----------------------------------------------------------------------------
+| MouseWheelListener     | No tiene adaptador        | MouseWheelEvent     |
+----------------------------------------------------------------------------
+| métodos                |                           |                     |
+| mouseWheel             |                           |                     |
+----------------------------------------------------------------------------
+
+_JavaDevelopment/testjdk_1.8.0_292/src/ListenerEventosMouse.java
+_JavaDevelopment/testjdk_1.8.0_292/src/PruebaListenerEventosMouse.java
+
+La clase _JavaDevelopment/testjdk_1.8.0_292/src/ListenerEventosMouse.java puede ser utilizada por otras app
+En este caso sobre un panel:
+_JavaDevelopment/testjdk_1.8.0_292/src/PruebaListenerEventosMouse2.java
+
+La clase _JavaDevelopment/testjdk_1.8.0_292/src/ListenerEventosMouseObject.java
+Utiliza algunos métodos de MouseEvent
+_JavaDevelopment/testjdk_1.8.0_292/src/PruebaListenerEventosMouseObject.java
+
+Java proporciona el adaptador MouseAdapter, que implementa todos los métodos del interfaz MouseListener de esta manera, 
+si usamos MouseAdapter, podemos sobrecargar únicamente los métodos que deseemos.
+_JavaDevelopment/testjdk_1.8.0_292/src/ListenerEventosMouseAdapter.java
+_JavaDevelopment/testjdk_1.8.0_292/src/PruebaListenerEventosMouseAdapter.java
+cuando ejecutamos la clase con este método: public void mouseEited(MouseEvent e){
+no se ejecuta evento Exited del Mouse ya que el compilador no detecta el error sintactico
+cuando ejecutamos la clase con este método: public void mouseExited(MouseEvent e){
+se ejecuta el evento mouseExited.
+
+Ex: en Estas clases: 
+_JavaDevelopment/testjdk_1.8.0_292/src/ListenerEventosMouseAdapter2.java
+_JavaDevelopment/testjdk_1.8.0_292/src/PruebaListenerEventosMouseAdapter2.java
+Se extiende de MouseAdapter, 
+se crea un constructor a través del cual se puede indicar una etiqueta donde los métodos de la clase podrán asignar diferentes textos.
+La etiqueta no debería ser visible en la clase ListenerEventosMouseAdapter2.java. 
+Deberá unirse en un sólo fichero ambas clases, (aunque es menos modular y reutilizable)
+Java proporciona medios de mayor complejidad para establecer una solución más elegante a esta interacción GUI/Adaptador aunque no se usan mucho.
+
+Los eventos de movimiento de ratón. (mouseMoved, mouseDragged)
+_JavaDevelopment/testjdk_1.8.0_292/src/ListenerMouseMotion.java
+_JavaDevelopment/testjdk_1.8.0_292/src/PruebaListenerMouseMotion.java
+
+Se crea un constructor que contiene como parámetros dos etiquetas
+_JavaDevelopment/testjdk_1.8.0_292/src/ListenerMouseMotion2.java
+_JavaDevelopment/testjdk_1.8.0_292/src/PruebaListenerMouseMotion2.java
+
+Si queremos evitar el constructor con parámetros unificar el GUI y el adaptador en un sólo fichero
+_JavaDevelopment/testjdk_1.8.0_292/src/PruebaListenerEventosMouseMotion.java
+_JavaDevelopment/testjdk_1.8.0_292/src/PruebaEventosMouseMotion.java
+
+
+EVENTOS DE TECLADO Y DE VENTANA
+
+----------------------------------------------------------------------------
+| INTERFACE              | Adaptadores               | Evento              |
+----------------------------------------------------------------------------
+| KeyListener            | KeyAdapter                | KeyEvent            |
+| métodos                |                           | métodos             |
+| keyPressed             |                           | char getKeyChar()   |
+| keyReleased            |                           | int getKeyCode()    |
+| keyTyped               |                           | String getKeyText() |
+|                        |                           | Object getSource()  |
+----------------------------------------------------------------------------
+| WindowListener         | WindowAdapter             | WindowEvent         |
+| métodos                |                           | métodos             |
+| windowActivated        |                           | getWindow()         |
+| windowDeactivated      |                           | getOppositeWindow() |
+| windowOpened           |                           | getNewState()       |
+| windowClosing          |                           | getOldState()       |
+| windowClosed           |                           | getSource()         |
+| windowIconified        |                           |                     |
+| windowDeiconified      |                           |                     |
+----------------------------------------------------------------------------
+
+_JavaDevelopment/testjdk_1.8.0_292/src/ListenerEventosKey.java
+_JavaDevelopment/testjdk_1.8.0_292/src/PruebaListenerEventosKey.java
+
+_JavaDevelopment/testjdk_1.8.0_292/src/ListenerEventosKeyAdapter.java
+_JavaDevelopment/testjdk_1.8.0_292/src/PruebaListenerEventosKeyAdapter.java
+
+_JavaDevelopment/testjdk_1.8.0_292/src/ListenerWindow.java
+_JavaDevelopment/testjdk_1.8.0_292/src/PruebaListenerWindow.java
+
+EVENTOS DE ACCIÓN, ENFOQUE Y ELEMENTO
+Estos eventos tienne un nivel de abstraccción superior a los de ratón y teclado; en estos tres casos el evento se produce cuando ocurre 
+una acción sobre un componente, independientemente de la causa fisica que produce ese evento.
+ex: pulsar un botón haciendo uso del ratón, del teclado, e incluso por programa.
+El interfaz actionlistener proporciona un método que se activa con independencia de la causa física ó lǵica que activa el componente.
+
+------------------------------------------------------------------------------
+| INTERFACE              | Adaptadores               | Evento                |
+------------------------------------------------------------------------------
+| ActionListener         |                           | ActionEvent           |
+| métodos                |                           | métodos               |
+| actionPerformed        |                           | getActionCommand()    |
+|                        |                           | getWhen()             |
+|                        |                           | getSource()           |
+------------------------------------------------------------------------------
+| FocusListener          | FocusAdapter              | FocusEvent            |
+| métodos                |                           | métodos               |
+| focusGained            |                           | getOppositeComponent()|
+| focusLost              |                           | getID()               |
+|                        |                           | getSource()           |
+------------------------------------------------------------------------------
+| ItemListener           |                           | ItemEvent             |
+| métodos                |                           | métodos               |
+| itemStateChanged       |                           | getStateChange()      |
+|                        |                           | getItem()             |
+|                        |                           | getItemSelectable()   |
+|                        |                           | getSource()           |
+------------------------------------------------------------------------------
 
 
 --O-J-O-- --O-J-O-- --O-J-O-- --O-J-O-- --O-J-O--
