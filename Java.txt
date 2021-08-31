@@ -25,6 +25,8 @@ PATH
 D:\Mis Documentos\Development\Java\JBobadilla;
 
 grep -n -- 'something' *.java
+find -name '*Listener'*.Java
+find -name 'Listener?'*.java
 
 https://es.atlassian.com/git
 everyday.html
@@ -2337,7 +2339,234 @@ El interfaz actionlistener proporciona un método que se activa con independenci
 |                        |                           | getSource()           |
 ------------------------------------------------------------------------------
 
+Eventos de ACCIÓN
+ActionListener y ActionEvent
 
+Tratamiento de eventos de acción
+Escribe por consola información del evento cada vez que se activa actionPerformed (método de ActionListener)
+
+_JavaDevelopment/testjdk_1.8.0_292/src/ListenerAction.java
+_JavaDevelopment/testjdk_1.8.0_292/src/PruebaListenerAction.java
+
+    //Constructor que recibe un panel como parámetro - Cambia el color del panel
+_JavaDevelopment/testjdk_1.8.0_292/src/ListenerAction2.java
+_JavaDevelopment/testjdk_1.8.0_292/src/PruebaListenerAction2.java
+
+Eventos de ENFOQUE - focusGained - focusLost
+FocusListener, FocusEvent, FocusAdapter
+
+_JavaDevelopment/testjdk_1.8.0_292/src/ListenerFocus.java
+_JavaDevelopment/testjdk_1.8.0_292/src/PruebaListenerFocus.java
+
+_JavaDevelopment/testjdk_1.8.0_292/src/ListenerFocusAdapter.java
+_JavaDevelopment/testjdk_1.8.0_292/src/PruebaListenerFocusAdapter.java
+
+
+Eventos de ELEMENTO - itemStateChanged - cambio de estado 
+ItemListener e ItemEvent
+
+_JavaDevelopment/testjdk_1.8.0_292/src/ListenerItem.java
+        // getStateChange - newState: 1 => Seleccionado
+        // getStateChange - newState: 2 => No Seleccionado
+
+        // getState - bState: true => Seleccionado
+        // getState - bState: false => No Seleccionado
+
+_JavaDevelopment/testjdk_1.8.0_292/src/PruebaListenerItem.java
+
+
+Opciones y validaciones interactiva, Checkbox, List(lista), Choice (lista desplegable)
+// constructor que recoge un vector de componentes con el fin de actuar sobre los mismos.
+_JavaDevelopment/testjdk_1.8.0_292/src/ListenerItem2.java
+_JavaDevelopment/testjdk_1.8.0_292/src/PruebaListenerItem2.java
+
+Calculadora
+Implementar una app que ofrezca el interfaz y el comportamiento de una calculadora sencilla.
+
+Nuestra calculadora contendrá:
+10 dígitos 0-9, 
+punto decimal(.), 
+signo igual (=), 
+operadores (+, -, *, /,) 
+espacio para visualizar las pulsaciones del usuario y los resultados obtenidos
+
+Interfaz GUI:
+---------------------------
+|  _____________________  |
+| |                     | |
+| |_____________________| |
+---------------------------
+| ----- ----- ----- ----- |
+| | 0 | | 1 | | 2 | | + | |     -> 0*3+0;   0*3+1;    0*3+2;
+| ----- ----- ----- ----- |
+| ----- ----- ----- ----- |
+| | 3 | | 4 | | 5 | | - | |     -> 1*3+0;   1*3+1;    1*3+2;
+| ----- ----- ----- ----- |
+| ----- ----- ----- ----- |
+| | 6 | | 7 | | 8 | | * | |     -> 2*3+0;   2*3+1;    2*3+2;
+| ----- ----- ----- ----- |
+| ----- ----- ----- ----- |
+| | 9 | | . | | = | | / | |     ->     9;       .;        =;
+| ----- ----- ----- ----- |
+---------------------------
+El comportamiento será:
+
+--------------      --------------      --------------      --------------      -------------
+| Introducir |--->> | Introducir |--->> | Introducir |--->> | Introducir |--->> |  Obtener  |
+| Operando 1 |      |  OPERADOR  |      | Operando 2 |      |    SIGNO   |      | Resultado |
+--------------      --------------      --------------      --------------      -------------
+                           ^                                                           |
+                           |___________________________________________________________|
+
+5 * 3 = 15 / 3 = 5 * 2 = 10
+
+Los operandos podrán ser valores númericos enteros o decimales con signo.
+
+Un operando:
+
+                     -----
+                -----| - |-------
+                |    -----       |
+Operando -------|                |
+                |    ----------  |      -----      ----------
+                -----| Digito |--| -----| . |----- | Digito |
+                     ---------- |       -----      ----------
+                      |____|    |                   |____| |
+                                |                          |                                -----------------------------------------
+Diseñada según principios básicos de la PPO.
+Botones con diferentes colores
+Compotamiento para todos los botones:
+// tanto con el ratón como con el teclado:
+focusGained --> cambia de color
+focusLost -->  color original.
+Al pulsar una opción no valida (ex: dígito después del igual, dos operadores seguidos, etc), debe mostrar una indicación de error en el área de resultados y el botón pulsado de color rojo.
+
+
+Definición de Interfaz gráfico: 
+Dígitos: Panel con botones que representan los dígitos del 0-9, signo(.), signo(=)
+Operadores: Panel con cuatro botones de signos (+, -, *, /)
+Resultados: Visor de la calculadora
+
+Utilizando las clases: Dígitos, Operadores y Resultados, podemos definir diferentes representaciones de calculadoras.
+
+            -------------------
+            | GUICalculadora2 |             GUICalculadora?, necesitan tener acceso a los botones individuales
+            -------------------
+             |       |       |
+         -------------------------
+         |    GUICalculadora1    |
+         -------------------------
+             |       |        |
+             | -------------- |
+             | | Operadores | |             Operadores, botones individuales (+,-,*,/)
+             | -------------- |
+         -----------          |
+         | Digitos |          |             Digitos, botones individuales (0-9,.,=)
+         -----------          |
+                         --------------
+                         | Resultados |     Visor de la calculadora
+                         --------------
+
+    GUICalculadora?, necesitan tener acceso a los botones individuales, 
+    que se definen en Digitos y Operadores, 
+    de esta manera se podrá asignar diferentes objetos de tratamiento de eventos a los botones.
+
+    Digitos, proporciona su panel con la estructura de botones individuales (0-9,.,=)
+    Operadores, proporciona su panel con la estructura de botones individuales (+,-,*,/)
+
+    Para que los botones de cada panel presente el color deseado, se proporcionará un constructor que admite un parámetro de tipo Color.
+
+    Resultados, proporciona un campo de texto deshabilitado que hará las veces de visor de la calculadora.
+
+    Diseño de clases:
+
+     -----------
+   --| Digitos |-------------------
+   | -----------                  |
+   | // propiedades               |
+   | Panel                        |
+   | Button(12)                   |
+   |                       métodos|
+   |                        --------------
+   |                        | getPanel() | -->
+   |                        --------------
+   |                              |
+   |                        --------------
+   |                        | getButton() | -->
+   |                        --------------
+   |                              |
+   |                 Constructores|
+   |                        ------------------
+   |                        | Digitos(Color) | <--
+   |                        ------------------
+   |                              |
+   |                        -------------
+   |                        | Digitos() | <--
+   |                        -------------
+   |                              |
+   --------------------------------
+
+     --------------
+   --| Operadores |----------------
+   | --------------               |
+   | // propiedades               |
+   | Panel                        |
+   | Button( 4)                   |
+   |                       métodos|
+   |                        --------------
+   |                        | getPanel() | -->
+   |                        --------------
+   |                              |
+   |                        --------------
+   |                        | getButton() | -->
+   |                        --------------
+   |                              |
+   |                 Constructores|
+   |                        ---------------------
+   |                        | Operadores(Color) | <--
+   |                        ---------------------
+   |                              |
+   |                        ----------------
+   |                        | Operadores() | <--
+   |                        ----------------
+   |                              |
+   --------------------------------
+
+     --------------
+   --| Resultados |----------------
+   | --------------               |
+   | // propiedades               |
+   | Panel                        |
+   | TextField                    |
+   |                       métodos|
+   |                        --------------
+   |                        | getPanel() | -->
+   |                        --------------
+   |                              |
+   |                        ------------------
+   |                        | getTextField() | -->
+   |                        ------------------
+   |                              |
+   |                 Constructores|
+   |                        ---------------------
+   |                        | Resultados(Color) | <--
+   |                        ---------------------
+   |                              |
+   |                        ----------------
+   |                        | Resultados() | <--
+   |                        ----------------
+   |                              |
+   --------------------------------
+   Implementación del interfaz gráfico de usuario
+
+   _JavaDevelopment/testjdk_1.8.0_292/src/Digitos.java
+   _JavaDevelopment/testjdk_1.8.0_292/src/PruebaDigitos.java
+
+   _JavaDevelopment/testjdk_1.8.0_292/src/Operadores.java
+   _JavaDevelopment/testjdk_1.8.0_292/src/PruebaOperadores.java
+
+   _JavaDevelopment/testjdk_1.8.0_292/src/PruebaResultados.java
+   _JavaDevelopment/testjdk_1.8.0_292/src/Resultados.java
 --O-J-O-- --O-J-O-- --O-J-O-- --O-J-O-- --O-J-O--
 
 // pendientes npi
@@ -2450,3 +2679,42 @@ public class Matriz3Scanner{
     }
 }
 //
+
+---------------------------
+|  _____________________  |
+| |                     | |
+| |_____________________| |
+---------------------------
+| ----- ----- ----- ----- |
+| | 7 | | 8 | | 9 | | + | |     -> 2*3+1;   2*3+2;    2*3+3;
+| ----- ----- ----- ----- |
+| ----- ----- ----- ----- |
+| | 4 | | 5 | | 6 | | - | |     -> 1*3+1;   1*3+2;    1*3+3;
+| ----- ----- ----- ----- |
+| ----- ----- ----- ----- |
+| | 1 | | 2 | | 3 | | * | |     -> 0*3+1;   0*3+2;    0*3+3;
+| ----- ----- ----- ----- |
+| ----- ----- ----- ----- |
+| | 0 | | . | | = | | / | |     ->     0;       .;        =;
+| ----- ----- ----- ----- |
+---------------------------
+
+GUI mejorada
+----------------------------------
+|  ____________________________  |
+| |                            | |
+| |____________________________| |
+----------------------------------
+| ----- ----- ----- -----  ----- |
+| | 7 | | 8 | | 9 | | % |  | / | |
+| ----- ----- ----- -----  ----- |
+| ----- ----- ----- ----- ------ |
+| | 4 | | 5 | | 6 | | * | |sqrt| |
+| ----- ----- ----- ----- ------ |
+| ----- ----- ----- -----  ----- |
+| | 1 | | 2 | | 3 | |   |  | - | |
+| ----- ----- ----- | + |  ----- |
+| ----- ----- ----- |   |  ----- |
+| | C | | 0 | | . | |   |  | = | |
+| ----- ----- ----- -----  ----- |
+----------------------------------
