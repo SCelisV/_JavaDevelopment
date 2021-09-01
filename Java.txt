@@ -23,12 +23,25 @@ For example, if you were downloading the JDK installer for 32-bit systems for up
 ------ --O-J-O--
 PATH
 D:\Mis Documentos\Development\Java\JBobadilla;
+which java
+java -version
 
 grep -n -- 'something' *.java
 find -name '*Listener'*.Java
 find -name 'Listener?'*.java
 
+execute
+cd /home/hadoop/SCProjects/0_SCProjects_github.com_SCelisV/_JavaDevelopment/testjdk_1.8.0_292/src ; /usr/bin/env /usr/lib/jvm/java-11-openjdk-amd64/bin/java -Dfile.encoding=UTF-8 -cp /home/hadoop/.config/Code/User/workspaceStorage/25fa5dc2bf9cb43a259787a70c062b18/redhat.java/jdt_ws/src_5bfeb882/bin Calculadora1
+
+objects..??
+ls /home/hadoop/.config/Code/User/workspaceStorage/25fa5dc2bf9cb43a259787a70c062b18/redhat.java/jdt_ws/src_5bfeb882/bin/
+??
+/home/hadoop/SCProjects/0_SCProjects_github.com_SCelisV/_JavaDevelopment/testjdk_1.8.0_292/src
+
 https://es.atlassian.com/git
+
+https://jarroba.com/annotations-anotaciones-en-java/
+
 everyday.html
 
 Java a través de ejemplos - Jesus Bobadilla - ISBN: 9788478975495
@@ -2567,6 +2580,100 @@ Utilizando las clases: Dígitos, Operadores y Resultados, podemos definir difere
 
    _JavaDevelopment/testjdk_1.8.0_292/src/PruebaResultados.java
    _JavaDevelopment/testjdk_1.8.0_292/src/Resultados.java
+
+    Clase que implementa la interfaz de la calculadora
+    _JavaDevelopment/testjdk_1.8.0_292/src/GUICalculadora1.java
+    Clase que ejecuta la interfaz GUI de la calculadora1
+    _JavaDevelopment/testjdk_1.8.0_292/src/Calculadora1.java
+
+    Sé puede crear otra apariencia de Calculadora:
+
+    Clase que implementa la interfaz de la calculadora
+    _JavaDevelopment/testjdk_1.8.0_292/src/GUICalculadora2.java
+    Clase que ejecuta la interfaz GUI de la calculadora2
+    _JavaDevelopment/testjdk_1.8.0_292/src/Calculadora2.java
+
+    Diseño del Tratamiento de Eventos
+
+    Eventos de ventana --> windowClosing
+    Eventos de enfoque --> focusGained y focusLost cuando nos situemos en los botones con el teclado
+
+    -----------------------
+    |   GUICalculadora1   |
+    ----------------------...............
+                     |  ControlFoco     |
+                     .......................
+                        |  ControlVentana  |
+                        ........................
+                            |  ControlRaton    |
+                            ....................
+                                    ^
+                                    |
+                              OpcionErronea
+
+     ------------------
+   --| ControlVentana |------------
+   | ------------------           |
+   |                       métodos|
+   |                        -----------------------------
+   |                        | windowClosing(windowEvent)| -->
+   |                        -----------------------------
+   |                              |
+   --------------------------------
+
+     ------------------
+   --| ControlFoco    |------------
+   | ------------------           |
+   | // propiedades               |
+   | Color   ^                    |
+   |   |     |                    |
+   |   |     |              ---------------------
+   |   |     <--------------| ControlFoco(Color)| <--
+   |   |                    ---------------------
+   |   |                   métodos|
+   |   |                    --------------------------
+   |   |                    | focusGained(focusEvent)| -->
+   |   |                    --------------------------
+   |   |                          |
+   |   |                    ------------------------
+   |   -------------------->| focusLost(focusEvent)| -->
+   |                        ------------------------
+   |                              |
+   --------------------------------
+
+    Eventos de ratón 
+    Constructor que permite indicar el color del fondo de los botones y el campo de texto del los resultados.
+
+     ------------------
+   --| ControlRaton   |------------
+   | ------------------           |
+   | // propiedades               |
+   | TextField                    |
+   | Color   ^                    |
+   |   |     |                    |
+   |   |     |              ---------------------------------
+   |   |     <--------------| ControlRaton(TextField, Color)| <--
+   |   |                    ---------------------------------
+   |   |                   métodos|
+   |   |                    ---------------------------
+   |   |                    | mouseEntered(mouseEvent)| -->
+   |   |                    ---------------------------
+   |   |                          |
+   |   |                    -------------------------
+   |   -------------------->|mouseExited(mouseEvent)| -->
+   |                        -------------------------
+   |                              |
+   |                        ---------------------------
+   |                        | mouseClicked(mouseEvent)| -->
+   |                        ---------------------------
+   |                              |        ^
+   --------------------------------        |
+                                      OpcionErronea
+
+_JavaDevelopment/
+_JavaDevelopment/
+_JavaDevelopment/
+
 --O-J-O-- --O-J-O-- --O-J-O-- --O-J-O-- --O-J-O--
 
 // pendientes npi
@@ -2679,7 +2786,8 @@ public class Matriz3Scanner{
     }
 }
 //
-
+Revisar Calculadora - Sin los eventos,  contiene las clases Digitos, Operadores, Resultados, GUICalculadora* y Calculadora*
+                                        esta sin importar MyFrame1 ..etc y sin modificar el package y sin las clases de Controldeeventos
 ---------------------------
 |  _____________________  |
 | |                     | |

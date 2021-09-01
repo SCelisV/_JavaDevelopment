@@ -72,5 +72,9 @@ public class Digitos {
     public Button[] getButtons(){
         return Botones;
     }
+    // devuelve el color original de los botones
+    public Color getColor(){
+        return (Color.LIGHT_GRAY);
+    }
     
 }

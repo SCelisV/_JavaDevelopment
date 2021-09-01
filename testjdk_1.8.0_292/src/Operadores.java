@@ -73,5 +73,8 @@ public class Operadores {
     public Button[] getButtons(){
         return Botones;
     }
-    
+    // Devuelve el Color original de los botones
+    public Color getColor(){
+        return (Color.LIGHT_GRAY);
+    }
 }
