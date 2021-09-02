@@ -53,6 +53,9 @@ public class GUICalculadora2 {
         // Recupero el texto de la instancia Resultados
         TextField textFieldR = Resultados.getTextField();
 
+        // Procesa Eventos
+        ProcesaEvento Procesar = new ProcesaEvento(textFieldR);
+
         // Recupero los botones de la instancia Digitos
         Button[] buttonsD = Digitos.getButtons();
         // Asigno a cada boton de la instancia Digitos el Tratamiento de eventos de Botones

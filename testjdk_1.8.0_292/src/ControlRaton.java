@@ -29,17 +29,15 @@ public class ControlRaton implements MouseListener{
         // Extrae el primer carácter de su etiqueta (0,1,2,3,4,5,6,7,8,9,+,-,*,/,=,.)
         char Char = button.getLabel().charAt(0);
         System.out.print(Char);
-        // se le pasa a un método para que lo procese
-        // se controla la excepción del tipo OpcionErronea cuando el botón es inadecuado
+        // se le pasa el caracter pulsado al método charPulsado de la clase ProcesaEvento para que lo procese
+        // se controla la excepción del tipo OpcionErronea cuando la opción es inadecuada
         // y se coloca un mensaje de error sobre el visor y se le asigna el color ROJO al botón pulsado.
-        /*
         try{
-
-        } catch(OpcionErronea e){
-            TextField.setText(e.getMessage());
-            button.setBackground(Color.GREEN);
+            ProcesaEvento.charPulsado(Char);
+        } catch(OpcionErronea eOE){
+            TextField.setText(eOE.getMessage());
+            button.setBackground(Color.RED);
         }
-        */
 
     }
     // Pone los botones por los que se pasa en color verde (al desplazarse con el raton)

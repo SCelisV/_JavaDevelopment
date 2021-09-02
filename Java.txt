@@ -549,7 +549,8 @@ _JavaDevelopment/testjdk_1.8.0.292/src/Sencilla.java
 _JavaDevelopment/testjdk_1.8.0.292/src/PruebaSencilla.java
 _JavaDevelopment/testjdk_1.8.0.292/src/PruebaSencilla2.java
 
-Propiedades de clase: (static)
+Propiedades de clase: (static) - ver ejemplo en _JavaDevelopment/testjdk_1.8.0_292/src/ProcesaEvento.java
+
 Una propiedad de clase (propiedad estática), se declara con el atributo static
 Existe incluso si no se ha creado ninguna instacia de la clase.
 Pueden ser referenciadas directamente a través del nombre de la clase sin tener que utilizar el identificador de ninguna instancia
@@ -655,7 +656,7 @@ sólo pueden ser utilizados a través de una instancia de la clase.
 
 Cualquier intento de acceder a un método de instancia a través del nombre de la clase(y no de una instancia de la clase) nos dará error de compilación.
 
-Métodos de clase: (static)
+Métodos de clase: (static) -> ver otro ejemplo en _JavaDevelopment/testjdk_1.8.0_292/src/ProcesaEvento.java 
 
 Un método estático puede ser utilizado sin necesidad de definir previamente instancias de la clase que contiene el método. Los métodos estáticos pueden referenciarse a través del nombre de la clase(al igual que las propiedades estáticas). 
 Esta posibilidad es útil en diversas circunstancias:
@@ -2438,14 +2439,16 @@ Los operandos podrán ser valores númericos enteros o decimales con signo.
 Un operando:
 
                      -----
-                -----| - |-------
-                |    -----       |
-Operando -------|                |
-                |    ----------  |      -----      ----------
-                -----| Digito |--| -----| . |----- | Digito |
-                     ---------- |       -----      ----------
-                      |____|    |                   |____| |
-                                |                          |                                -----------------------------------------
+                -----| - |----
+                |    -----   |
+Operando -------|            |
+                |    ----------         -----      ----------
+                -----| Digito |---------| . |------| Digito |
+                     ----------         -----      ----------
+                      |____| |                      |____| |
+                             |                             |                                
+                             -----------------------------------------
+
 Diseñada según principios básicos de la PPO.
 Botones con diferentes colores
 Compotamiento para todos los botones:
@@ -2455,7 +2458,7 @@ focusLost -->  color original.
 Al pulsar una opción no valida (ex: dígito después del igual, dos operadores seguidos, etc), debe mostrar una indicación de error en el área de resultados y el botón pulsado de color rojo.
 
 
-Definición de Interfaz gráfico: 
+Definición de Interfaz gráfico:  - MVC - ModeloVC
 Dígitos: Panel con botones que representan los dígitos del 0-9, signo(.), signo(=)
 Operadores: Panel con cuatro botones de signos (+, -, *, /)
 Resultados: Visor de la calculadora
@@ -2491,7 +2494,7 @@ Utilizando las clases: Dígitos, Operadores y Resultados, podemos definir difere
 
     Resultados, proporciona un campo de texto deshabilitado que hará las veces de visor de la calculadora.
 
-    Diseño de clases:
+    Diseño de clases: - MVC - MVistaC
 
      -----------
    --| Digitos |-------------------
@@ -2670,9 +2673,154 @@ Utilizando las clases: Dígitos, Operadores y Resultados, podemos definir difere
    --------------------------------        |
                                       OpcionErronea
 
-_JavaDevelopment/
-_JavaDevelopment/
-_JavaDevelopment/
+_JavaDevelopment/testjdk_1.8.0_292/src/ControlVentana.java
+_JavaDevelopment/testjdk_1.8.0_292/src/ControlFoco.java
+_JavaDevelopment/testjdk_1.8.0_292/src/ControlRaton.java
+
+DISEÑO DEL CONTROL  - MVC - MVControlador - lógica I/O
+Pulsaciones del usuario => Input
+Resultados => Output
+
+ControlRaton, recoge las pulsaciones que realiza el usuario, (los eventos). 
+Procesamiento, realizará el tratamiento de los eventos
+
+ControlRaton le pasará en forma de caracteres("0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "=", ".", "+", "-", "*", "/"), para ProcesaEvento.
+
+En caso de que el usuario pulse una opción inadecuada, "ProcesaEvento", generara una Exception.
+
+                --------------------
+        --------|   ControlRaton   |
+        |       --------------------
+        |                ^
+        |                |
+-----------------        |
+| ProcesaEvento |--------|
+-----------------        |
+                         | 
+                --------------------
+                |   OpcionErronea  |
+                --------------------
+
+El esquema de clases de la app:
+
+
+         -------------------------
+         |    GUICalculadora1    |
+         ----------------------------------------------...............
+             |       |        |            |        |  ControlFoco     |
+             |       |        |            |        .......................
+             |       |        |            |           |  ControlVentana  |
+             |       |        |            |           .........................
+             |       |        |            |  --------------|  ControlRaton    |
+             |       |        |            |  |             ....................
+             |       |        |            |  |                     ^
+             |       |        |            |  |                     |
+             |       |        |     -----------------       -----------------
+             |       |        |     | ProcesaEvento |       | OpcionErronea |                               
+             |       |        |     -----------------       -----------------                          
+             | -------------- |                                                                        
+             | | Operadores | |                                                                                     
+             | -------------- |                                                                        
+         -----------          |                                                                        
+         | Digitos |          |                                                                                     
+         -----------          |                                                                        
+                         --------------                                                                        
+                         | Resultados |                                                                             
+                         --------------                                                                        
+
+
+--------------      --------------      --------------      --------------      -------------
+| Introducir |--->> | Introducir |--->> | Introducir |--->> | Introducir |--->> |  Obtener  |
+| Operando 1 |      |  OPERADOR  |      | Operando 2 |      |    SIGNO   |      | Resultado |
+--------------      --------------      --------------      --------------      -------------
+                           ^                                                           |
+                           |___________________________________________________________|
+
+                     -----
+                -----| - |----
+                |    -----   |
+Operando -------|            |
+                |    ----------         -----      ----------
+                -----| Digito |---------| . |------| Digito |
+                     ----------         -----      ----------
+                      |____| |                      |____| |
+                             |                             |                                
+                             ------------------------------------------
+
+ProcesaEvento, implementará el control de la calculadora.
+Cajas --> representan los diferentes estados en los que nos podemos encontrar y
+Flechas --> son las transiciones permitidas desde cada uno de esos estados
+
+                          -----
+                     ---->| - |----
+-----------------    |    -----   |
+| ProcesaEvento |----|            |
+-----------------    |    ----------     -----     ----------
+                     ---->| Digito |---->| . |---->| Digito |
+                          ----------     -----     ----------
+                           ^____| |                 ^____| |
+                                  |                        |                                
+                                  --------------------------
+                                  |
+                                  v               -----
+                            --------------   ---->| - |----
+                            | Introducir |   |    -----   |
+                            |  OPERADOR  |---|            |
+                            --------------   |    ----------     -----     ----------
+                                   ^         ---->| Digito |---->| . |---->| Digito |
+                                   |              ----------     -----     ----------
+                                   |               ^____| |                 ^____| |
+                                   |                      |                        |      -----                     
+                                   |                      ------------------------------->| = |
+                                   |                                                      -----
+                                   |                                                        |
+                                   ----------------------------------------------------------
+
+Podemos ver como el usuario va evolucionando según la pulsación de los botones, y podemos conocer las pulsaciones permitidas:
+Diagrama de estados:
+
+                          -----      1
+                     ---->| - |----
+-----------------    |    -----   |
+| ProcesaEvento |----|            |  2          3              4
+-----------------    |    ----------     -----     ----------
+                     ---->| Digito |---->| . |---->| Digito |
+                          ----------     -----     ----------
+                           ^____| |                 ^____| |
+                                  |                        |                                
+                                  --------------------------
+                                  |
+                                  v        5      -----      6
+                            --------------   ---->| - |----
+                            | Introducir |   |    -----   |
+                            |  OPERADOR  |---|            |  7          8              9
+                            --------------   |    ----------     -----     ----------
+                                   ^         ---->| Digito |---->| . |---->| Digito |
+                                   |              ----------     -----     ----------
+                                   |               ^____| |                 ^____| |
+                                   |                      |                        |      -----   10
+                                   |                      ------------------------------->| = |
+                                   |                                                      -----
+                                   |                                                        |
+                                   ----------------------------------------------------------
+
+    Estado 5: hemos recibido ("0", "1", "2", "3", "4", "5", "6", "7", "8", "9" y un operador "+", "-", "*", "/")
+    Estado 7: sólo se permite pulsar (".", "=", ó "0", "1", "2", "3", "4", "5", "6", "7", "8", "9")
+
+
+    ProcesaEvento
+    Se definen las propiedades static para evitar pasar la referencia de la instancia de la clase ProcesaEvento a la clase ControlRaton.
+
+    Sin embargo, si en una misma aplicación se quiere crear más de una calculadora, ProcesaEvento no funcionaría ya que todas las calculadoras de la aplicación compartirían las mismas propiedades de estado.
+
+    Si cada calculadora se encontrara en una app separada ProcesaEvento si funciona, ya que cada calculadora se ejecuta sobre una JVM diferente.
+    
+    Para evitar las propiedades static: 
+    - pasar la referencia del objeto ProcesaEvento a la clase ControlRaton.
+    - utilizar la referencia pasada en lugar del nombre de la clase cuando la invoca en el try (ProcesaEvento.charPulsado())
+
+_JavaDevelopment/testjdk_1.8.0_292/src/ProcesaEvento.java
+_JavaDevelopment/testjdk_1.8.0_292/src/OpcionErronea.java
 
 --O-J-O-- --O-J-O-- --O-J-O-- --O-J-O-- --O-J-O--
 
