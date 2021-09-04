@@ -1,5 +1,8 @@
 import java.awt.Color;
 // Rectangulo es una clase derivada de FiguraGeometrica que incorpora una nueva propiedad a las heredadas.
+// Rectangulo especializa a la clase Figura
+// Contiene llamadas explicitas a los constructores de su superclase
+// Contiene una llamada implicita al constructor vacio de la superclase
 public class Rectangulo extends FiguraGeometrica{
 
     // Propiedades

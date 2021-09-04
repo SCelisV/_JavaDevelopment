@@ -4,6 +4,7 @@ public class Estadisticas{
     // para hallar la media de los valores de la matriz
     // para dar una medida de variación respecto a la media
     // para obtener los valores extremos de la matriz.
+    // El método "Media", funciona correctamente con independencia del tamaño de la matriz que se le administra como argumento
 
     static float Media(float [] Matriz){
         // Devuelve un float con el calculo de la media de la Matriz pasada como parámetro
@@ -19,6 +20,7 @@ public class Estadisticas{
     static float Variacion(float [] Matriz){
 
         float Suma = 0;
+        // hace una llamada al método "Media"
         float Media = Media(Matriz);
         for ( int i=0; i < Matriz.length; i++){
             Suma = Suma + Math.abs( Media - Matriz[i] );
@@ -27,7 +29,7 @@ public class Estadisticas{
 
     }
 
-    //Devuelve una matriz de dos valores
+    // El método "MenorMayor" devuelve una matriz de dos valores de tipo float
     static float [] MenorMayor( float[] Matriz ){
 
         float[] Auxiliar = new float[2]; //Contendrá el menor y el mayor valor

@@ -32,6 +32,7 @@ public class Telefono{
         LlamadasHechas[ NumLlamadaHecha ] = Numero;
     }
     // Devuelve el último número de teléfono llamado
+    // podemos prescindir de este método sin disminuir las pasibilidades que ofrece la clase
     public String UltimaLlamada(){
         return Llamada(0);
     }

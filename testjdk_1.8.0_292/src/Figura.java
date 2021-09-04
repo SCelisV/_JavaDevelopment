@@ -29,6 +29,7 @@ public class Figura{
     // Método SET establecer la Posición
     public void EstablecerCentro(int[] posicion){
         // a la propiedad de la clase le establece el valor de la variable posicion
+        // this, se refiere a la clase Figura, no a la variable Posicion.
         this.Posicion[0] = posicion[0];
         this.Posicion[1] = posicion[1];
     }

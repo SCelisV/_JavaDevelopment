@@ -14,6 +14,9 @@ public class PuntodeCorte {
     // recta2 donde r es el valor real
     // X = X3 + (X4-X3) * r
     // Y = Y4 + (Y4-Y3) * r
+    // si las rectas son casí paralelas valdría con modificar esta línea y funcionaría correctamente
+    //        if (Denominador == 0){
+
     public static void main(String[]args){
 
 

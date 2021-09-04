@@ -1,6 +1,7 @@
 import java.awt.Color;
 // Definir una clase que implemente alguna caracteristicas de diferentes tipos de vehiculos.
 // Será una SuperClase que sirva para crear distintas SubClases como motos, camiones... etc.
+// contiene llamadas explicitas a los constructores de su misma clase
 
 public class Vehiculos {
 

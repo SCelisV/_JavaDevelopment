@@ -1,3 +1,10 @@
+/*
+    La clave buscada la definimos en la línea  return (Clave.equals("0123"));
+    Existe un bucle por cada carácter que forma la clave
+    dependiendo de la clave buscada, si eliminamos alguna de estas líneas: Car1++; Car2++; Car3++; 
+    el programa dejará de funcionar.
+*/
+
 public class RevientaClaves{
 
     //Compara la Clave calculada con una clave prefijada

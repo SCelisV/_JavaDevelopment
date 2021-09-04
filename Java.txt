@@ -421,8 +421,12 @@ Estos dos métodos complementan a TODOS los DEMÁS métodos sobrecargados "Dimen
 _JavaDevelopment/testjdk_1.8.0.292/src/Objeto3DConConstructor.java
 _JavaDevelopment/testjdk_1.8.0.292/src/PruebaObjeto3DConConstructor.java
 
+    // this se refiere a la clase Figura, no a la variable Posicion
+
 _JavaDevelopment/testjdk_1.8.0.292/src/Figura.java
 _JavaDevelopment/testjdk_1.8.0.292/src/PruebaFigura.java
+
+    // se rellena la matriz en forma de buffer circular (se consigue con %), 
 
 _JavaDevelopment/testjdk_1.8.0.292/src/Telefono.java
 _JavaDevelopment/testjdk_1.8.0.292/src/PruebaTelefono.java
@@ -2821,6 +2825,194 @@ Diagrama de estados:
 
 _JavaDevelopment/testjdk_1.8.0_292/src/ProcesaEvento.java
 _JavaDevelopment/testjdk_1.8.0_292/src/OpcionErronea.java
+
+
+
+
+
+
+
+GENERALES:
+----------
+CLASSPATH, indica donde se encuentran los objeto (*.class) y la instalación la actualiza.
+La variable de entorno CLASSPATH se especifica de manera diferente según cual sea el SO que utilizamos.
+Los ubicación de los ejecutables del SDK por defecto, depende de la version del SDK y pueden instalarse en cualquier lugar.
+La ayuda del SDK, se accede a través del index.html, contiene un enlace importante referente al API, proporciona información sobre los métodos y clases disponibles.
+Los programas en Java No deben incluir números de línea
+La estructura mínima de un programa Java como mínimo: 
+- Debe definirse una clase,
+- Debe definirse un método main,
+- Debe utilizarse un parámetro String[], aunque no se use.
+En un programa Java se debe tener en cuenta:
+- Las estructuras (clases, métodos) se delimitan con {llaves de comienzo y final}
+- El caracter ';', sirve para separar instrucciones
+- Una clase declarada como pública es accesible a cualquier otra clase.
+El fuente, (código) de un programa se debe grabar con formato de texto ASCII, y extensión java
+Los errores de compilación pueden ser por:
+- errores en el código
+- el fichero esta guardado en un formato inadecuado y/o con extensión inadecuada (debe ser java)
+- para compilar con con javac: javac nombredelfichero.java
+Los nombres de las variables NO deben contener espacios en blanco, y pueden empezar por una [A-Z, a-z], "$", ó "_"
+Los tipos de datos permiten que el traductor realice comprobaciones estáticas respecto a la corrección del programa y permiten clasificar a las variables según su naturaleza.
+Ex:    
+   short Short = 12826;
+   long Long = 26;
+   float $Float = 12.6f;
+   boolean Boolean = true;
+   char Char = 'S';
+   short SegundoShort = (short) (200+112); 
+For es adecuando cuando conocemos a priori el número de iteraciones
+For obliga a evaluar la condición de finalización al comienzo del bucle
+While es adecuado cuando no conocemos a priori el número de iteraciones
+While Tiene dos variantes: una en la que se evalúa la condición de finalización, al comienzo del bucle y otra al final del mismo
+if Permite cualquier número de operaciones y permite expresiones con operadores de comparación y operadores lógicos
+Es más eficiente una solución con if anidados 
+Los if anidados no tienen límite fijado por el lenguaje
+En un Switch se puede definir un número ilimitado de ramas basadas en una misma condición
+Los 'case', definen los valores que se comparan con el resultado de la condición del switch
+La instrucción switch se termina cuando el flujo de control llega a una clausula break ó a una clausula switch
+switch puede contener una cláusula 'default'
+switch puede devolver valores de tipo: short, int, char, byte
+métodos: 
+- permiten encapsular instrucciones, 
+- pueden contener cualquier número y tipo de instrucciones, 
+- pueden ser invocados desde diferentes lugares de una app.
+- cuando se devuelve un valor se debe indicar el tipo antes del nombre
+- cuando NO se devuelve un valor se debe indicar void antes del nombre
+Ex:
+si public float getPrecio(){};
+puedo: float Precio = getPrecio(); if (getPrecio>200f)..
+Los parámetros pertenecen al método y los argumentos al programa llamante y cada parámetro debe corresponder en tipo con su argumento
+'return' debe ser la última instrucción de un método y puede presentarse sin argumento
+cuando se devuelve un valor debe contener return;
+??? cuando NO se devuelve un valor debe ó puede contener return;
+Los argumentos basados en tipos primitivos (byte, short, int, long, char, float, double y boolean), de datos son pasados por valor
+Los argumentos NO basados en tipos primitivos (byte, short, int, long, char, float, double y boolean), de datos son pasados por referencia
+Los argumentos pasados por valor nunca quedan modificados después de la ejecución de los métodos
+Los argumentos pasados por referencia pueden ser modificados en los métodos llamados.
+El método sqrt de la clase Math devuelve un resultado de tipo double
+Los String NO son tipos nativos de datos, y no funcionan igual que los tipo char, y se concatenan con "+".
+Un String con valor null es diferente a un String con valor ""
+equals compara dos Strings caracter a caracter
+Si dos variables String apuntan a la misma estructura de datos, al compararlos con "==" or con "equals" el resultado es true
+length devuelve la longitud el String
+int[] x; int x[] producen el mismo resultado
+float[]x = {1.1f, 2.2f, 3.3f}; float[] x = new float[3] definen una matriz de 3 elementos
+x[2]=1.1f; float[] x = {1.1f, 2.2f}; float[] x={1.1f}; estan bien definidas
+Las matrices pueden ser recorridas mediante bucles
+Los argumentos de tipo Matriz se escriben SIN corchetes y los parámetros CON corchetes
+Las clases pueden contener propiedades y métodos ó pueden contener sólo propiedades ó pueden contener sólo métodos
+Las propiedades de una clase definen su estado
+Las propiedades privadas de una clase son accesibles directemente desde el interior de la clase 
+Los métodos publicos de una clase son accesibles desde el exterior de esa clase 
+Las instancias de una misma clase NO comparten las propiedades de esa clase
+No existe un límite definido al número de instancias de una clase que podemos crear
+Se instancia con new y se usa notación punto para acceder a una propiedad o a un método de una instancia de clase.
+Los métodos sobrecargados:
+- Deben tener el mismo nombre y NO deben presentar la misma firma
+La firma de un método se define por el nombre del método, el número y tipo de parametros atendiendo al orden de colocación.
+Los constructores:
+- nos permiten iniciliazar el estado de una clase en el momento de su instanciación, 
+- admiten sobrecarga y deben denominarse igual que la clase que les contiene, 
+- tienen implicito el atributo de acceso public y el atributo de retorno void.
+clases como parámetros (class):
+- podemos aplicar los métodos de una clase sobre las propiedades de diferentes instancias de otra clase.
+- podemos pasar distintas instancias de una clase a los métodos (incluidos constructores) de otra clase.
+Las propiedades de instancia de una clase:
+- se crean cada vez que se define una instancia de la clase.
+Las propiedades estáticas de clase de una clase:
+- existen a partir de la definición de la clase
+- son compartidas por todas las instancias de esa clase
+- Se pueden referenciar a través del nombre de la clase
+Los métodos de instancia se pueden referenciar a través del nombre de su clase.
+Los métodos de clase se pueden referenciar a través del nombre de su clase y a través del nombre de una instancia de su clase.
+Los métodos estáticos de clase solo pueden referenciar objetos estáticos.
+Las propiedades estáticas de una clase nos permiten que distintas instancias de esa clase compartan sus valores.
+Una clase puede contener simultaneamente objetos de clase y de instancia.
+La sentencia 'package' de existir debe ser la primera de un fichero .java
+Los miembros públicos de una clase son accesibles desde las clases situadas en otros paquetes.
+Herencia sirve para crear subclases/clases derivadas que especializan los miembros (propiedades y métodos) de la super clase.
+El método super(parámetros) invoca al constructor de la superclase que coincida en firma con la llamada.
+Si se usa super, debe ser (obligatoriamente) la primera sentencia del constructor.
+una clase sólo puede heredar de otra clase
+Polimorfismo 
+- se resuelve en tiempo de ejecución.
+- permite invocar a métodos de diferentes subclases haciendo uso de una misma referencia
+- el método polimórfico debe existir en las subclases y en la superclase
+- la referencia a partir de la que se invoca al método polimórfico debe ser del tipo de la superclase
+Las clases abstractas 
+- contienen al menos un método abstracto
+- pueden tener todos sus métodos abstractos
+- facilitan el diseño y desarrollo orientado a objetos
+- permiten implementar con elegancia el mecanismo de polimorfismo
+- Una clase abstracta pertenece a una jerarquía de clases mientras que una interfaz no pertenece a una jerarquía de clases. 
+Los métodos abstractos Se declaran(acabando con el símbolo ";") y no se definen
+Las interfaces
+- Sólo pueden contener constantes y métodos abstractos
+- Pueden contener sólo constantes
+- NO implementan interfaces
+- NO extienden interfaces ni clases
+- Puede extender multiples superinterfaces, es decir, lista separada por comas de todas las interfaces que la nueva interfaz va a extender
+- especifica qué se debe hacer, pero no cómo hacerlo
+Una clase puede implementar varias interfaces, pero sólo puede tener una clase ascendiente directa. 
+Clases sin relación de herencia pueden implementar la misma interfaz.
+No se puede crear una instancia de un interfaz
+No se puede crear una instancia de una clase abstracta
+Las excepciones permiten separar la lógica del programa de las instruciones de control de errores, se tratan haciendo uso de la clase Throwable y sus clases derivadas 
+Existen excepciones que obligatoriamente deben ser tratadas y otras que no
+Es más habitual tratar excepciones de tipo Exception que de tipo Error
+Cada bloque try puede tener asociado varios bloques catch
+El bloque finally de existir, siempre se ejecuta
+Las excepciones pueden propagarse entre métodos
+Las instrucciones throw nos permiten propagar excepiciones
+Cuando se produce una excepción, puede que provoque la ejecución de dos bloques 'catch' del mismo tipo, estando los bloques 'catch' en diferentes métodos.
+El orden de colocación de los bloques catch es importante
+Las excepciones definidas por el programador cubren situaciones erróneas que tienen que ver con la naturaleza de las aplicaciones, pueden contener miembros (propiedades y métodos).
+throw se utiliza para levantar excepciones por programa.
+throws se emplea en la declaración de un método.
+Object es la raiz de toda la jerarquia de clases
+Con la clase window se obtienen ventanas sin bordes y sin posibilidad de incluir barras de MENUS
+Frame es más especializada que la clase Window, tiene un constructor que admite el título de la ventana, permite incluir barra de menús, es necesario invocar el método setVisible, y setSize, podemos instanciar cuantos Frames como deseemos.
+Es posible trabajar con varias ventanas simultaneas.
+Los componentes son menos especializados que los contenedores
+Los botones no son subclases de los contenedores
+Los paneles son subclases de los contenedores
+Los Layouts permiten colocar los componentes con diferentes disposiciones y se pueden asociar a los paneles
+FlowLayout es el layout que se asigna por defecto a los paneles, admite alineamiento horizontal.
+BorderLayout contiene 5 regiones cardinales.
+GridLayout divide el espacio de manera matricial (en rejilla), admite 2 parámetros filas y columnas
+La clase Container es subclase de Component, y superclase directa de Panel, los paneles son Container.
+La clase Label permite que se les defina un alineamiento, pueden ser variadas en tiempo de ejecución, derivan directamente de la clase Component
+Los campos TextField pueden instanciarse indicando un texto inicial, permiten definir el número de caracteres de edición
+Las fuentes Font, permiten definir el tamaño de los textos , el tipo de letra de los componentes.
+TextArea deriva de TextComponent, puede configurarse para incluir o no barras de desplazamiento.
+Checkbox admite un constructor vacio, tiene asociada una etiqueta identificativa.
+CheckboxGroup permiten agrupar un conjunto de Checkbox, la activación de un elemento implica la desactivación del otro, derivan de Object
+List, permite selecciones multiples, selecciones de un único elemento, configurarse para visualizar un número determinado de elementos, (el resto si los hay, pueden ser accedidos mediante barras de desplazamiento).
+Choice, proporciona el método add para añadir elementos.
+Diseño de formularios, la solución implementada con varias clases permite reutilizar y añadir código con mayor facilidad, además esta mejor diseñada desde el punto de vista de POO.
+Dialogos, deben estar asociados a un propietario (Frame o Dialog), pueden ser modales o no modales.
+FileDialog sólo admite como propietario un Frame, permiten establecer un directorio inicial para buscar el fichero, pueden ser modales y no modales.
+MenuBar, solo pueden situarse sobre objetos Frame, Sólo presentan el constructor vacio, permiten añadir menus.
+Menu pueden ser añadidos a las barras de menús.
+Eventos, provienen en general de las interrupciones de hardware, son visibles de manera automática sin necesidad de invocar a ningún método, se tratan haciendo uso de los adaptadores xxxAdapter
+Algunos interfaces xxxListener tienen asociada una clase xxxAdapter, y todos los interfaces xxxListener reciben un evento xxxEvent.
+JVM interviene en el mecanismo de tratamiento de eventos, los eventos son objetos que crea la JVM.
+Los métodos de tratamiento de eventos se encuentran en los interfaces xxxListener.
+Los componentes AWT de una aplicación pueden tener asociado uno o más de un listener o adapter.
+La asociación entre un componente y sus adaptadores se define mediante los métodos addxxxListener
+Los eventos de ratón y movimiento de ratón utilizan los objetos de evento MouseEvent y MouseWheelEvent
+El interfaz MouseMotionListener Contiene los métodos mouseDragged y mouseMoved, utiliza el evento MouseEvent que permite conocer el objeto que ha generado el evento, la posición x, y en la que se ha generado el evento(relativa a la esquina superior izquierda del componente)
+Para asociar el componente a una clase de tratamiento de evento de ratón se usa el método addMouseListener.
+Para asociar el componente a una clase de tratamiento de evento de movimiento de ratón se usa el método addMouseMotionListener.
+Para asociar el componente a una clase de tratamiento de evento de teclado se usa el método addKeyListener.
+El interfaz MouseMotionListener, contiene el método mouseDragged.
+El interfaz KeyListener contiene 3 métodos, tiene asociado el adaptador KeyAdapter
+El interfaz WindowListener contienen el método windowClosed
+El objeto KeyEvent contiene el metodo getKeyCode
+focusGained es un método del interfaz FocusListener y de la clase FocusAdapter
+itemStateChanged es un método del interfaz ItemListener
+Los métodos addItemListener y addActionListener existen
 
 --O-J-O-- --O-J-O-- --O-J-O-- --O-J-O-- --O-J-O--
 
