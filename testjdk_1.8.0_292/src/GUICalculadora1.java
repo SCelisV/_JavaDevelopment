@@ -41,7 +41,7 @@ public class GUICalculadora1 {
         Operadores Operadores = new Operadores();
 
         // Añade los Paneles de cada instancia al Panel
-        PnlCalculadora.add(Resultados.getPanel(), BorderLayout.NORTH);
+        PnlCalculadora.add(Resultados.getPanel(), BLayout.NORTH);
         PnlCalculadora.add(Digitos.getPanel(), BLayout.CENTER);
         PnlCalculadora.add(Operadores.getPanel(), BLayout.EAST);
 

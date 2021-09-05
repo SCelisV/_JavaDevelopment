@@ -30,6 +30,9 @@ grep -n -- 'something' *.java
 find -name '*Listener'*.Java
 find -name 'Listener?'*.java
 
+         1         2         3         4         5         6         7         8         9         0         1         2         3
+1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890
+
 execute
 cd /home/hadoop/SCProjects/0_SCProjects_github.com_SCelisV/_JavaDevelopment/testjdk_1.8.0_292/src ; /usr/bin/env /usr/lib/jvm/java-11-openjdk-amd64/bin/java -Dfile.encoding=UTF-8 -cp /home/hadoop/.config/Code/User/workspaceStorage/25fa5dc2bf9cb43a259787a70c062b18/redhat.java/jdt_ws/src_5bfeb882/bin Calculadora1
 
@@ -2155,7 +2158,7 @@ Por lo tanto:
 Java proporciona una serie de Interfaces que agrupan métodos relacionados para el tratamiento de eventos.
 Los interfaces más comunes, normalmente relacionados con GUI's basados en AWT se encuentran en el paquete java.awt.event
 
-El mecanismo básico de eventos de Java se basa en lla existencia de las clases de eventos y los interfases "listeners", son interfaces que debemos implementar, colocando las acciones deseadas en sus métodos, también podemos basarnos en las implementaciones con métodos vacios que proporciona el SDK (adaptadores).
+El mecanismo básico de eventos de Java se basa en la existencia de las clases de eventos y los interfases "listeners", son interfaces que debemos implementar, colocando las acciones deseadas en sus métodos, también podemos basarnos en las implementaciones con métodos vacios que proporciona el SDK (adaptadores).
 AWT proporciona una ámplia gama de eventos que pueden ser recogidos por los métodos existentes en las implementaciones que hagamos de los listeners.
 
 Ex: Eventos, Interfaces y adaptadores más utilizados en app de catácter general.
@@ -2829,9 +2832,6 @@ _JavaDevelopment/testjdk_1.8.0_292/src/OpcionErronea.java
 
 
 
-
-
-
 GENERALES:
 ----------
 CLASSPATH, indica donde se encuentran los objeto (*.class) y la instalación la actualiza.
@@ -2931,6 +2931,9 @@ Las propiedades estáticas de una clase nos permiten que distintas instancias de
 Una clase puede contener simultaneamente objetos de clase y de instancia.
 La sentencia 'package' de existir debe ser la primera de un fichero .java
 Los miembros públicos de una clase son accesibles desde las clases situadas en otros paquetes.
+SÓLO se pueden usar desde fuera de un paquete las clases definidas como públicas dentro de ese paquete.
+Las clases definidas como public pueden ser accesibles desde fuera del paquete.
+Las que no, sólo son accesibles desde dentro del paquete(sirven para dar soporte a las clases públicas)
 Herencia sirve para crear subclases/clases derivadas que especializan los miembros (propiedades y métodos) de la super clase.
 El método super(parámetros) invoca al constructor de la superclase que coincida en firma con la llamada.
 Si se usa super, debe ser (obligatoriamente) la primera sentencia del constructor.
@@ -3023,9 +3026,6 @@ Se puede reemplazar por la llamada a un método que sea capas de leer de la cons
 System.out.println ("Introduce la matricula: ");
 String matricula = Teclado.Lee_String();
 */
-
-// Las que no, sólo son accesibles desde dentro del paquete(sirven para dar soporte a las clases públicas)
-// ????
 
 // pendiente de picar y de probar el código
 
@@ -3126,8 +3126,11 @@ public class Matriz3Scanner{
     }
 }
 //
-Revisar Calculadora - Sin los eventos,  contiene las clases Digitos, Operadores, Resultados, GUICalculadora* y Calculadora*
-                                        esta sin importar MyFrame1 ..etc y sin modificar el package y sin las clases de Controldeeventos
+
+EditorTexto - , contiene el inicio del Editor de Texto
+
+Revisar - Calculadora - Packages - ,  contiene las clases Digitos, Operadores, Resultados, GUICalculadora* y Calculadora* 
+                                      esta sin importar MyFrame1 ..etc y sin modificar el package
 ---------------------------
 |  _____________________  |
 | |                     | |
@@ -3166,3 +3169,5 @@ GUI mejorada
 | | C | | 0 | | . | |   |  | = | |
 | ----- ----- ----- -----  ----- |
 ----------------------------------
+
+
