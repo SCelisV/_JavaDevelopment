@@ -17,7 +17,9 @@ http://www.oracle.com/technetwork/java/javase/jdk-8-readme-2095712.html#introduc
 
 Instalation: https://docs.oracle.com/javase/8/docs/technotes/guides/install/install_overview.html#CJAGAACB
 
-For example, if you were downloading the JDK installer for 32-bit systems for update 1.8.0_01, the file name: jdk-8version-windows-i586.exe becomes jdk-8u1-windows-i586.exe.
+For example, if you were downloading the JDK (Java Development Kit) installer for 32-bit systems for update 1.8.0_01, the file name: jdk-8version-windows-i586.exe becomes jdk-8u1-windows-i586.exe.
+
+JDK includes the JRE.
 
 ------ Esto es viejo... npi 
 ------ --O-J-O--
@@ -32,6 +34,8 @@ find -name 'Listener?'*.java
 
          1         2         3         4         5         6         7         8         9         0         1         2         3
 1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890
+
+https://www.geeksforgeeks.org/java/?ref=grb
 
 execute
 cd /home/hadoop/SCProjects/0_SCProjects_github.com_SCelisV/_JavaDevelopment/testjdk_1.8.0_292/src ; /usr/bin/env /usr/lib/jvm/java-11-openjdk-amd64/bin/java -Dfile.encoding=UTF-8 -cp /home/hadoop/.config/Code/User/workspaceStorage/25fa5dc2bf9cb43a259787a70c062b18/redhat.java/jdt_ws/src_5bfeb882/bin Calculadora1
@@ -117,6 +121,7 @@ _JavaDevelopment/testjdk_1.8.0.292/src/IF2.java
 _JavaDevelopment/testjdk_1.8.0.292/src/IF1.java
 _JavaDevelopment/testjdk_1.8.0.292/src/EcuacionGrado2.java
 _JavaDevelopment/testjdk_1.8.0.292/src/PuntodeCorte.java
+_JavaDevelopment/testjdk_1.8.0_292/src/multipleChoice.java
 
 SWITCH - SWITCH - ANIDADOS
 Switch - byte - final - sin break
@@ -176,7 +181,7 @@ tipo byte, short, int, long, char, float, double y boolean
 NUNCA se modifican en el programa llamante (aunque sus copias varian en el método llamado)
 _JavaDevelopment/testjdk_1.8.0.292/src/Metodo2valor.java
 
-por REFERENCIA - No esta muy claro en el ejemplo - --O-J-O--
+por REFERENCIA - Reference Types like String, 
 Lo que se copia no es el valor del argumento, sino su APUNTADOR(dirección), a la estructura de datos
 Es decir, se modifica el valor de la estructura de datos donde apunta el parámetro, 
 que es el mismo lugar donde apunta el argumento.
@@ -230,7 +235,7 @@ parseFloat para convertir de String a float y
 toString para convertir de float a String
 _JavaDevelopment/testjdk_1.8.0.292/src/Matriz3.java
 
---O-J-O-- Revisarlo para que funcione la escritura desde el teclado..  e incluir las mejoras de Matriz3.java
+funciona la escritura desde el teclado - Scanner 
 _JavaDevelopment/testjdk_1.8.0.292/src/Matriz3Scanner.java
 
 Do - While - final - Matriz
@@ -2829,11 +2834,81 @@ Diagrama de estados:
 _JavaDevelopment/testjdk_1.8.0_292/src/ProcesaEvento.java
 _JavaDevelopment/testjdk_1.8.0_292/src/OpcionErronea.java
 
+    Scanner - Escritura desde el teclado - System.in (InputStream)
 
+_JavaDevelopment/testjdk_1.8.0_292/src/PruebaClassScanner.java
+
+_JavaDevelopment/testjdk_1.8.0_292/src/Scanner_Teclado.java
+_JavaDevelopment/testjdk_1.8.0_292/src/PruebaScanner_Teclado.java
+
+    control flow sequentially
+
+_JavaDevelopment/testjdk_1.8.0_292/src/multipleChoice.java
+_JavaDevelopment/testjdk_1.8.0_292/src/calculateAreaTriangle.java
+
+    manipulates control flow
+    function methods - a series of finite steps that accomplish some task - 
+    organize code in a more meaningful way
+    define a given task once and use it all throughout our code
+    make it easier to change what our code is doing
+    returns some value or nothing
+
+_JavaDevelopment/testjdk_1.8.0_292/src/functionsAndMethods.java
+_JavaDevelopment/testjdk_1.8.0_292/src/calculateTotalCostOfMeal.java
+_JavaDevelopment/testjdk_1.8.0_292/src/splittingtheBill.java
+
+    user-defined functions
+    Java has defined some functions for us ie: .equals for Strings 
+    just call a built-in function because it's already defined ie: System.out.println()
+    dot operator to get access to many of these built-in functions
+    Sometimes we'll define our own functions and
+    sometimes we'll use built-in functions
+
+    Should I create a custom funcion for exponentiation?
+    Is there a built-in function for exponentiation?
+    Exponetiation: 2 to the power of 5 is the same as 2*2*2*2*2
+
+https://www.geeksforgeeks.org/math-pow-method-in-java-with-example/
+
+_JavaDevelopment/testjdk_1.8.0_292/src/PruebaClassMath.java
+_JavaDevelopment/testjdk_1.8.0_292/src/calculateEmployeesSalary.java
+
+bugs: 
+    Syntax errors can cause your program to fail before it is run
+    - RIGHT format
+    - misspelled variable or missing semicolon
+    Logical errors
+    - the program is able to run but it doesn't act as the user expects
+    To solve these, we look for components of the program that aren't as expected, find their respective code and fix it.
+
+    A breakpoint is an intentional stopping point put into a program for debugging purposes
+    Temporarily halt a program in order to inspect its internal state
+    Internal state: variables values, the result of certain lines of code, whether or not a certain line of code is executed.
+
+     A varible scope (alcance) refers to where we can access ºand use the variable in our program
+    
+
+
+
+
+
+     Java module descriptor (module-info.java)?
+        
+        requires, exports
+
+        testjdk_1.8.0_292/src/modules/HelloModularWorld.java
+        testjdk_1.8.0_292/src/module-info.java
+        
+    https://nipafx.dev/java-module-system-tutorial/#modules
 
 
 GENERALES:
 ----------
+(parentheses or round brackets)  
+[square brackets] 
+<angled brackets> 
+{Braces or curly brackets}
+Data is information that is stored and processed by an computer.
 CLASSPATH, indica donde se encuentran los objeto (*.class) y la instalación la actualiza.
 La variable de entorno CLASSPATH se especifica de manera diferente según cual sea el SO que utilizamos.
 Los ubicación de los ejecutables del SDK por defecto, depende de la version del SDK y pueden instalarse en cualquier lugar.
@@ -2891,7 +2966,7 @@ Los argumentos NO basados en tipos primitivos (byte, short, int, long, char, flo
 Los argumentos pasados por valor nunca quedan modificados después de la ejecución de los métodos
 Los argumentos pasados por referencia pueden ser modificados en los métodos llamados.
 El método sqrt de la clase Math devuelve un resultado de tipo double
-Los String NO son tipos nativos de datos, y no funcionan igual que los tipo char, y se concatenan con "+".
+Los String NO son tipos nativos de datos, son Reference Types y no funcionan igual que los tipo char, y se concatenan con "+".
 Un String con valor null es diferente a un String con valor ""
 equals compara dos Strings caracter a caracter
 Si dos variables String apuntan a la misma estructura de datos, al compararlos con "==" or con "equals" el resultado es true
@@ -3016,6 +3091,27 @@ El objeto KeyEvent contiene el metodo getKeyCode
 focusGained es un método del interfaz FocusListener y de la clase FocusAdapter
 itemStateChanged es un método del interfaz ItemListener
 Los métodos addItemListener y addActionListener existen
+
+--------------------------------------------------------------------------------------------------------------
+| Modifier       | Used with                       | Description                                             |
+--------------------------------------------------------------------------------------------------------------
+|                | Outer classes, interfaces,      | A class or interface may be accessed from outside the   |
+|  Public        | constructors, Inner classes,    | package. Constructors, inner classes, methods and field |
+|                | methods, and field variables    | variables may be accessed wherever their class is       |
+|                |                                 | accessed                                                |
+--------------------------------------------------------------------------------------------------------------
+|                | Constructors, inner classes,    | Accesed by other classes in the same package or any     |
+|  Protected     | methods, and field variables    | subclasses of the class in which they are referred(i.e. |
+|                |                                 | same package or different package                       |
+--------------------------------------------------------------------------------------------------------------
+|                | Constructors, inner classes,    | Accesed only within the class in which they are         |
+|  Private       | methods, and field variables    | declared                                                |
+|                |                                 |                                                         |
+--------------------------------------------------------------------------------------------------------------
+| No modifier:   | Outer classes, inner classes,   | Accesed only from within the package in which they are  |
+| (Package by    | interfaces, constructors,       | declared                                                |
+|  default)      | methods, and field variables    |
+--------------------------------------------------------------------------------------------------------------
 
 --O-J-O-- --O-J-O-- --O-J-O-- --O-J-O-- --O-J-O--
 
@@ -3170,4 +3266,18 @@ GUI mejorada
 | ----- ----- ----- -----  ----- |
 ----------------------------------
 
+
+/*
+Comparator c = new Comparator();
+Collections.sort(list, c);
+http://tutorials.jenkov.com/java-collections/sorting.html
+
+            int NUM_BUNNY=5;
+            List list = new List(NUM_BUNNY);
+
+            List Bunny = new List(Bunny);
+
+            for (int i = 0; i < numbers.length; i++)    // 0000000000
+                System.out.print(numbers[i]);
+        */
 
