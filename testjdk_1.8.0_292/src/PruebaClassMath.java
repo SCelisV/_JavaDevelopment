@@ -28,6 +28,9 @@ public class PruebaClassMath {
         b = 6;
         System.out.println(Math.pow(a, b));
 
+        // We did not need to create an instance of Math to use the pow methods
+        // pow() is a static method (class methods), we call them using the class name
+        // no necesita una instancia de la clase para ser usado
         double result = Math.pow(2,5);
         System.out.println(result);
 

@@ -160,7 +160,22 @@ método(argumentos)
 
 Parámetros: son variables que utiliza el método como valores de partida para sus cálculos. 
 su visibilidad y ámbito(existencia), se limitan a los del propio método.
+
 Argumentos: son valores que se establecen en el programa llamante y que se traspasan (por valor o referencia) al método llamado.
+
+When is an attribute accessible in a class?
+It is always accessible inside a class.
+An attribute variable is accessible to every fucntion and constructor inside the class.
+
+public Rectangle(double length, double width){      // parameters
+
+    // initialize the attributes
+    this.length = length;
+    this.width = width;
+}
+
+we would use the this keyword when you need to make a distinction between an attribute variable and a parameter.
+the this allows you to access the attributes inside the class.
 
 Return: debe ser la última del método.
 cuando el método no devuelve un valor (void), no es necesario utilizar return, o utilizarla sin un valor asociado.
@@ -235,8 +250,11 @@ parseFloat para convertir de String a float y
 toString para convertir de float a String
 _JavaDevelopment/testjdk_1.8.0.292/src/Matriz3.java
 
-funciona la escritura desde el teclado - Scanner 
+funciona la escritura desde el teclado - un sólo Scanner 
 _JavaDevelopment/testjdk_1.8.0.292/src/Matriz3Scanner.java
+
+Implementa dos métodos con dos Scanner - Lee_String y Lee_Float
+_JavaDevelopment/testjdk_1.8.0.292/src/Matriz3Scanner2.java
 
 Do - While - final - Matriz
 _JavaDevelopment/testjdk_1.8.0.292/src/GeneraPrimos.java
@@ -251,7 +269,7 @@ _JavaDevelopment/testjdk_1.8.0.292/src/Estadisticas.java
 
 Objetos Class (clases), soportan la programación orientada a objetos, son la estructura básica sobre la que se desarrollan las aplicaciones.
 
-Permite definir propiedades y métodos relacionados entre sí.
+Permite definir propiedades y métodos (attributes and behavior) relacionados entre sí.
 
 Las propiedades variables que almacenan el estado de la clase.
 Los métodos son los programas que se utilizan para consultar y modificar el contenido de las propiedades.
@@ -403,6 +421,7 @@ _JavaDevelopment/testjdk_1.8.0.292/src/PruebaObjeto3D.java
 
 Constructores son métodos que nos sirven para iniciar los objetos al definirse las instancias de los mismos.
 Asignan valores iniciales a las propiedades de la clase, es decir, situar a la clase instanciada en un estado concreto.
+It always returns an instance of the class that it is in.
 
 La sintaxis de los constructores en la misma que la de los métodos, salvo que no tienen la referencia del atributo de acceso y nunca devuelven ningún valor. (Tampoco se pone la palabra reservada void), además su nombre debe coincidir con el nombre de la clase.
 
@@ -420,6 +439,13 @@ a diferencia de lo que hemos realizado en el ejercicio anterior(Objeto3D.java), 
     7. - Objeto3DConConstructor(double Ancho, double Alto, double Profundo)
 
     // this invoca a los constructores de esta clase cuya firma coincida con la firma de las instrucciones llamantes
+   
+    Los métodos estáticos referencian propiedades y métodos estáticos.
+
+No es posible hacer referencia a una propiedad de instancia o un método de instancia (o non-static methods - NECESITA UNA INSTANCIA para usarlo) desde un método estático. 
+Esto es así debido a que en el momento que se ejecuta un método estático puede que no exista ninguna instancia de la clase donde se encuentra la propiedad o el método  
+we would use the this keyword when you need to make a distinction between an attribute variable and a parameter.
+the this allows you to access the attributes inside the class.
 
 Estos dos métodos complementan a TODOS los DEMÁS métodos sobrecargados "Dimensiones"
     
@@ -653,6 +679,7 @@ De clase
 
 Los métodos de instancia al igual que las propiedades de instancia, 
 sólo pueden ser utilizados a través de una instancia de la clase.
+non-static instance variables de instancia - their values change depending on the triangle instance
 (método main - estático)
 
 -----------
@@ -669,7 +696,11 @@ sólo pueden ser utilizados a través de una instancia de la clase.
 Cualquier intento de acceder a un método de instancia a través del nombre de la clase(y no de una instancia de la clase) nos dará error de compilación.
 
 Métodos de clase: (static) -> ver otro ejemplo en _JavaDevelopment/testjdk_1.8.0_292/src/ProcesaEvento.java 
+// pow() is a static method (class methods), we call them using the class name
+// System.out.println, println is a class method
+NO SE NECESITA UNA INSTANCIA para usarlo
 
+Static class variables do not change per instance; they hold a value for the whole class to use
 Un método estático puede ser utilizado sin necesidad de definir previamente instancias de la clase que contiene el método. Los métodos estáticos pueden referenciarse a través del nombre de la clase(al igual que las propiedades estáticas). 
 Esta posibilidad es útil en diversas circunstancias:
 
@@ -680,8 +711,15 @@ Esta posibilidad es útil en diversas circunstancias:
 - Cuando el método hace uso de propiedades estáticas u otros métodos estáticos.
     Los métodos estáticos referencian propiedades y métodos estáticos.
 
-No es posible hacer referencia a una propiedad de instancia o un método de instancia desde un método estático. 
+No es posible hacer referencia a una propiedad de instancia o un método de instancia (o non-static methods - NECESITA UNA INSTANCIA para usarlo) desde un método estático. 
 Esto es así debido a que en el momento que se ejecuta un método estático puede que no exista ninguna instancia de la clase donde se encuentra la propiedad o el método de instancia al que referencia el método estático.
+
+The main difference between an instance (non-static) method and a class (static) method:
+A class (static) method is static and does not require an instance to be created first to use it.
+    
+testjdk_1.8.0_292/src/PruebaClassString.java
+
+
     |
     |
     V
@@ -2847,7 +2885,7 @@ _JavaDevelopment/testjdk_1.8.0_292/src/multipleChoice.java
 _JavaDevelopment/testjdk_1.8.0_292/src/calculateAreaTriangle.java
 
     manipulates control flow
-    function methods - a series of finite steps that accomplish some task - 
+    function or methods or behavior - a series of finite steps that accomplish some task - 
     organize code in a more meaningful way
     define a given task once and use it all throughout our code
     make it easier to change what our code is doing
@@ -2870,8 +2908,312 @@ _JavaDevelopment/testjdk_1.8.0_292/src/splittingtheBill.java
 
 https://www.geeksforgeeks.org/math-pow-method-in-java-with-example/
 
-_JavaDevelopment/testjdk_1.8.0_292/src/PruebaClassMath.java
-_JavaDevelopment/testjdk_1.8.0_292/src/calculateEmployeesSalary.java
+    We did not need to create an instance of Math to use the pow methods
+    pow() is a static method (class methods), we call them using the class name
+    double result = Math.pow(2,5);
+
+    static methods and non-static methods
+_JavaDevelopment/testjdk_1.8.0_292/src/Triangle.java 
+_JavaDevelopment/testjdk_1.8.0_292/src/PruebaTriangle.java 
+
+_JavaDevelopment/testjdk_1.8.0_292/src/PruebaClassMath.java 
+_JavaDevelopment/testjdk_1.8.0_292/src/calculateEmployeesSalary.java 
+
+
+    public void incrementExpectedGraduationYear(){
+        this.expectedYearToGraduate = this.expectedYearToGraduate + 1;
+    }
+    
+_JavaDevelopment/testjdk_1.8.0_292/src/StudentProfile.java
+_JavaDevelopment/testjdk_1.8.0_292/src/PruebaStudentProfile.java
+
+    public int incrementExpectedGraduationYear(){
+        return this.expectedYearToGraduate +1 ;
+    }
+
+_JavaDevelopment/testjdk_1.8.0_292/src/StudentProfile2.java
+_JavaDevelopment/testjdk_1.8.0_292/src/PruebaStudentProfile2.java
+
+    package generics
+    java.util
+
+    List
+    ArrayList
+
+    without Generics, you would to cast every single object to a String.
+    with Generics, the compiler checks that only strings are added to the list which makes the code safer
+    you only need specified once.
+
+_JavaDevelopment/testjdk_1.8.0_292/src/generics/genericsExamples.java
+
+    Devuelve una List de objetos del tipo de Array pasado como parámetro
+    this approach (enfoque), significa que pierdes la seguridad de tipos
+
+_JavaDevelopment/testjdk_1.8.0_292/src/generics/genericsmethods.java
+
+    solucionar la seguridad de tipos implica que el method debe ser generic method <T> (generic type)
+    no hay errores de compilación ni de ejecución
+
+_JavaDevelopment/testjdk_1.8.0_292/src/generics/generics2methods.java
+
+    para no tener que sobrescribir metodos que tengan un número de argumentos variable:
+
+_JavaDevelopment/testjdk_1.8.0_292/src/varargs/Varargs.java
+
+    metodos que tengan un número de argumentos variable - variable-length-arguments - Varargs,  
+    replace [] with ...
+    al imprimir puedo pasar el array sin necesidad de crear el array, porque varargs lo hace automaticamente
+_JavaDevelopment/testjdk_1.8.0_292/src/varargs/Varargs2.java
+
+Liskov Substitution Principle - OOP
+
+si tienes una variable de un tipo determinado puedes asignarla a un valor que sea un subtipo de ese tipo
+if you have a variable of a given type you can assign it to a value that is a subtype of that type
+// @ at-sign
+
+    sobrescribe el método toString
+
+_JavaDevelopment/testjdk_1.8.0_292/src/substitutionPrinciple/Building.java
+_JavaDevelopment/testjdk_1.8.0_292/src/substitutionPrinciple/Office.java
+_JavaDevelopment/testjdk_1.8.0_292/src/substitutionPrinciple/PruebaBuildingOffice.java
+
+wildcards
+
+	_JavaDevelopment/testjdk_1.8.0_292/src/wildcards/Building.java
+	_JavaDevelopment/testjdk_1.8.0_292/src/wildcards/House.java
+	_JavaDevelopment/testjdk_1.8.0_292/src/wildcards/Office.java
+
+wildcard is essentially an unknown type, give you more flexibility when writing methods
+para estar seguro de when you use extends or super with wildcars, think about invariables and outvariables 
+método recibe una lista como argumento y esta lista PROVIDES DATA se usa INSIDE the method = INVARIABLE = EXTENDS
+método recibe una lista como argumento y se ADDICIONA - GIVE DATA to the list - OUTVARIABLE - SUPER 
+NO ES BUENA IDEA USAR WOLDCARS COMO RETURN DE UN METODO - AFECTA HIERARCHIES 
+
+	_JavaDevelopment/testjdk_1.8.0_292/src/wildcards/PruebaBuildingOfficeHouse.java
+
+The Collections Framework in java
+
+- https://docs.oracle.com/javase/tutorial/collections/
+- https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Collection.html
+
+- Is the order important?, 
+sometimes it's fine to have all the entries in any random order, but
+sometimes it's important to be able to access them in a specific order
+- Are duplicates allowed?, 
+some situations it's fine to have duplicate entries and others when every entry should be different
+- how fast it will be to perform operations
+different task operations take different amounts of time to perform certain operations.
+some are quick at retrieving entries
+some are quicker at adding and removing them
+- Memory used is also a Factor
+Some types of collections take up more memory than others.
+
+/*
+guide-to-selecting-appropiate-map-collection-in-java
+A decision tree/guide to Selecting Appropriate Map/Collection in Java
+*/
+
+sealed trait Data
+case object ValuesWithDuplicates    extends Data
+case object ValuesWithoutDuplicates extends Data
+case object KeyValuePair            extends Data
+
+sealed trait Order
+case object InsertionOrdering extends Order
+case object SortedOrdering    extends Order
+case object AnyOrdering       extends Order
+
+sealed trait Task
+case object AnyTask         extends Task
+case object SearchAndRemove extends Task
+
+sealed trait Decision
+case object TreeMap       extends Decision
+case object LinkedHashMap extends Decision
+case object HashMap       extends Decision
+case object ArrayList     extends Decision
+case object LinkedHashSet extends Decision
+case object TreeSet       extends Decision
+case object HashSet       extends Decision
+
+case class Problem(data: Data, order: Order, task: Task = AnyTask)
+
+object DataStructureDecisionForJava {
+
+  def decision(problem: Problem): Decision = {
+    problem match {
+      case Problem(KeyValuePair, order, _) =>
+        order match {
+          case InsertionOrdering => LinkedHashMap
+          case SortedOrdering    => TreeMap
+          case AnyOrdering       => HashMap
+        }
+      case Problem(ValuesWithoutDuplicates, order, task) =>
+        (order, task) match {
+          case (_, AnyTask) => ArrayList
+          case (order, SearchAndRemove) =>
+            order match {
+              case InsertionOrdering => LinkedHashSet
+              case SortedOrdering    => TreeSet
+              case AnyOrdering       => HashSet
+            }
+        }
+      case Problem(ValuesWithDuplicates, _, _) => ArrayList
+    }
+  }
+}
+
+/* Unit test can be found here:
+assert(decision(Problem(KeyValuePair, AnyOrdering)) == HashMap)
+assert(decision(Problem(KeyValuePair, SortedOrdering)) == TreeMap)
+assert(decision(Problem(KeyValuePair, InsertionOrdering)) == LinkedHashMap)
+
+assert(decision(Problem(ValuesWithDuplicates, AnyOrdering)) == ArrayList)
+
+assert(decision(Problem(ValuesWithoutDuplicates, AnyOrdering, AnyTask)) == ArrayList)
+assert(decision(Problem(ValuesWithoutDuplicates, AnyOrdering, SearchAndRemove)) == HashSet)
+assert(decision(Problem(ValuesWithoutDuplicates, InsertionOrdering, SearchAndRemove)) == LinkedHashSet)
+assert(decision(Problem(ValuesWithoutDuplicates, SortedOrdering, SearchAndRemove)) == TreeSet)
+*/
+
+There is a set of interfaces that define different types of collection
+
+All types of collection implement Iterable 
+            ---------------
+            |   Iterable  |     - Iterable and it declares the forEach method.
+            ---------------
+                    |
+                    V
+            -----------------
+    --------|   Collection  |-------  Declares all of the methods that every collection must have: add, remove, is empty, toArray...etc
+    |       -----------------      |
+    |               |              |    There are no classes that are a concrete implementation of collection directly
+    V               V              V
+----------  -------------   -------------
+|   set  |  |   List    |   |   Queue   |   There is the most commonly used layer of interfaces.
+----------  -------------   -------------
+Estas interfaces definen un conjunto más específico de comportamientos sobre cómo se comporta la colección.
+
+----------  
+|   set  | - No duplicates, Unordered (juego de cartas), 
+---------- 
+------------- 
+|   List    | - Duplicates, Order is also significant(when iterate over a list the items are not returned in a random order)
+-------------
+-------------
+|   Queue   | - Lets you add elements to the heads of the collection. They typically use first-in first-out operations. FIFO. 
+-------------   (real life queues in a store)
+                    
+----------
+|   Map  | - Not extend of Collection. They contain (Key,Value) pairs, - HashMap
+----------
+
+A Linked List is a doubly linked collection of elements.
+Each entry in the list also holds a reference to the address of the next and the previous item in the list.
+The main advantage of using a linked list is that they are very quick for inserting and removing elements in the middle of a list.
+
+For most cases, if you have to choose between array list and linked list, the better choise is array list.
+Un ArrayList takes up LESS memory than a LinkedList.
+Use an ArrayList, but if you know that you will need to add or remove lost of elements in the middle, then a linked list is the better option.
+
+        // There are several classes in the JAVA API that implements the queue interface.
+        // One of these classes is linked list, 
+
+_JavaDevelopment/testjdk_1.8.0_292/src/linkedlist/LinkedListExample.java
+
+   Queues are useful way of applying constraints in situatios like this where you want the first item in the queue to be the one that gets removed first.
+   poll (method queue interface), returns and remove the first customer in the queue FIFO structure.
+
+
+_JavaDevelopment/testjdk_1.8.0_292/src/linkedlist/Store.java
+_JavaDevelopment/testjdk_1.8.0_292/src/linkedlist/Customer.java
+
+
+HashMap are unordered, entries are stored by their contents, not by their position
+NOT allow duplucate keys
+Allow you to have NULL as the value for a key
+check the HashMap if contains an entry with a certain key or value
+Allow to store pairs of values together (K,V), like phone book.
+name of the contact was the key and phone of the contact was the value.
+Flexible of accessing elements by when thet were added or modified
+
+_JavaDevelopment/testjdk_1.8.0_292/src/hashmap/HashMapExample.java
+
+When use HashMap is NO guarantee that you can get the entries back in the same order that you put them in 
+However, with LinkedHashMap the order is retained.
+LinkedHashMap, entries are stored in the same order that you put them it - default: false or no specifies 
+You can retrieve entries  in the same order that you put them it (forEach) or
+
+_JavaDevelopment/testjdk_1.8.0_292/src/hashmap/LinkedHashMapExample.java
+
+in the order that they have been accessed in: true - change the contructor al crear el objeto
+
+       {Kevin=123456789, Joe=987654321, Daniel=789456123}
+       the longest time ago.............the most recent used
+
+    // Lista of contacts in phoneBook: 
+        // Kevin: 123456789     --> at the top -- the longest time ago
+        // Daniel: 789456123
+        // null: 456123789
+        // Joe: 987654321       --> at the botton most recent
+
+_JavaDevelopment/testjdk_1.8.0_292/src/hashmap/LinkedHashMapExample2.java
+
+Lambdas, represent the implementation of a functional interface.
+
+Functional interface is an Interface that has only one abstract method.  
+Functional interface allows us to pass code around as data.
+annotation functional interface: @FunctionalInterface
+
+_JavaDevelopment/testjdk_1.8.0_292/src/lambdas/GreatingMessage.java
+
+Implement functional interface in another class:
+
+        // Because GreatingMessage has an abstract method with no implementation
+        // add every time I create a new instance of GreatingMessage
+        // or anonymous inner class 
+        // NetBeans automatic implementation
+        @Override
+        public void greet(String name){
+            throw new UnsupportedOperationException("Not supported yet."); 
+        }
+
+El resultado de la ejecución es: Hello: Sonia
+_JavaDevelopment/testjdk_1.8.0_292/src/lambdas/ImplementGreatingMessage.java
+
+At the moment the codes to implement my functional interface is quite long and messy 
+considering all it does is provide one new line of functionality
+
+Lambda provide and simple way to implement functional interfaces in Java:
+El resultado de la ejecución es el mismo: Hello: Sonia
+_JavaDevelopment/testjdk_1.8.0_292/src/lambdas/LambdaImplementGreatingMessage.java
+
+Es una forma simple de implementar interfaces, lucen un poco diferentes a las anonymous inner classes per la logica es la misma
+más facil de entender cuando se comprende la syntax.
+
+_JavaDevelopment/testjdk_1.8.0_292/src/lambdas/LambdaImplementMessagePrinter.java
+_JavaDevelopment/testjdk_1.8.0_292/src/lambdas/MessagePrinter.java
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Exercises - https://docs.oracle.com/javase/tutorial
+
+https://docs.oracle.com/javase/tutorial/java/nutsandbolts/arrays.html
+
+_JavaDevelopment/testjdk_1.8.0_292/src/JavaTutorials/Arrays.java
+
 
 bugs: 
     Syntax errors can cause your program to fail before it is run
@@ -3120,7 +3462,8 @@ Los métodos addItemListener y addActionListener existen
 /*
 Se puede reemplazar por la llamada a un método que sea capas de leer de la consola
 System.out.println ("Introduce la matricula: ");
-String matricula = Teclado.Lee_String();
+Scanner sc = new Scanner(System.in);
+String matricula = sc.next();
 */
 
 // pendiente de picar y de probar el código
@@ -3142,91 +3485,34 @@ String matricula = Teclado.Lee_String();
         }
     }
 }
-// pendiente de picar y de probar el código
-	Matriz3Scanner.java
-    import java.util.Scanner; //Importación del código de la clase Scanner desde la biblioteca Java
-public class Matriz3Scanner{
-    //Nombres[], Notas[]
-    public static void Imprimir(String [][] Alumnos){
-        
-        for (int i=0; i < Alumnos[0].length; i++){
-            int j=i+1;
-            System.out.println(j + ". " + Alumnos[0][i] + ": " + Alumnos[1][i]);
-        }
-    }
-    public static byte EntreNotas(float Nota1, float Nota2, String [][] Alumnos){
-        byte Contador = 0;
-        for(int i=0; i<Alumnos[0].length; i++){
-        
-            if( (Float.parseFloat(Alumnos[1][i]) >= Nota1) && 
-                (Float.parseFloat(Alumnos[1][i]) <= Nota2) ){
-                 Contador++;
-                 System.out.println(Alumnos[0][i] + ": " + Alumnos[1][i]); //Nombres[], Notas[]
-            }
-                
-        }
-        //Después de la ejecución del método se esta imprimiendo la variable Contador, pero no sé porque???
-        return (Contador);
-    }
-        
-    
-    public static String Lee_String(Scanner Cadena){
-        
-        String entradaString = Cadena.nextLine();
-        
-        return (entradaString);
-    }
-    
-    public static float Lee_Float(Scanner Fnumber){
-        
-        float entradaFloat = Fnumber.nextFloat();
-        
-        return(entradaFloat);
-    }
-    
-    
-    
-    public static void main(String [] args){
-        
-        final byte NUM_ALUMNOS = 5;
-        
-        //Solo es obligatorio indicar el número de filas.
-        //Matriz de Calificaciones = 2filas X 5columnas cada una;
-        String [][] Calificaciones = new String[2][NUM_ALUMNOS];
-        
-        // Inicializa la Matriz de Calificaciones
-        
-        for (int i=0; i < NUM_ALUMNOS; i++){
-            
-            Scanner entradaNombres = new Scanner(System.in);
-            System.out.println("Digite el Nombre del Alumno: ");
-            Calificaciones[0][i] = Lee_String(entradaNombres);
-            
-            Scanner entradaNota = new Scanner(System.in);
-            System.out.println("Digite la Nota del Alumno (Use , para los decimales): ");
-            Calificaciones[1][i] = Float.toString(Lee_Float(entradaNota));
-            
-        }
-        
-        Imprimir (Calificaciones);
-        System.out.println("\n");
-        
-        System.out.println("Aprobados: ");
-        System.out.println(EntreNotas(5.0f,10.0f,Calificaciones));
-        
-        System.out.println("Suspensos: ");
-        System.out.println(EntreNotas(0.0f,4.9f,Calificaciones));
-        
-        System.out.println("Matriculas: ");
-        System.out.println(EntreNotas(10.0f,10.0f,Calificaciones));
-    }
-}
-//
+
 
 EditorTexto - , contiene el inicio del Editor de Texto
+GUIEditor.java
+EventosMenu.java
+PruebaGUIEditor.java
+
 
 Revisar - Calculadora - Packages - ,  contiene las clases Digitos, Operadores, Resultados, GUICalculadora* y Calculadora* 
                                       esta sin importar MyFrame1 ..etc y sin modificar el package
+ControlFoco.java
+ControlRaton.java
+ControlVentana.java
+GUICalculadora1.java
+GUICalculadora2.java
+Calculadora2.java
+Calculadora1.java
+PruebaResultados.java
+Resultados.java
+PruebaOperadores.java
+Operadores.java
+Digitos.java
+ProcesaEvento.java
+OpcionErronea.java
+PruebaDigitos.java
+
+SkillAssessments, contiene ejercicios de cursos de pruebas
+                                    
 ---------------------------
 |  _____________________  |
 | |                     | |
