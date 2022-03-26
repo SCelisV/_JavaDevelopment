@@ -3195,6 +3195,18 @@ _JavaDevelopment/testjdk_1.8.0_292/src/lambdas/LambdaImplementMessagePrinter.jav
 _JavaDevelopment/testjdk_1.8.0_292/src/lambdas/MessagePrinter.java
 
 
+method references are a shorthand way of writing a certain type of lambda expression.
+las referencias a métodos son una forma abreviada de escribir un determinado tipo de expresión lambda que pasa en una variable y luego llama a un método sobre esa variable
+se puede sustituir por una referencia a un método
+
+Esto es más corto y sencillo que el lambda, begin with the name of the class followed by the name of the method
+
+Shapes shapes = Square::calculateArea;
+
+_JavaDevelopment/testjdk_1.8.0_292/src/methodreferences/MethodReference.java
+_JavaDevelopment/testjdk_1.8.0_292/src/methodreferences/Shapes.java
+_JavaDevelopment/testjdk_1.8.0_292/src/methodreferences/Square.java
+
 
 
 
@@ -3227,7 +3239,7 @@ bugs:
     Temporarily halt a program in order to inspect its internal state
     Internal state: variables values, the result of certain lines of code, whether or not a certain line of code is executed.
 
-     A varible scope (alcance) refers to where we can access ºand use the variable in our program
+     A varible scope (alcance) refers to where we can access and use the variable in our program
     
 
 

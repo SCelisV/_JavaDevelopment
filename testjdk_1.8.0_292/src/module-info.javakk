@@ -1,0 +1,8 @@
+module hello_modules {
+    // this module only needs types from the base module 'java.base';
+	// because every Java module needs 'java.base', it is not necessary
+	// to explicitly require it - 
+	requires java.base;
+	// this export makes little sense for the application,
+	exports modules;
+}
