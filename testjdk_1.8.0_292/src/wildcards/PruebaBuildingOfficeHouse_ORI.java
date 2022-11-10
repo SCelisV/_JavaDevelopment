@@ -18,7 +18,9 @@ public class PruebaBuildingOfficeHouse {
     }
 
     // Este método recibe una lista de buildings como argumento, esta lista PROVIDES DATA se usa INSIDE the method = INVARIABLE = EXTENDS
-    static void printBuildings(List<Building> buildings){
+    // to solution simple and quicker is to use wildcards
+    // List<? extends: means now pass in list of any type that extends the building class
+    static void printBuildings(List<? extends Building> buildings){
         for (int i = 0; i < buildings.size(); i++){
             System.out.println(i + 1 + ": " +  buildings.get(i).toString() + " " + (i+1));
         }
@@ -26,7 +28,17 @@ public class PruebaBuildingOfficeHouse {
 
     // Este método recibe una lista de Houses como argumento y adiciona una nueva house
     // en este momento sólo le podemos pasar una lista de houses al método
+    /*
     static void addHouseToList(List<House> buildings){
+        buildings.add(new House());
+        System.out.println();
+    }
+    */
+
+    // Este método recibe una lista de Houses como argumento y ADDICIONA - GIVE DATA to the list - adiciona una nueva house - OUTVARIABLE - SUPER 
+    // Si queremos que sea posible pasar cualquier tipo de subtipo Building
+    // debo usar WILDCARS List<? super: means now pass in list of buildings type becouse Buildings is super of House.
+    static void addHouseToList(List<? super House> buildings){
         buildings.add(new House());
         System.out.println();
     }
@@ -51,68 +63,77 @@ public class PruebaBuildingOfficeHouse {
         
         /* */
         System.out.println("\n");
-        System.out.println("add Building/Office/House and print buildings: "); // add Building/Office/House and print buildings: 
+        System.out.println("add Building/Office/House and print buildings: ");
         // This is substitution principle
         List<Building> buildings = new ArrayList();
 
-        // adds some Building to a list of Building
+        // adds some Building/Office to a list of Building
             buildings.add(new Building());
-            buildings.add(new Building());
-
+            buildings.add(new Office()); // passes in the list to the method // This is a substitution principle
+            buildings.add(new House()); // passes in the list to the method // This is a substitution principle
 
         // utilizando este método para imprimir printBuildings(List<Building> buildings)
         // que recibe una lista de Buildings como argumento
         printBuildings(buildings);
-        /*
-        1: usando el método toString from class Building 1
-        2: usando el método toString from class Building 2
-        */
+        // 1: usando el método toString from class Building 1
+        // 2: usando el método toString from class Office 2
+        // 3: usando el método toString from class House 3
+        /* */
 
+        /* */
         // This is NOT substitution principle 
         System.out.println("\n");
-        System.out.println("add Office and print offices: "); // add Office and print offices: 
+        System.out.println("add Office and print offices: ");
         List<Office> offices = new ArrayList();
 
         // adds some Office to a list of Office
             offices.add(new Office());
             offices.add(new Office());
 
-/* PARA EVITAR LOS ERRORES DE COMPILACIÓN HAY DOS SOLUCIONES
- * 1. CREAR UN NUEVO METODO PARA CADA SUBTIPO DE BUILDING
- * 2. USAR WILDCARDS. 
- 
-        // The method printBuildings(List<Building>) is not applicable for the arguments (List<House>)
+        // utilizando este método para imprimir printBuildings(List<? extends Building> buildings)
+        // Substitution principle lets you assign variable of a given type to the subtype BUT NOT APPLY with types of lists
+        // One solution  would be to create a new method to each different subtype of building
+        // Other solution simpler and quicker is to use WILDCARDS
         printBuildings(offices);
+        // 1: usando el método toString from class Office 1
+        // 2: usando el método toString from class Office 2
+        /* */
 
-
+        /* */
         // This is NOT substitution principle
         System.out.println("\n");
-        System.out.println("add Houses and print houses: "); // add Houses and print houses: 
+        System.out.println("add Houses and print houses: ");
         List<House> houses = new ArrayList();
 
         // adds some House to a list of houses
             houses.add(new House());
             houses.add(new House());     
 
-        // The method printBuildings(List<Building>) is not applicable for the arguments (List<House>)
+        // utilizando este método para imprimir printBuildings(List<? extends Building> buildings)
+        // Substitution principle lets you assign variable of a given type to the subtype BUT NOT APPLY with types of lists
+        // One solution  would be to create a new method to each different subtype of building
+        // Other solution simpler and quicker is to use WILDCARDS
         printBuildings(houses);
+        // 1: usando el método toString from class House 1
+        // 2: usando el método toString from class House 2
 
 
         System.out.println("\n");
-        System.out.println("add houses and print houses: "); // add houses and print houses: 
+        System.out.println("add houses and print houses: ");
         addHouseToList(houses);
-        
-        // The method printBuildings(List<Building>) is not applicable for the arguments (List<House>)
         printBuildings(houses);
-
+        // 1: usando el método toString from class House 1
+        // 2: usando el método toString from class House 2
+        // 3: usando el método toString from class House 3
 
         System.out.println("\n");
-        System.out.println("add buildings and print buildings: "); // add buildings and print buildings: 
-     	// The method addHouseToList(List<House>) is not applicable for the arguments (List<Building>)
+        System.out.println("add buildings and print buildings: ");
         addHouseToList(buildings);
         printBuildings(buildings);
-        
-*/
+        // 1: usando el método toString from class Building 1
+        // 2: usando el método toString from class Office 2
+        // 3: usando el método toString from class House 3
+        // 4: usando el método toString from class House 4
 
     }
 }

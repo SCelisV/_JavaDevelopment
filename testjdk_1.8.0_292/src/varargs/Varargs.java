@@ -33,6 +33,20 @@ public class Varargs {
         System.out.println("");
     }
 
+    // genera un warning informando que hay dos métodos que reciben un array en la
+    // misma clase
+    // porque los dos métodos funcionan igual
+    // por lo tanto los demás métodos sobran... ver vararg2.java
+    /*
+    private static void printShoppingList(String... items) {
+        System.out.println("SHOPPING LIST");
+        for (int i = 0; i < items.length; i++) {
+            System.out.println("[" + i + ". " + items[i] + "]");
+        }
+        System.out.println("");
+    }
+     */
+
     public static void main(String[] args){
 
 
@@ -41,8 +55,24 @@ public class Varargs {
         String item3 = "Pears";
 
         String[] shopping = {"Bread","Milk", "Eggs", "Bananas"}; 
+        
+        // imprime los items con el método que recibe 3 argumentos de type String
         printShoppingList(item1, item2, item3);
+
+        // imprime la lista de la compra con el método que recibe un array de items
         printShoppingList(shopping);
 
+        /*
+SHOPPING LIST
+1. Apples
+2. Oranges
+3. Pears
+
+SHOPPING LIST
+[0. Bread]
+[1. Milk]
+[2. Eggs]
+[3. Bananas]
+         */
     }
 }

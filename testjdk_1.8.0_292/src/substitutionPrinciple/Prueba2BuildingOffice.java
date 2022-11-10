@@ -12,7 +12,7 @@ package substitutionPrinciple;
 import java.util.List;
 import java.util.ArrayList;
 
-public class PruebaBuildingOffice{
+public class Prueba2BuildingOffice{
 
     // Este método recibe objetos de tipo Building, pero también subtipos de este, por ejemplo Office
     static void build(Building building){
@@ -82,7 +82,46 @@ public class PruebaBuildingOffice{
 
         // Esto lo podemos solucionar con wildcards
 
-
+        /* 
+        // If a Library is declared as a subtype of Building, 
+        // and you have a print method that accepts parameters of type Building, then which code snippet is not legal?
+        // 1. this is ilegal
+        List<Library> libraries = new ArrayList();
+        // adds some Building/Library to a list of Libraries
+            libraries.add(new Library());
+        // utilizando este método para imprimir printBuildings(List<Building> buildings)
+        // que recibe una lista de Library como argumento
+        printBuildings(libraries);
+        */
+        /* 
+        // 2. 
+        List<Building> libraries = new ArrayList();
+        // adds some Building/Library to a list of Buildings
+            libraries.add(new Library());
+        // utilizando este método para imprimir printBuildings(List<Building> buildings)
+        // que recibe una lista de Library como argumento
+        printBuildings(libraries);
+        */
+        /*
+        // 3. 
+        List<Building> buildings = new ArrayList();
+        // adds some Building to a list of Buildings
+            buildings.add(new Building());
+        // utilizando este método para imprimir printBuildings(List<Building> buildings)
+        // que recibe una lista de Building como argumento
+        printBuildings(buildings);
+        */
+        /* 
+        // 4. 
+        List<Building> buildings = new ArrayList();
+        // adds some Building to a list of Buildings
+            buildings.add(new Library());
+        // utilizando este método para imprimir printBuildings(List<Building> buildings)
+        // que recibe una lista de Building como argumento
+        printBuildings(buildings);
+        */
+        
+        
     }
 
 }
