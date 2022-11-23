@@ -1,7 +1,7 @@
 /*
 https://docs.oracle.com/javase/tutorial/java/nutsandbolts/arrays.html
 */
-package JavaTutorials;
+package JavaTutorials.LanguageBasics;
 
 class Array{ 
 	public static void main(String[] args){
